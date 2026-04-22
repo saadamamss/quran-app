@@ -129,7 +129,8 @@
 
       <!-- Main Content -->
       <main
-        class="flex-1 overflow-hidden bg-gray-50 dark:bg-gray-950 flex items-center justify-center p-0 md:p-2 lg:p-4"
+        class="flex-1 overflow-hidden bg-gray-50 dark:bg-gray-950 flex items-center justify-center p-0 md:p-2 lg:p-4 transition-all duration-300"
+        :class="{ 'pb-24 md:pb-28': audioStore.currentAyahKey || audioStore.isPlaying }"
       >
         <div
           class="w-full h-full max-w-full mx-auto bg-white dark:bg-gray-900 shadow-2xl rounded-xl overflow-hidden relative"
@@ -149,12 +150,14 @@ import SearchBar from '@/components/SearchBar.vue'
 import MushafSlider from '@/components/MushafSlider.vue'
 import ThemeToggle from '@/components/ThemeToggle.vue'
 import { useQuranStore } from '@/stores/quranStore'
+import { useAudioStore } from '@/stores/audioStore'
 import { JUZ } from '@/utils/JUZ'
 import { chapters } from '@/chapters'
 
 const activeTab = ref('surahs')
 const showSidebar = ref(window.innerWidth > 768)
 const store = useQuranStore()
+const audioStore = useAudioStore()
 
 const currentSurahName = computed(() => {
   const surahId = store.currentSurah[0]
@@ -162,9 +165,14 @@ const currentSurahName = computed(() => {
 })
 
 const currentJuz = computed(() => {
-  // We'll need to calculate Juz based on page or verse
-  // For now, let's use a placeholder or look it up from the store if we add it
-  return '1'
+  for (const [id, data] of Object.entries(JUZ)) {
+    const juzId = Number(id)
+    const nextPageStart = JUZ[juzId + 1]?.startpage || 605
+    if (store.currentPage >= data.startpage && store.currentPage < nextPageStart) {
+      return juzId.toLocaleString('ar-Eg')
+    }
+  }
+  return '1'.toLocaleString('ar-Eg')
 })
 
 const selectSurah = async (surahNumber) => {

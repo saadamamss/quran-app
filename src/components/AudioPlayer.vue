@@ -25,14 +25,14 @@
         </div>
 
         <!-- Center: Main Controls -->
-        <div class="flex items-center gap-2 sm:gap-6">
+        <div class="flex items-center gap-1 sm:gap-6">
           <button
             @click="audioStore.playPrevAyah"
-            class="p-2 text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+            class="p-1 sm:p-2 text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              class="h-5 w-5 sm:h-6 sm:w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -48,18 +48,18 @@
 
           <button
             @click="audioStore.togglePlay()"
-            class="w-12 h-12 flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg shadow-emerald-600/30 transition-all active:scale-95 disabled:opacity-50"
+            class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg shadow-emerald-600/30 transition-all active:scale-95 disabled:opacity-50"
             :disabled="audioStore.loading"
           >
             <div
               v-if="audioStore.loading"
-              class="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"
+              class="animate-spin h-4 w-4 sm:h-5 sm:w-5 border-2 border-white border-t-transparent rounded-full"
             ></div>
             <template v-else>
               <svg
                 v-if="!audioStore.isPlaying"
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
+                class="h-5 w-5 sm:h-6 sm:w-6"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -72,7 +72,7 @@
               <svg
                 v-else
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
+                class="h-5 w-5 sm:h-6 sm:w-6"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -87,11 +87,11 @@
 
           <button
             @click="audioStore.playNextAyah"
-            class="p-2 text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+            class="p-1 sm:p-2 text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              class="h-5 w-5 sm:h-6 sm:w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -108,6 +108,68 @@
 
         <!-- Right: Settings & Stop -->
         <div class="flex items-center gap-1 sm:gap-4">
+          <!-- Reciter Selection -->
+          <div class="relative group/reciter hidden md:block">
+            <button
+              class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-600 transition-all border border-transparent hover:border-emerald-100 dark:hover:border-emerald-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                />
+              </svg>
+              <span class="text-xs font-bold">{{ currentReciterName }}</span>
+            </button>
+
+            <div
+              class="absolute bottom-full right-0 mb-2 w-48 bg-white dark:bg-gray-900 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-800 overflow-hidden opacity-0 translate-y-2 pointer-events-none group-hover/reciter:opacity-100 group-hover/reciter:translate-y-0 group-hover/reciter:pointer-events-auto transition-all z-50"
+            >
+              <div class="p-2 border-b dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
+                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest"
+                  >اختر القارئ</span
+                >
+              </div>
+              <div class="max-h-60 overflow-y-auto custom-scrollbar">
+                <button
+                  v-for="reciter in audioStore.reciters"
+                  :key="reciter.id"
+                  @click="audioStore.setReciter(reciter.id)"
+                  class="w-full text-right px-4 py-2 text-xs font-medium hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-600 transition-colors flex items-center justify-between"
+                  :class="
+                    audioStore.reciter === reciter.id
+                      ? 'text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20'
+                      : 'text-gray-600 dark:text-gray-400'
+                  "
+                >
+                  <svg
+                    v-if="audioStore.reciter === reciter.id"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-3 w-3"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span v-else></span>
+                  {{ reciter.name }}
+                </button>
+              </div>
+            </div>
+          </div>
+
           <button
             @click="audioStore.isContinuous = !audioStore.isContinuous"
             class="p-2 transition-colors rounded-lg hidden sm:block"
@@ -190,6 +252,10 @@ const currentAyahNumber = computed(() => audioStore.currentAyahKey?.split(':')[1
 const currentSurahName = computed(() => {
   const id = Number(currentSurahNumber.value)
   return chapters[id]?.name || ''
+})
+
+const currentReciterName = computed(() => {
+  return audioStore.reciters.find((r) => r.id === audioStore.reciter)?.name || ''
 })
 
 const startPlayback = () => {

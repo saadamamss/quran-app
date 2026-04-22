@@ -9,9 +9,23 @@ export const useAudioStore = defineStore('audio', {
     audioElement: null,
     isContinuous: true,
     reciter: 'ar.alafasy',
+    reciters: [
+      { id: 'ar.alafasy', name: 'مشاري العفاسي' },
+      { id: 'ar.minshawi', name: 'المنشاوي' },
+      { id: 'ar.husary', name: 'الحصري' },
+      { id: 'ar.abdulsamad', name: 'عبد الباسط عبد الصمد' },
+      { id: 'ar.abdurrahmaansudais', name: 'السديس' },
+      { id: 'ar.hudhaify', name: 'الحذيفي' },
+    ],
     loading: false,
   }),
   actions: {
+    setReciter(reciterId) {
+      this.reciter = reciterId
+      if (this.isPlaying) {
+        this.playAyah(this.currentAyahKey)
+      }
+    },
     async playAyah(key) {
       if (!key) return
 
