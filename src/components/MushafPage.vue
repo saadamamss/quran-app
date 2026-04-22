@@ -1,75 +1,147 @@
 <template>
   <div
-    class="mushaf-page bg-yellow-100"
-    :class="{ left: pageNumber % 2 == 0 }"
+    class="mushaf-page bg-[#f9f7f0] dark:bg-[#1a1a1a] transition-colors duration-300 relative overflow-hidden"
+    :class="{
+      'border-r-4 border-black/5': pageNumber % 2 !== 0,
+      'border-l-4 border-black/5': pageNumber % 2 === 0,
+    }"
     v-if="isActive || isPreloaded"
   >
-    <!-- Page content here -->
-    <div v-if="loading" class="loading-indicator">Loading page {{ pageNumber }}...</div>
-    <div v-else-if="error" class="error-message">Error loading page {{ pageNumber }}</div>
-    <div v-else class="h-full flex flex-col justify-center items-center">
+    <!-- Background Texture Overlay -->
+    <div
+      class="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/paper-fibers.png')]"
+    ></div>
+
+    <div v-if="loading" class="h-full flex items-center justify-center">
+      <div class="flex flex-col items-center gap-3">
+        <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-emerald-600"></div>
+        <span class="text-sm font-bold text-emerald-600/60 uppercase tracking-widest">
+          Loading Page {{ pageNumber }}
+        </span>
+      </div>
+    </div>
+
+    <div
+      v-else-if="error"
+      class="h-full flex items-center justify-center text-red-500 p-10 text-center"
+    >
+      <p class="font-bold">{{ error }}</p>
+    </div>
+
+    <div v-else class="h-full flex flex-col p-2 md:p-4 relative z-10 overflow-hidden">
+      <!-- Page Header -->
       <div
-        class="surahname w-full max-w-[430px] flex justify-between items-center"
-        v-if="quranStore.currentSurah"
+        class="w-full flex justify-between items-center mb-2 md:mb-4 px-4 text-gray-500 dark:text-gray-400"
+        v-if="verses.length > 0"
       >
-        <div class="text-xs font-bold thuluth">{{ pageJuz }}</div>
-        <div class="flex text-xl">
-          <span v-for="surah in pageSurah">{{ String(surah).padStart(3, '0') }} </span>
+        <div class="flex flex-col items-start">
+          <span class="text-xs font-bold thuluth">{{ pageJuz }}</span>
+        </div>
+
+        <div class="flex gap-4 items-center">
+          <div v-for="surah in pageSurah" :key="surah" class="flex flex-col items-center">
+            <span class="surah-header-font text-xl leading-none">
+              {{ String(surah).padStart(3, '0') }}
+            </span>
+          </div>
         </div>
       </div>
-      <div
-        class="page flex-1 flex flex-col mb-2"
-        :class="[
-          `page_${pageNumber} p${pageNumber}-v1`,
-          [1, 2].includes(pageNumber) ? 'justify-center' : 'justify-between',
-        ]"
-      >
+
+      <!-- Main Mushaf Content with Decorative Border -->
+      <div class="flex-1 flex flex-col items-center justify-center relative min-h-0">
+        <!-- Decorative Border (Visible on Desktop/Larger screens) -->
         <div
-          v-for="(line, index) in pageLines"
-          :key="index"
-          class="flex line relative"
+          class="absolute -inset-1 md:-inset-2 border-[8px] md:border-[16px] border-double border-emerald-900/5 dark:border-emerald-100/5 rounded-sm pointer-events-none"
+        ></div>
+
+        <div
+          class="page-container w-full max-w-[480px] flex flex-col h-full"
           :class="[
-            `Page${pageNumber}-line${index + 1}`,
-            [1, 2].includes(pageNumber) || clines[pageNumber]?.includes(index + 1)
-              ? 'justify-center'
-              : 'justify-between',
+            `page_${pageNumber} p${pageNumber}-v1`,
+            [1, 2].includes(pageNumber) ? 'justify-center' : 'justify-between',
           ]"
         >
-          <div class="border py-[2px] w-full" v-if="line.name">
-            <div class="surahname flex justify-center text-2xl">
-              <span>surah</span>
-              <span>{{ String(line.chapter_id).padStart(3, '0') }}</span>
-            </div>
-          </div>
-
-          <div v-if="line.basmalah" class="w-full">
-            <Basmalah />
-          </div>
-          <span
-            :class="[
-              `word verse_${word.verse_key}`,
-              { 'bg-green-200/50 rounded-sm': quranStore.selectedAyahKey === word.verse_key },
-            ]"
-            v-for="word in line"
-            v-else
-            @mouseover="wordhovered"
-            @mouseleave="wordunhovered"
-            @click="quranStore.setSelectedAyahKey(word.verse_key)"
-          >
-            {{ word.text }}
-          </span>
           <div
-            class="thuluth hizp-position"
-            :class="{ left: pageNumber % 2 == 0 }"
-            v-if="hizbLocation === index + 1"
+            v-for="(line, index) in pageLines"
+            :key="index"
+            class="flex line relative group/line"
+            :class="[
+              `Page${pageNumber}-line${index + 1}`,
+              [1, 2].includes(pageNumber) || clines[pageNumber]?.includes(index + 1)
+                ? 'justify-center'
+                : 'justify-between',
+              { 'items-center': true },
+            ]"
           >
-            <span class="block text-xs font-bold">{{ rubHizbText }}</span>
-            <span class="text-xl font-bold block">{{ hizbNumber }}</span>
+            <!-- Surah Header in the middle of page -->
+            <div class="w-full py-2 my-1 relative" v-if="line.name">
+              <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full border-t border-emerald-900/10 dark:border-emerald-100/10"></div>
+              </div>
+              <div class="relative flex justify-center">
+                <span
+                  class="bg-[#f9f7f0] dark:bg-[#1a1a1a] px-3 text-3xl surah-header-font text-emerald-900/80 dark:text-emerald-100/80"
+                >
+                  {{ String(line.chapter_id).padStart(3, '0') }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Basmalah -->
+            <div v-if="line.basmalah" class="w-full py-1 flex justify-center">
+              <Basmalah class="h-8 md:h-10 text-emerald-900/90 dark:text-emerald-100/90" />
+            </div>
+
+            <!-- Ayah Words -->
+            <template v-else>
+              <span
+                :class="[
+                  `word verse_${word.verse_key} transition-all duration-200 cursor-pointer text-emerald-900/90 dark:text-emerald-100/90`,
+                  {
+                    'bg-emerald-600/10 dark:bg-emerald-400/20 rounded shadow-[0_0_8px_rgba(16,185,129,0.2)] scale-105 z-10':
+                      quranStore.selectedAyahKey === word.verse_key,
+                  },
+                  {
+                    'hover:bg-black/5 dark:hover:bg-white/5':
+                      quranStore.selectedAyahKey !== word.verse_key,
+                  },
+                ]"
+                v-for="word in line"
+                :key="word.location"
+                @mouseover="wordhovered"
+                @mouseleave="wordunhovered"
+                @click="quranStore.setSelectedAyahKey(word.verse_key)"
+              >
+                {{ word.text }}
+              </span>
+            </template>
+
+            <!-- Hizb/Rub Marker -->
+            <div
+              class="absolute hidden lg:flex flex-col items-center justify-center w-10 h-10 -right-14 top-1/2 -translate-y-1/2 opacity-0 group-hover/line:opacity-100 transition-opacity"
+              :class="{ '-left-14 right-auto': pageNumber % 2 == 0 }"
+              v-if="hizbLocation === index + 1"
+            >
+              <div
+                class="text-[7px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-tighter whitespace-nowrap"
+              >
+                {{ rubHizbText }}
+              </div>
+              <div class="text-base font-bold thuluth text-emerald-800 dark:text-emerald-200">
+                {{ hizbNumber }}
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="text-center text-sm font-bold">
-        <span> - {{ pageNumber.toLocaleString('ar-Eg') }} - </span>
+
+      <!-- Page Footer -->
+      <div class="mt-2 md:mt-4 flex justify-center items-center">
+        <div class="relative flex items-center justify-center">
+          <span class="text-sm font-bold text-gray-800 dark:text-gray-200 z-10">
+            {{ pageNumber.toLocaleString('ar-Eg') }}
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -215,15 +287,6 @@ const hizbLocation = computed(() => {
 
   return position
 })
-const pageSurahs = computed(() => {
-  return verses.value.reduce((acc, verse) => {
-    if (!acc.includes(verse.chapter_id)) {
-      acc.push(verse.chapter_id)
-    }
-
-    return acc
-  }, [])
-})
 
 const completeLines = computed(() => Array.from({ length: 15 }, (_, i) => i + 1))
 
@@ -264,7 +327,7 @@ const pageLines = computed(() => {
 
       // Special handling for first two pages
       if ([1, 2].includes(props.pageNumber)) {
-        lines[missingLine] = chapterId ? { name: true, chapter_id: chapterId } : {}
+        lines[missingLine] = chapterId ? { name: true, chapter_id: chapterId } : null
       } else {
         lines[missingLine] = { name: true, chapter_id: chapterId }
       }
@@ -272,49 +335,8 @@ const pageLines = computed(() => {
   })
 
   // Convert to array maintaining line order
-  return completeLines.value.map((lineNumber) => lines[lineNumber] || [])
+  return completeLines.value.map((lineNumber) => lines[lineNumber] || null).filter((i) => i != null)
 })
-
-const getLines = (chapter_id) => {
-  console.log(
-    verses.value.filter((verse) => verse.chapter_id === chapter_id).flatMap((ayah) => ayah.words),
-  )
-
-  return Object.values(
-    verses.value
-      .filter((verse) => verse.chapter_id === chapter_id)
-      .flatMap((ayah) => ayah.words)
-      .reduce((acc, word) => {
-        const lineNumber = word.line_number
-
-        if (!acc[lineNumber]) {
-          acc[lineNumber] = []
-        }
-        acc[lineNumber].push(word)
-        return acc
-      }, {}),
-  )
-}
-
-// const pageLines = computed(() => {
-//   const gg = pageSurahs.value.map((chapter_id) => {
-//     const lines = getLines(chapter_id)
-//     const firstLine = lines[0][0].line_number
-//     const lastLine = lines.at(-1).at(-1).line_number
-//     const firstVerse =
-//       verses.value.filter((verse) => verse.chapter_id === chapter_id)[0].verse_number == 1
-
-//     return {
-//       chapter_id: chapter_id,
-//       lines: lines,
-//       basmalah: firstVerse && ![1, 9].includes(chapter_id),
-//       surahName: (firstVerse && chapter_id == 9) || (firstVerse && firstLine != 2),
-//       surahNameLast: lastLine == 14,
-//     }
-//   })
-
-//   return gg
-// })
 
 const wordhovered = (e) => {
   Array.from(document.getElementsByClassName(e.target.className)).forEach((element) => {
@@ -334,49 +356,53 @@ onMounted(() => {})
   width: 100%;
   height: 100%;
   position: relative;
-  font-size: 24px;
-}
-.mushaf-page:not(.left) {
-  border-right: solid 2px #aaa;
-}
-.mushaf-page.left {
-  border-left: solid 2px #aaa;
-}
-.loading-indicator,
-.error-message {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  font-size: clamp(16px, 2.8vh, 24px);
+  user-select: none;
 }
 
-.page-content {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
+.surah-header-font {
+  font-family: 'surah-name', sans-serif;
 }
 
-.page {
-  border: solid 2px #ddd;
+.page-container {
   padding: 10px;
-  max-height: 660px;
-  min-width: 430px;
-  max-width: 430px;
+}
+
+.word {
+  display: inline-block;
+  padding: 0 1px;
 }
 
 .word.hoverd {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(16, 185, 129, 0.05);
+  border-radius: 2px;
 }
 
-.hizp-position {
-  position: absolute;
-  left: calc(100% + 25px);
-  text-align: center;
+/* Ensure lines are responsive but maintain layout */
+.line {
+  width: 100%;
+  min-height: 1.5em;
 }
-.hizp-position.left {
-  right: calc(100% + 25px);
-  left: auto;
+
+@media (max-width: 640px) {
+  .mushaf-page {
+    font-size: 18px;
+  }
+  .page-container {
+    padding: 5px;
+  }
+}
+
+/* Custom scrollbar for dark mode compatibility */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.2);
+  border-radius: 10px;
 }
 </style>
 <!-- 

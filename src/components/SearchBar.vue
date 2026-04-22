@@ -6,7 +6,7 @@
         @input="handleInput"
         @focus="showResults = true"
         type="text"
-        placeholder="Search for Ayah, Surah or Page..."
+        placeholder="ابحث عن آيه أو سورة..."
         class="w-full bg-gray-100 dark:bg-gray-800 border-none focus:ring-2 focus:ring-emerald-500 rounded-xl py-2.5 pl-10 pr-4 text-sm transition-all"
       />
       <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
@@ -25,10 +25,10 @@
         class="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-900 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-800 overflow-hidden z-50 max-h-[400px] overflow-y-auto custom-scrollbar"
       >
         <div v-if="loading" class="p-8 text-center text-gray-500">
-          Searching...
+          يبحث...
         </div>
         <div v-else-if="results.length === 0" class="p-8 text-center text-gray-500">
-          No results found for "{{ query }}"
+          لا توجد نتائج "{{ query }}"
         </div>
         <div v-else class="p-2 space-y-1">
           <button

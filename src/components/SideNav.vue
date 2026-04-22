@@ -14,7 +14,7 @@
             : 'text-gray-600',
         ]"
       >
-        Surahs
+        السور
       </button>
       <button
         @click="activeTab = 'bookmarks'"
@@ -25,7 +25,7 @@
             : 'text-gray-600',
         ]"
       >
-        Bookmarks
+        العلامات
       </button>
     </div>
 

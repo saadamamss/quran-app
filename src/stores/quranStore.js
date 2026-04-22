@@ -40,6 +40,7 @@ export const useQuranStore = defineStore('quran', {
       this.swiperEl = swiper
     },
     goToPage(_page) {
+      // page-1 because swiper index starts from 0
       this.swiperEl.slideTo(_page - 1)
     },
   },

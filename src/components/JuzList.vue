@@ -23,7 +23,7 @@
             {{ juz.name }}
           </p>
           <p class="text-[10px] text-gray-400 dark:text-gray-500 font-medium uppercase tracking-wider">
-            Starts at Page {{ juz.startpage }}
+            بداية من الصفحة {{ juz.startpage }}
           </p>
         </div>
       </div>

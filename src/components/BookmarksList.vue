@@ -33,8 +33,8 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
         </svg>
       </div>
-      <p class="text-gray-500 dark:text-gray-400 font-medium">No bookmarks yet</p>
-      <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">Tap an Ayah to save it here</p>
+      <p class="text-gray-500 dark:text-gray-400 font-medium">لا توجد علامات</p>
+      <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">اضغط على الآية لتظهر هنا</p>
     </div>
   </div>
 </template>

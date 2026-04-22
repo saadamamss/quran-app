@@ -14,7 +14,7 @@
     :virtual="virtualOptions"
     @swiper="onSwiperInit"
     @slide-change="onSlideChange"
-    class="mushaf-swiper"
+    class="mushaf-swiper bg-[#e5e1d3] dark:bg-[#0f0f0f] transition-colors duration-500"
     ref="swiperEl"
   >
     <swiper-slide v-for="(page, index) in 604" :key="index">

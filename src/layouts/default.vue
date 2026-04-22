@@ -95,17 +95,21 @@
 
         <div class="flex p-2 gap-1 border-b border-gray-100 dark:border-gray-800">
           <button
-            v-for="tab in ['surahs', 'juz', 'bookmarks']"
+            v-for="tab in [
+              { key: 'surahs', text: 'السور' },
+              { key: 'juz', text: 'الأجزاء' },
+              { key: 'bookmarks', text: 'العلامات' },
+            ]"
             :key="tab"
-            @click="activeTab = tab"
+            @click="activeTab = tab.key"
             class="flex-1 py-2 text-xs font-bold uppercase tracking-widest rounded-md transition-all"
             :class="[
-              activeTab === tab
+              activeTab === tab.key
                 ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/20'
                 : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800',
             ]"
           >
-            {{ tab }}
+            {{ tab.text }}
           </button>
         </div>
 
@@ -125,9 +129,11 @@
 
       <!-- Main Content -->
       <main
-        class="flex-1 overflow-hidden bg-gray-50 dark:bg-gray-950 flex items-center justify-center p-0"
+        class="flex-1 overflow-hidden bg-gray-50 dark:bg-gray-950 flex items-center justify-center p-0 md:p-2 lg:p-4"
       >
-        <div class="w-full h-full max-w-full mx-auto shadow-2xl rounded-xl overflow-hidden">
+        <div
+          class="w-full h-full max-w-full mx-auto bg-white dark:bg-gray-900 shadow-2xl rounded-xl overflow-hidden relative"
+        >
           <MushafSlider />
         </div>
       </main>
