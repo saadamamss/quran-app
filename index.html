@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+
+    <script>
+      // Initialize dark mode from localStorage
+      if (
+        localStorage.getItem('quran-store') &&
+        JSON.parse(localStorage.getItem('quran-store')).settings.theme === 'dark'
+      ) {
+        document.documentElement.classList.add('dark')
+      }
+    </script>
+
+    <style id="fonts">
+      @font-face {
+        font-family: 'surah-name';
+        src: url('/fonts/sura_names.woff2');
+      }
+      @font-face {
+        font-family: 'othmani';
+        src: url('/fonts/UthmanicHafs1Ver18.woff2');
+      }
+      @font-face {
+        font-family: 'thuluth';
+        src: url('/fonts/thuluth.ttf');
+      }
+
+      /* KfgqpcHafsUthmanicScriptRegular-nARZ1.ttf
+      KfgqpcHafsUthmanicScriptRegular-1jGEe.ttf */
+      .surahname {
+        font-family: 'surah-name' !important;
+      }
+      .othmani {
+        font-family: 'othmani' !important;
+      }
+      .thuluth {
+        font-family: 'thuluth' !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
