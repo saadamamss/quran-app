@@ -1,5 +1,7 @@
 # تطبيق المصحف الرقمي | Digital Quran App 📖
 
+**🌐 رابط المعاينة المباشرة | Live Demo: [quran-app-inky.vercel.app](https://quran-app-inky.vercel.app/)**
+
 تطبيق ويب حديث ومتطور لعرض المصحف الشريف (برواية حفص) بتجربة قراءة تفاعلية فريدة، يجمع بين جمال التصميم الورقي التقليدي وسهولة التقنيات الرقمية الحديثة.
 
 A modern web application for displaying the Holy Quran (Hafs recitation) with a unique interactive reading experience, combining the beauty of traditional paper design with the ease of modern digital technologies.
@@ -60,12 +62,6 @@ A modern web application for displaying the Holy Quran (Hafs recitation) with a 
     ```bash
     npm run build
     ```
-
----
-
-## 📸 لقطات من التطبيق | Screenshots
-
-_(يمكنك إضافة صور للتطبيق هنا لاحقاً)_
 
 ---
 
