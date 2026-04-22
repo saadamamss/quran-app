@@ -41,7 +41,7 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M15 19l-7-7 7-7"
+                d="M9 5l7 7-7 7"
               />
             </svg>
           </button>
@@ -100,7 +100,7 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M9 5l7 7-7 7"
+                d="M15 19l-7-7 7-7"
               />
             </svg>
           </button>
@@ -109,7 +109,7 @@
         <!-- Right: Settings & Stop -->
         <div class="flex items-center gap-1 sm:gap-4">
           <!-- Reciter Selection -->
-          <div class="relative group/reciter hidden md:block">
+          <div class="relative group/reciter hidden md:block py-3">
             <button
               class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-600 transition-all border border-transparent hover:border-emerald-100 dark:hover:border-emerald-800"
             >
@@ -131,7 +131,7 @@
             </button>
 
             <div
-              class="absolute bottom-full right-0 mb-2 w-48 bg-white dark:bg-gray-900 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-800 overflow-hidden opacity-0 translate-y-2 pointer-events-none group-hover/reciter:opacity-100 group-hover/reciter:translate-y-0 group-hover/reciter:pointer-events-auto transition-all z-50"
+              class="absolute bottom-full right-0 w-48 bg-white dark:bg-gray-900 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-800 overflow-hidden opacity-0 translate-y-2 pointer-events-none group-hover/reciter:opacity-100 group-hover/reciter:translate-y-0 group-hover/reciter:pointer-events-auto transition-all z-50"
             >
               <div class="p-2 border-b dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
                 <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest"
@@ -171,14 +171,14 @@
           </div>
 
           <button
-            @click="audioStore.isContinuous = !audioStore.isContinuous"
+            @click="audioStore.setContinuous(!audioStore.isContinuous)"
             class="p-2 transition-colors rounded-lg hidden sm:block"
             :class="
               audioStore.isContinuous
                 ? 'text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20'
                 : 'text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
             "
-            title="Continuous Play"
+            title="تشغيل متواصل"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

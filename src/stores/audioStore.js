@@ -2,59 +2,81 @@ import { defineStore } from 'pinia'
 import { useQuranStore } from './quranStore'
 import { chapters } from '@/chapters'
 
+const STORAGE_KEY = 'quran_audio_data_v2'
+
 export const useAudioStore = defineStore('audio', {
-  state: () => ({
-    isPlaying: false,
-    currentAyahKey: null, // format: "surah:ayah"
-    audioElement: null,
-    isContinuous: true,
-    reciter: 'ar.alafasy',
-    reciters: [
-      { id: 'ar.alafasy', name: 'مشاري العفاسي' },
-      { id: 'ar.minshawi', name: 'المنشاوي' },
-      { id: 'ar.husary', name: 'الحصري' },
-      { id: 'ar.abdulsamad', name: 'عبد الباسط عبد الصمد' },
-      { id: 'ar.abdurrahmaansudais', name: 'السديس' },
-      { id: 'ar.hudhaify', name: 'الحذيفي' },
-    ],
-    loading: false,
-  }),
+  state: () => {
+    const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')
+    
+    return {
+      isPlaying: false,
+      currentAyahKey: null, // format: "surah:ayah"
+      audioElement: null,
+      isContinuous: savedData.isContinuous !== undefined ? savedData.isContinuous : true,
+      reciter: savedData.reciter || 'ar.alafasy',
+      reciters: [
+        { id: 'ar.alafasy', name: 'مشاري العفاسي' },
+        { id: 'ar.minshawi', name: 'المنشاوي' },
+        { id: 'ar.husary', name: 'الحصري' },
+        { id: 'ar.abdulsamad', name: 'عبد الباسط عبد الصمد' },
+        { id: 'ar.abdurrahmaansudais', name: 'السديس' },
+        { id: 'ar.hudhaify', name: 'الحذيفي' },
+      ],
+      loading: false,
+    }
+  },
   actions: {
+    saveToStorage() {
+      const dataToSave = {
+        reciter: this.reciter,
+        isContinuous: this.isContinuous
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+    },
+
     setReciter(reciterId) {
       this.reciter = reciterId
+      this.saveToStorage()
       if (this.isPlaying) {
         this.playAyah(this.currentAyahKey)
       }
     },
+    
+    setContinuous(val) {
+      this.isContinuous = val
+      this.saveToStorage()
+    },
+
     async playAyah(key) {
       if (!key) return
-
+      
       try {
         this.loading = true
         if (this.audioElement) {
-          this.audioElement.pause()
+          try {
+            this.audioElement.pause()
+          } catch(e) {}
           this.audioElement.onended = null
         }
-
+        
         this.currentAyahKey = key
-
-        // Use a more direct audio CDN if possible, or stick to the API
+        
         const response = await fetch(`https://api.alquran.cloud/v1/ayah/${key}/${this.reciter}`)
         const data = await response.json()
         const url = data.data.audio
-
+        
         this.audioElement = new Audio(url)
         this.audioElement.play()
         this.isPlaying = true
         this.loading = false
-
+        
         // Flip page if needed
         const quranStore = useQuranStore()
         if (data.data.page !== quranStore.currentPage) {
           quranStore.setCurrentPage(data.data.page)
           quranStore.goToPage(data.data.page)
         }
-
+        
         this.audioElement.onended = () => {
           if (this.isContinuous) {
             this.playNextAyah()
@@ -63,39 +85,45 @@ export const useAudioStore = defineStore('audio', {
           }
         }
       } catch (err) {
-        console.error('Audio playback failed', err)
+        console.error("Audio playback failed", err)
         this.isPlaying = false
         this.loading = false
       }
     },
-
+    
     pauseAudio() {
       if (this.audioElement) {
-        this.audioElement.pause()
+        try {
+          this.audioElement.pause()
+        } catch(e) {}
         this.isPlaying = false
       }
     },
-
+    
     resumeAudio() {
       if (this.audioElement) {
-        this.audioElement.play()
+        try {
+          this.audioElement.play()
+        } catch(e) {}
         this.isPlaying = true
       }
     },
-
+    
     stopAudio() {
       if (this.audioElement) {
-        this.audioElement.pause()
+        try {
+          this.audioElement.pause()
+        } catch (e) {}
         this.audioElement = null
       }
       this.isPlaying = false
       this.currentAyahKey = null
     },
-
+    
     togglePlay(key) {
       const targetKey = key || this.currentAyahKey
       if (!targetKey) return
-
+      
       if (this.currentAyahKey === targetKey) {
         if (this.isPlaying) {
           this.pauseAudio()
@@ -106,13 +134,13 @@ export const useAudioStore = defineStore('audio', {
         this.playAyah(targetKey)
       }
     },
-
+    
     playNextAyah() {
       if (!this.currentAyahKey) return
-
+      
       const [surah, ayah] = this.currentAyahKey.split(':').map(Number)
       const totalVerses = chapters[surah].total_verses
-
+      
       let nextKey = ''
       if (ayah < totalVerses) {
         nextKey = `${surah}:${ayah + 1}`
@@ -122,18 +150,15 @@ export const useAudioStore = defineStore('audio', {
         this.stopAudio()
         return
       }
-
+      
       this.playAyah(nextKey)
-
-      // Update Quran store if needed (e.g., to scroll to page)
-      // We don't necessarily want to OPEN the modal here
     },
 
     playPrevAyah() {
       if (!this.currentAyahKey) return
-
+      
       const [surah, ayah] = this.currentAyahKey.split(':').map(Number)
-
+      
       let prevKey = ''
       if (ayah > 1) {
         prevKey = `${surah}:${ayah - 1}`
@@ -143,7 +168,7 @@ export const useAudioStore = defineStore('audio', {
       } else {
         return
       }
-
+      
       this.playAyah(prevKey)
     },
   },

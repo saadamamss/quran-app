@@ -39,6 +39,10 @@ const darkMode = computed(() => store.settings.theme === 'dark')
 const toggleTheme = () => {
   const newTheme = darkMode.value ? 'light' : 'dark'
   store.updateSettings({ theme: newTheme })
-  document.documentElement.classList.toggle('dark', newTheme === 'dark')
+  if (newTheme === 'dark') {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
 }
 </script>

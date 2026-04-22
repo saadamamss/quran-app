@@ -5,9 +5,22 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import AyahModal from '@/components/AyahModal.vue'
 import AudioPlayer from '@/components/AudioPlayer.vue'
+import { useQuranStore } from '@/stores/quranStore'
+
+const store = useQuranStore()
+
+onMounted(() => {
+  // Apply persisted theme on startup
+  if (store.settings.theme === 'dark') {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+})
 </script>
 
 <style>
@@ -25,14 +38,14 @@ import AudioPlayer from '@/components/AudioPlayer.vue'
   .main-content {
     flex-direction: column;
   }
-  
+
   .side-nav {
     width: 100%;
     height: 300px;
     border-right: none;
     border-bottom: 1px solid #dee2e6;
   }
-  
+
   .tabs {
     position: sticky;
     top: 0;

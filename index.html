@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Quran App</title>
 
     <script>
-      // Initialize dark mode from localStorage
-      if (
-        localStorage.getItem('quran-store') &&
-        JSON.parse(localStorage.getItem('quran-store')).settings.theme === 'dark'
-      ) {
-        document.documentElement.classList.add('dark')
-      }
+      // Immediate theme apply to prevent flicker
+      try {
+        const store = JSON.parse(localStorage.getItem('quran_app_data_v2'))
+        if (store && store.settings && store.settings.theme === 'dark') {
+          document.documentElement.classList.add('dark')
+        }
+      } catch (e) {}
     </script>
 
     <style id="fonts">

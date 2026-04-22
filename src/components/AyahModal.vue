@@ -20,7 +20,6 @@
               >
                 {{ surahName }} - {{ ayahNumber }}
               </span>
-              <span class="text-lg font-bold dark:text-white">Ayah Details</span>
             </div>
             <button
               @click="close"
@@ -49,7 +48,7 @@
               <div
                 class="animate-spin rounded-full h-10 w-10 border-b-2 border-emerald-500 mb-4"
               ></div>
-              <p class="text-gray-500 dark:text-gray-400">Loading translation...</p>
+              <p class="text-gray-500 dark:text-gray-400">تحميل الترجمة...</p>
             </div>
             <div v-else-if="error" class="text-red-500 py-8 text-center">
               {{ error }}
@@ -75,7 +74,7 @@
                       : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
                   "
                 >
-                  Translation
+                  الترجمة
                 </button>
                 <button
                   @click="activeTab = 'tafsir'"
@@ -86,7 +85,7 @@
                       : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
                   "
                 >
-                  Tafsir
+                  التفسير
                 </button>
               </div>
 
@@ -179,19 +178,15 @@
                     d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
                   />
                 </svg>
-                {{ isBookmarked ? 'Saved' : 'Bookmark' }}
+                {{ isBookmarked ? 'تم الحفظ' : 'حفظ العلامة' }}
               </button>
             </div>
 
             <!-- Continuous Play Toggle -->
-            <button
-              @click="audioStore.isContinuous = !audioStore.isContinuous"
+            <button 
+              @click="audioStore.setContinuous(!audioStore.isContinuous)"
               class="flex items-center justify-between px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest transition-colors"
-              :class="
-                audioStore.isContinuous
-                  ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400'
-                  : 'bg-gray-100 text-gray-500 dark:bg-gray-900/50'
-              "
+              :class="audioStore.isContinuous ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400' : 'bg-gray-100 text-gray-500 dark:bg-gray-900/50'"
             >
               <div class="flex items-center gap-2">
                 <svg
@@ -208,7 +203,7 @@
                     d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
                   />
                 </svg>
-                Continuous Play
+                تشغيل مستمر
               </div>
               <div
                 class="w-8 h-4 rounded-full relative transition-colors"

@@ -1,5 +1,4 @@
 <template>
-  
   <Swiper
     :modules="modules"
     :direction="'horizontal'"
@@ -40,7 +39,12 @@ const store = useQuranStore()
 const swiperEl = ref(null)
 const swiper = ref(null)
 const currentPage = computed(() => store.currentPage)
-const initialSlide = ref(0)
+const initialSlide = computed(() => {
+  // Use persistent currentPage to set initial slide
+  // We need to ensure it's a number
+  const page = Number(store.currentPage) || 1
+  return page - 1
+})
 const windowWidth = ref(window.innerWidth)
 
 // Responsive settings
@@ -103,11 +107,6 @@ const isActive = (pageNumber) => {
 const onSwiperInit = (swiperInstance) => {
   swiper.value = swiperInstance
   store.setSwiper(swiperInstance)
-  
-  // Go to initial page from store or props
-  if (store.currentPage > 1) {
-    swiperInstance.slideTo(store.currentPage - 1, 0)
-  }
 }
 
 // Handle page change
@@ -152,8 +151,6 @@ const goToPage = (page) => {
     swiperEl.value.$el.swiper.slideTo(targetSlide)
   }
 }
-
-
 </script>
 
 <style scoped>

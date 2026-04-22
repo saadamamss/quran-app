@@ -41,17 +41,17 @@
         class="hidden md:flex items-center gap-6 bg-gray-50 dark:bg-gray-800/50 px-6 py-1.5 rounded-full border border-gray-100 dark:border-gray-800"
       >
         <div class="flex flex-col items-center">
-          <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Surah</span>
+          <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">السورة</span>
           <span class="text-sm font-bold dark:text-white">{{ currentSurahName }}</span>
         </div>
         <div class="w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
         <div class="flex flex-col items-center">
-          <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Juz</span>
+          <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">الجزء</span>
           <span class="text-sm font-bold dark:text-white">{{ currentJuz }}</span>
         </div>
         <div class="w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
         <div class="flex flex-col items-center">
-          <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Page</span>
+          <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">الصفحة</span>
           <span class="text-sm font-bold dark:text-white">{{ store.currentPage }}</span>
         </div>
       </div>
