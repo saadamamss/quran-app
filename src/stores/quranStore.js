@@ -6,6 +6,7 @@ export const useQuranStore = defineStore('quran', {
     currentSurah: [1],
     currentPage: 1,
     lastRead: 1,
+    selectedAyahKey: null,
     swiperEl: null,
     settings: {
       translation: 'en.sahih',
@@ -15,7 +16,12 @@ export const useQuranStore = defineStore('quran', {
   }),
   actions: {
     addBookmark(ayah) {
-      this.bookmarks.push(ayah)
+      if (!this.bookmarks.some((b) => b.verse_key === ayah.verse_key)) {
+        this.bookmarks.push(ayah)
+      }
+    },
+    removeBookmark(verse_key) {
+      this.bookmarks = this.bookmarks.filter((b) => b.verse_key !== verse_key)
     },
     setCurrentSurah(surah) {
       this.currentSurah = surah //array
@@ -24,6 +30,9 @@ export const useQuranStore = defineStore('quran', {
       this.currentPage = page
       this.lastRead = page
     },
+    setSelectedAyahKey(key) {
+      this.selectedAyahKey = key
+    },
     updateSettings(newSettings) {
       this.settings = { ...this.settings, ...newSettings }
     },
@@ -31,7 +40,7 @@ export const useQuranStore = defineStore('quran', {
       this.swiperEl = swiper
     },
     goToPage(_page) {
-      this.swiperEl.$el.swiper.slideTo(_page - 1)
+      this.swiperEl.slideTo(_page - 1)
     },
   },
   persist: true, // for localStorage persistence

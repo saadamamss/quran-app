@@ -1,34 +1,47 @@
 <template>
-  <div>
+  <div class="p-2 space-y-1">
     <button
-      v-for="(surah, index) in 114"
+      v-for="surah in 114"
       :key="surah"
-      @click="selectSurah(index)"
-      class="flex items-center gap-2 p-3 rounded-lg transition-colors cursor-pointer w-full"
-      :class="{
-        'bg-blue-50 dark:bg-gray-700': store.currentSurah.includes(surah),
-        'hover:bg-gray-100 dark:hover:bg-gray-600': !store.currentSurah.includes(surah),
-      }"
+      @click="selectSurah(surah)"
+      class="w-full flex items-center justify-between p-3 rounded-xl transition-all group"
+      :class="[
+        isCurrentSurah(surah)
+          ? 'bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800'
+          : 'hover:bg-gray-50 dark:hover:bg-gray-800 border border-transparent'
+      ]"
     >
-      <span
-        class="flex items-center justify-center w-8 h-8 rounded-full bg-quran-primary text-white text-sm mr-3"
-      >
-        {{ surah.toLocaleString('ar-Eg') }}
-      </span>
-      <div class="surahname text-2xl font-bold text-gray-900 dark:text-gray-100 flex items-center">
-        <span>surah</span>
-        <span>{{ String(surah).padStart(3, '0') }}</span>
+      <div class="flex items-center gap-3">
+        <div 
+          class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm transition-colors"
+          :class="isCurrentSurah(surah) ? 'bg-emerald-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-500 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/40 group-hover:text-emerald-600'"
+        >
+          {{ surah }}
+        </div>
+        <div class="text-right">
+          <p class="font-bold text-gray-900 dark:text-gray-100 group-hover:text-emerald-600 transition-colors">
+            {{ chapters[surah].name }}
+          </p>
+          <p class="text-[10px] text-gray-400 dark:text-gray-500 font-medium uppercase tracking-wider">
+            {{ chapters[surah].revelation_type }} - {{ chapters[surah].total_verses }} Verses
+          </p>
+        </div>
+      </div>
+      
+      <!-- Surah name in specialized font if available, or just icon -->
+      <div class="flex items-center gap-2">
+        <div class="surahname text-2xl font-bold opacity-20 group-hover:opacity-100 transition-opacity dark:text-gray-400">
+          <span>{{ String(surah).padStart(3, '0') }}</span>
+        </div>
       </div>
     </button>
   </div>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue'
-import quran from 'quran-json'
+import { chapters } from '@/chapters'
 import { useQuranStore } from '@/stores/quranStore'
 import { FPCh } from '@/utils/FPCH'
 
-const surahs = ref([])
 const store = useQuranStore()
 
 const emit = defineEmits(['select-surah'])
@@ -37,5 +50,10 @@ const selectSurah = (number) => {
   const page = FPCh[number]
   store.setCurrentPage(page)
   store.goToPage(page)
+  emit('select-surah', number)
+}
+
+const isCurrentSurah = (number) => {
+  return store.currentSurah.includes(number)
 }
 </script>

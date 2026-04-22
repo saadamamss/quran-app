@@ -1,80 +1,183 @@
 <template>
-  <div class="flex flex-col h-screen min-h-screen max-h-screen bg-quran-light dark:bg-quran-dark">
-    <!-- Header -->
-    <!-- <header class="bg-quran-primary text-white p-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Al-Quran Al-Kareem</h1>
-      <ThemeToggle />
-    </header> -->
+  <div
+    class="flex flex-col h-screen min-h-screen max-h-screen bg-white dark:bg-gray-950 transition-colors"
+  >
+    <!-- Main Top Navbar -->
+    <header
+      class="h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-4 z-40"
+    >
+      <div class="flex items-center gap-3">
+        <button
+          @click="showSidebar = !showSidebar"
+          class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 dark:text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+        <div class="flex flex-col">
+          <h1
+            class="text-sm font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-tighter leading-none"
+          >
+            Al-Quran
+          </h1>
+          <span class="text-xs text-gray-500 dark:text-gray-500 font-medium">Mushaf Al-Madina</span>
+        </div>
+      </div>
 
-    <div class="flex flex-1 overflow-hidden">
+      <!-- Center Status -->
+      <div
+        class="hidden md:flex items-center gap-6 bg-gray-50 dark:bg-gray-800/50 px-6 py-1.5 rounded-full border border-gray-100 dark:border-gray-800"
+      >
+        <div class="flex flex-col items-center">
+          <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Surah</span>
+          <span class="text-sm font-bold dark:text-white">{{ currentSurahName }}</span>
+        </div>
+        <div class="w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
+        <div class="flex flex-col items-center">
+          <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Juz</span>
+          <span class="text-sm font-bold dark:text-white">{{ currentJuz }}</span>
+        </div>
+        <div class="w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
+        <div class="flex flex-col items-center">
+          <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Page</span>
+          <span class="text-sm font-bold dark:text-white">{{ store.currentPage }}</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <ThemeToggle />
+        <button class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 dark:text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden relative">
       <!-- Side Navigation -->
       <aside
-        class="w-72 bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col"
+        v-if="showSidebar"
+        class="absolute md:relative inset-y-0 left-0 w-80 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 flex flex-col z-30 transition-all shadow-xl md:shadow-none"
       >
-        <div class="flex border-b border-gray-200 dark:border-gray-700">
+        <div class="p-4 border-b border-gray-100 dark:border-gray-800">
+          <SearchBar />
+        </div>
+
+        <div class="flex p-2 gap-1 border-b border-gray-100 dark:border-gray-800">
           <button
-            @click="activeTab = 'surahs'"
-            class="flex-1 p-4 font-semibold transition-colors"
-            :class="{
-              'bg-gray-200 dark:bg-gray-700 border-b-2 border-quran-primary':
-                activeTab === 'surahs',
-              'hover:bg-gray-100 dark:hover:bg-gray-600': activeTab !== 'surahs',
-            }"
+            v-for="tab in ['surahs', 'juz', 'bookmarks']"
+            :key="tab"
+            @click="activeTab = tab"
+            class="flex-1 py-2 text-xs font-bold uppercase tracking-widest rounded-md transition-all"
+            :class="[
+              activeTab === tab
+                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/20'
+                : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800',
+            ]"
           >
-            Surahs
-          </button>
-          <button
-            @click="activeTab = 'bookmarks'"
-            class="flex-1 p-4 font-semibold transition-colors"
-            :class="{
-              'bg-gray-200 dark:bg-gray-700 border-b-2 border-quran-primary':
-                activeTab === 'bookmarks',
-              'hover:bg-gray-100 dark:hover:bg-gray-600': activeTab !== 'bookmarks',
-            }"
-          >
-            Bookmarks
+            {{ tab }}
           </button>
         </div>
 
-        <div class="flex-1 overflow-y-auto">
-          <SurahList v-if="activeTab === 'surahs'" @select-surah="selectSurah" class="space-y-2" />
-          <BookmarksList
-            v-if="activeTab === 'bookmarks'"
-            @select-surah="selectSurah"
-            class="space-y-2"
-          />
+        <div class="flex-1 overflow-y-auto custom-scrollbar">
+          <SurahList v-if="activeTab === 'surahs'" @select-surah="selectSurah" />
+          <JuzList v-if="activeTab === 'juz'" @select-juz="selectSurah" />
+          <BookmarksList v-if="activeTab === 'bookmarks'" @select-surah="selectSurah" />
         </div>
       </aside>
 
+      <!-- Mobile Overlay -->
+      <div
+        v-if="showSidebar"
+        @click="showSidebar = false"
+        class="md:hidden absolute inset-0 bg-black/50 backdrop-blur-sm z-20"
+      ></div>
+
       <!-- Main Content -->
-      <main class="flex-1 overflow-y-auto px-6">
-        <!-- <AyahDisplay :current-surah="currentSurah" @bookmark="addBookmark" /> -->
-        <MushafSlider :initial-page="1"/>
+      <main
+        class="flex-1 overflow-hidden bg-gray-50 dark:bg-gray-950 flex items-center justify-center p-0"
+      >
+        <div class="w-full h-full max-w-full mx-auto shadow-2xl rounded-xl overflow-hidden">
+          <MushafSlider />
+        </div>
       </main>
     </div>
   </div>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import SurahList from '@/components/SurahList.vue'
+import JuzList from '@/components/JuzList.vue'
 import BookmarksList from '@/components/BookmarksList.vue'
-import AyahDisplay from '@/components/AyahDisplay.vue'
+import SearchBar from '@/components/SearchBar.vue'
 import MushafSlider from '@/components/MushafSlider.vue'
 import ThemeToggle from '@/components/ThemeToggle.vue'
 import { useQuranStore } from '@/stores/quranStore'
+import { JUZ } from '@/utils/JUZ'
+import { chapters } from '@/chapters'
 
 const activeTab = ref('surahs')
-const currentSurah = ref(null)
+const showSidebar = ref(window.innerWidth > 768)
 const store = useQuranStore()
 
-const selectSurah = async (surahNumber) => {
-  currentSurah.value = surahNumber
-}
+const currentSurahName = computed(() => {
+  const surahId = store.currentSurah[0]
+  return chapters[surahId]?.name || `Surah ${surahId}`
+})
 
-const addBookmark = (ayah) => {
-  store.addBookmark(ayah)
+const currentJuz = computed(() => {
+  // We'll need to calculate Juz based on page or verse
+  // For now, let's use a placeholder or look it up from the store if we add it
+  return '1'
+})
+
+const selectSurah = async (surahNumber) => {
+  if (window.innerWidth < 768) showSidebar.value = false
 }
 </script>
+
+<style>
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 10px;
+}
+</style>
 
 <style scoped>
 .app-container {

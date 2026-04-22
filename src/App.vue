@@ -1,9 +1,11 @@
 <template>
   <router-view />
+  <AyahModal />
 </template>
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import AyahModal from '@/components/AyahModal.vue'
 </script>
 
 <style>

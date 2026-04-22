@@ -102,6 +102,12 @@ const isActive = (pageNumber) => {
 // Initialize swiper
 const onSwiperInit = (swiperInstance) => {
   swiper.value = swiperInstance
+  store.setSwiper(swiperInstance)
+  
+  // Go to initial page from store or props
+  if (store.currentPage > 1) {
+    swiperInstance.slideTo(store.currentPage - 1, 0)
+  }
 }
 
 // Handle page change
@@ -147,9 +153,7 @@ const goToPage = (page) => {
   }
 }
 
-onMounted(() => {
-  store.setSwiper(swiperEl)
-})
+
 </script>
 
 <style scoped>

@@ -46,11 +46,15 @@
             <Basmalah />
           </div>
           <span
-            :class="`word verse_${word.verse_key}`"
+            :class="[
+              `word verse_${word.verse_key}`,
+              { 'bg-green-200/50 rounded-sm': quranStore.selectedAyahKey === word.verse_key },
+            ]"
             v-for="word in line"
             v-else
             @mouseover="wordhovered"
             @mouseleave="wordunhovered"
+            @click="quranStore.setSelectedAyahKey(word.verse_key)"
           >
             {{ word.text }}
           </span>
@@ -102,17 +106,26 @@ const error = ref(null)
 // Only load if active or marked as preloaded
 const isActive = computed(() => props.active)
 const isPreloaded = computed(() => {
-  // Add your preloading logic here
-  return true
+  // Preload if the page is within 5 pages of the current page
+  return Math.abs(props.pageNumber - quranStore.currentPage) <= 5
 })
 
 const head = computed(() => document.querySelector('head'))
+// Load font only
+const loadFont = () => {
+  const fontId = `font-p${props.pageNumber}`
+  if (document.getElementById(fontId)) return
+
+  const style = document.createElement('style')
+  style.id = fontId
+  style.innerHTML = `@font-face { font-family: 'p${props.pageNumber}-v1'; src: url('/fonts/p${props.pageNumber}.woff2'); font-display: swap; } .p${props.pageNumber}-v1{font-family: 'p${props.pageNumber}-v1'}`
+  head.value.append(style)
+}
+
 // Load page data
 const loadPageData = async () => {
   if (verses.value.length > 0) return // Already loaded
-  const style = document.createElement('style')
-  style.innerHTML = `@font-face { font-family: 'p${props.pageNumber}-v1'; src: url('/fonts/p${props.pageNumber}.woff2');} .p${props.pageNumber}-v1{font-family: 'p${props.pageNumber}-v1'}`
-  head.value.append(style)
+  loadFont()
   try {
     loading.value = true
     error.value = null
@@ -140,11 +153,19 @@ watch(
 )
 
 // Also load if preloaded becomes true
-watch(isPreloaded, (preloaded) => {
-  if (preloaded && !loading.value && verses.value.length === 0) {
-    loadPageData()
-  }
-})
+watch(
+  isPreloaded,
+  (preloaded) => {
+    if (preloaded) {
+      // For preloading, we load the font immediately but data only if active or near
+      loadFont()
+      if (Math.abs(props.pageNumber - quranStore.currentPage) <= 2) {
+        loadPageData()
+      }
+    }
+  },
+  { immediate: true },
+)
 
 const pageSurah = computed(() => {
   const surahs = verses.value.filter((verse) => verse.verse_number === 1).map((i) => i.chapter_id)

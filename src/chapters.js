@@ -1,5 +1,5 @@
 // سور القرآن الكريم
-const chapters = {
+export const chapters = {
   1: {
     number: 1,
     name: 'سورة الفاتحة',
