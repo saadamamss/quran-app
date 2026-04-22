@@ -1,11 +1,13 @@
 <template>
   <router-view />
   <AyahModal />
+  <AudioPlayer />
 </template>
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import AyahModal from '@/components/AyahModal.vue'
+import AudioPlayer from '@/components/AudioPlayer.vue'
 </script>
 
 <style>

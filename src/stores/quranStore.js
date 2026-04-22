@@ -7,6 +7,7 @@ export const useQuranStore = defineStore('quran', {
     currentPage: 1,
     lastRead: 1,
     selectedAyahKey: null,
+    pageFirstVerseKeys: {}, // map page number to first verse key
     swiperEl: null,
     settings: {
       translation: 'en.sahih',
@@ -32,6 +33,9 @@ export const useQuranStore = defineStore('quran', {
     },
     setSelectedAyahKey(key) {
       this.selectedAyahKey = key
+    },
+    setPageFirstVerseKey(page, key) {
+      this.pageFirstVerseKeys[page] = key
     },
     updateSettings(newSettings) {
       this.settings = { ...this.settings, ...newSettings }

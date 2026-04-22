@@ -16,7 +16,7 @@
       <div class="flex flex-col items-center gap-3">
         <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-emerald-600"></div>
         <span class="text-sm font-bold text-emerald-600/60 uppercase tracking-widest">
-          Loading Page {{ pageNumber }}
+          رسم الآيات
         </span>
       </div>
     </div>
@@ -98,12 +98,18 @@
                 :class="[
                   `word verse_${word.verse_key} transition-all duration-200 cursor-pointer text-emerald-900/90 dark:text-emerald-100/90`,
                   {
-                    'bg-emerald-600/10 dark:bg-emerald-400/20 rounded shadow-[0_0_8px_rgba(16,185,129,0.2)] scale-105 z-10':
-                      quranStore.selectedAyahKey === word.verse_key,
+                    'bg-emerald-600/20 dark:bg-emerald-400/30 rounded shadow-[0_0_12px_rgba(16,185,129,0.4)] scale-105 z-10':
+                      audioStore.currentAyahKey === word.verse_key,
+                  },
+                  {
+                    'bg-amber-500/10 dark:bg-amber-400/20 rounded border-b-2 border-amber-500/50':
+                      quranStore.selectedAyahKey === word.verse_key &&
+                      audioStore.currentAyahKey !== word.verse_key,
                   },
                   {
                     'hover:bg-black/5 dark:hover:bg-white/5':
-                      quranStore.selectedAyahKey !== word.verse_key,
+                      quranStore.selectedAyahKey !== word.verse_key &&
+                      audioStore.currentAyahKey !== word.verse_key,
                   },
                 ]"
                 v-for="word in line"
@@ -151,12 +157,14 @@
 import { ref, watch, computed, onMounted } from 'vue'
 import quranServices from '@/services/quranServices'
 import { useQuranStore } from '@/stores/quranStore'
+import { useAudioStore } from '@/stores/audioStore'
 import Basmalah from './basmalah.vue'
 import quran from 'quran-json'
 import { JUZ } from '@/utils/JUZ'
 import { pageshashizbnumber } from '@/utils/Hizb'
 import { clines } from '@/utils/CLines'
 const quranStore = useQuranStore()
+const audioStore = useAudioStore()
 const props = defineProps({
   pageNumber: {
     type: Number,
@@ -204,6 +212,12 @@ const loadPageData = async () => {
 
     const response = await quranServices.getPage(props.pageNumber)
     verses.value = response.verses
+
+    // Set first verse key for this page in store
+    if (verses.value.length > 0) {
+      quranStore.setPageFirstVerseKey(props.pageNumber, verses.value[0].verse_key)
+    }
+
     emit('loaded', props.pageNumber)
   } catch (err) {
     error.value = err.message
