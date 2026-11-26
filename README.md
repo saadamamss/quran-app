@@ -65,6 +65,20 @@ A modern web application for displaying the Holy Quran (Hafs recitation) with a 
 
 ---
 
+## 📚 Documentation | التوثيق
+
+Detailed engineering documentation lives in [`docs/`](./docs/README.md):
+
+- [Project status](./docs/STATUS.md) — what works, metrics, build health
+- [Architecture](./docs/ARCHITECTURE.md) — rendering pipeline, audio, state
+- [File reference](./docs/FILES.md) — purpose of every file
+- [APIs & data](./docs/API_AND_DATA.md) — endpoints, schemas, persistence
+- [Issues & roadmap](./docs/ISSUES.md) — bugs, debt, prioritized plan
+- [Developer guide](./docs/DEV_GUIDE.md) — setup, recipes, troubleshooting
+- [Page data pipeline](./docs/PAGE_DATA_PIPELINE.md) — generated 604-page local dataset
+
+---
+
 ## 📄 الترخيص | License
 
 هذا المشروع متاح تحت رخصة MIT.

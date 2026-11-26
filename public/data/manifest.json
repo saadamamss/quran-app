@@ -1,0 +1,6198 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-26T05:02:55.914Z",
+  "source": {
+    "api": "https://api.qurancdn.com/api/qdc/verses/by_page",
+    "mushaf": 2,
+    "query": "words=true&per_page=all&fields=text_uthmani%2Cchapter_id%2Cchizb_number%2Ctext_imlaei_simple&reciter=7&word_translation_language=en&word_fields=verse_key%2Cverse_id%2Cpage_number%2Clocation%2Ctext_uthmani%2Ccode_v1%2Cqpc_uthmani_hafs&mushaf=2&filter_page_words=true&from=0%3A0&to=0%3A0"
+  },
+  "pages": 604,
+  "totalWords": 83665,
+  "totalBytes": 988108,
+  "files": {
+    "1": {
+      "bytes": 756,
+      "words": 36,
+      "lines": 9,
+      "juz": 1,
+      "surahs": [
+        1
+      ],
+      "firstVerse": "1:1"
+    },
+    "2": {
+      "bytes": 745,
+      "words": 41,
+      "lines": 8,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:1"
+    },
+    "3": {
+      "bytes": 1586,
+      "words": 138,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:6"
+    },
+    "4": {
+      "bytes": 1614,
+      "words": 142,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:17"
+    },
+    "5": {
+      "bytes": 1521,
+      "words": 130,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:25"
+    },
+    "6": {
+      "bytes": 1619,
+      "words": 146,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:30"
+    },
+    "7": {
+      "bytes": 1615,
+      "words": 140,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:38"
+    },
+    "8": {
+      "bytes": 1519,
+      "words": 129,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:49"
+    },
+    "9": {
+      "bytes": 1521,
+      "words": 129,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:58"
+    },
+    "10": {
+      "bytes": 1604,
+      "words": 142,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:62"
+    },
+    "11": {
+      "bytes": 1648,
+      "words": 148,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:70"
+    },
+    "12": {
+      "bytes": 1494,
+      "words": 126,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:77"
+    },
+    "13": {
+      "bytes": 1445,
+      "words": 120,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:84"
+    },
+    "14": {
+      "bytes": 1481,
+      "words": 126,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:89"
+    },
+    "15": {
+      "bytes": 1529,
+      "words": 131,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:94"
+    },
+    "16": {
+      "bytes": 1506,
+      "words": 127,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:102"
+    },
+    "17": {
+      "bytes": 1675,
+      "words": 146,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:106"
+    },
+    "18": {
+      "bytes": 1620,
+      "words": 139,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:113"
+    },
+    "19": {
+      "bytes": 1735,
+      "words": 153,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:120"
+    },
+    "20": {
+      "bytes": 1632,
+      "words": 140,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:127"
+    },
+    "21": {
+      "bytes": 1626,
+      "words": 141,
+      "lines": 15,
+      "juz": 1,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:135"
+    },
+    "22": {
+      "bytes": 1590,
+      "words": 136,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:142"
+    },
+    "23": {
+      "bytes": 1569,
+      "words": 129,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:146"
+    },
+    "24": {
+      "bytes": 1676,
+      "words": 140,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:154"
+    },
+    "25": {
+      "bytes": 1588,
+      "words": 142,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:164"
+    },
+    "26": {
+      "bytes": 1618,
+      "words": 140,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:170"
+    },
+    "27": {
+      "bytes": 1559,
+      "words": 130,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:177"
+    },
+    "28": {
+      "bytes": 1534,
+      "words": 128,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:182"
+    },
+    "29": {
+      "bytes": 1548,
+      "words": 126,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:187"
+    },
+    "30": {
+      "bytes": 1762,
+      "words": 161,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:191"
+    },
+    "31": {
+      "bytes": 1462,
+      "words": 119,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:197"
+    },
+    "32": {
+      "bytes": 1591,
+      "words": 131,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:203"
+    },
+    "33": {
+      "bytes": 1639,
+      "words": 146,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:211"
+    },
+    "34": {
+      "bytes": 1548,
+      "words": 128,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:216"
+    },
+    "35": {
+      "bytes": 1531,
+      "words": 127,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:220"
+    },
+    "36": {
+      "bytes": 1723,
+      "words": 156,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:225"
+    },
+    "37": {
+      "bytes": 1631,
+      "words": 145,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:231"
+    },
+    "38": {
+      "bytes": 1570,
+      "words": 136,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:234"
+    },
+    "39": {
+      "bytes": 1538,
+      "words": 124,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:238"
+    },
+    "40": {
+      "bytes": 1504,
+      "words": 130,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:246"
+    },
+    "41": {
+      "bytes": 1417,
+      "words": 115,
+      "lines": 15,
+      "juz": 2,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:249"
+    },
+    "42": {
+      "bytes": 1687,
+      "words": 151,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:253"
+    },
+    "43": {
+      "bytes": 1567,
+      "words": 137,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:257"
+    },
+    "44": {
+      "bytes": 1617,
+      "words": 141,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:260"
+    },
+    "45": {
+      "bytes": 1495,
+      "words": 125,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:265"
+    },
+    "46": {
+      "bytes": 1463,
+      "words": 115,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:270"
+    },
+    "47": {
+      "bytes": 1621,
+      "words": 141,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:275"
+    },
+    "48": {
+      "bytes": 1507,
+      "words": 129,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:282"
+    },
+    "49": {
+      "bytes": 1640,
+      "words": 140,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        2
+      ],
+      "firstVerse": "2:283"
+    },
+    "50": {
+      "bytes": 1601,
+      "words": 144,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:1"
+    },
+    "51": {
+      "bytes": 1499,
+      "words": 122,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:10"
+    },
+    "52": {
+      "bytes": 1494,
+      "words": 123,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:16"
+    },
+    "53": {
+      "bytes": 1655,
+      "words": 152,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:23"
+    },
+    "54": {
+      "bytes": 1713,
+      "words": 153,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:30"
+    },
+    "55": {
+      "bytes": 1598,
+      "words": 139,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:38"
+    },
+    "56": {
+      "bytes": 1539,
+      "words": 134,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:46"
+    },
+    "57": {
+      "bytes": 1539,
+      "words": 132,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:53"
+    },
+    "58": {
+      "bytes": 1622,
+      "words": 143,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:62"
+    },
+    "59": {
+      "bytes": 1643,
+      "words": 146,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:71"
+    },
+    "60": {
+      "bytes": 1483,
+      "words": 130,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:78"
+    },
+    "61": {
+      "bytes": 1551,
+      "words": 135,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:84"
+    },
+    "62": {
+      "bytes": 1689,
+      "words": 150,
+      "lines": 15,
+      "juz": 3,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:92"
+    },
+    "63": {
+      "bytes": 1600,
+      "words": 137,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:101"
+    },
+    "64": {
+      "bytes": 1548,
+      "words": 125,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:109"
+    },
+    "65": {
+      "bytes": 1555,
+      "words": 136,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:116"
+    },
+    "66": {
+      "bytes": 1648,
+      "words": 137,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:122"
+    },
+    "67": {
+      "bytes": 1517,
+      "words": 122,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:133"
+    },
+    "68": {
+      "bytes": 1630,
+      "words": 140,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:141"
+    },
+    "69": {
+      "bytes": 1422,
+      "words": 107,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:149"
+    },
+    "70": {
+      "bytes": 1657,
+      "words": 150,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:154"
+    },
+    "71": {
+      "bytes": 1681,
+      "words": 150,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:158"
+    },
+    "72": {
+      "bytes": 1625,
+      "words": 141,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:166"
+    },
+    "73": {
+      "bytes": 1684,
+      "words": 150,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:174"
+    },
+    "74": {
+      "bytes": 1512,
+      "words": 124,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:181"
+    },
+    "75": {
+      "bytes": 1585,
+      "words": 135,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:187"
+    },
+    "76": {
+      "bytes": 1489,
+      "words": 124,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        3
+      ],
+      "firstVerse": "3:195"
+    },
+    "77": {
+      "bytes": 1608,
+      "words": 145,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:1"
+    },
+    "78": {
+      "bytes": 1545,
+      "words": 136,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:7"
+    },
+    "79": {
+      "bytes": 1479,
+      "words": 122,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:12"
+    },
+    "80": {
+      "bytes": 1451,
+      "words": 119,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:15"
+    },
+    "81": {
+      "bytes": 1329,
+      "words": 103,
+      "lines": 15,
+      "juz": 4,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:20"
+    },
+    "82": {
+      "bytes": 1441,
+      "words": 117,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:24"
+    },
+    "83": {
+      "bytes": 1486,
+      "words": 122,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:27"
+    },
+    "84": {
+      "bytes": 1420,
+      "words": 113,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:34"
+    },
+    "85": {
+      "bytes": 1608,
+      "words": 143,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:38"
+    },
+    "86": {
+      "bytes": 1618,
+      "words": 146,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:45"
+    },
+    "87": {
+      "bytes": 1677,
+      "words": 151,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:52"
+    },
+    "88": {
+      "bytes": 1477,
+      "words": 125,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:60"
+    },
+    "89": {
+      "bytes": 1606,
+      "words": 136,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:66"
+    },
+    "90": {
+      "bytes": 1694,
+      "words": 158,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:75"
+    },
+    "91": {
+      "bytes": 1633,
+      "words": 145,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:80"
+    },
+    "92": {
+      "bytes": 1574,
+      "words": 140,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:87"
+    },
+    "93": {
+      "bytes": 1421,
+      "words": 118,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:92"
+    },
+    "94": {
+      "bytes": 1679,
+      "words": 151,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:95"
+    },
+    "95": {
+      "bytes": 1478,
+      "words": 123,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:102"
+    },
+    "96": {
+      "bytes": 1625,
+      "words": 139,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:106"
+    },
+    "97": {
+      "bytes": 1548,
+      "words": 128,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:114"
+    },
+    "98": {
+      "bytes": 1559,
+      "words": 132,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:122"
+    },
+    "99": {
+      "bytes": 1592,
+      "words": 137,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:128"
+    },
+    "100": {
+      "bytes": 1663,
+      "words": 144,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:135"
+    },
+    "101": {
+      "bytes": 1563,
+      "words": 135,
+      "lines": 15,
+      "juz": 5,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:141"
+    },
+    "102": {
+      "bytes": 1602,
+      "words": 138,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:148"
+    },
+    "103": {
+      "bytes": 1674,
+      "words": 146,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:155"
+    },
+    "104": {
+      "bytes": 1609,
+      "words": 132,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:163"
+    },
+    "105": {
+      "bytes": 1521,
+      "words": 128,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        4
+      ],
+      "firstVerse": "4:171"
+    },
+    "106": {
+      "bytes": 1476,
+      "words": 128,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "4:176"
+    },
+    "107": {
+      "bytes": 1532,
+      "words": 138,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:3"
+    },
+    "108": {
+      "bytes": 1425,
+      "words": 120,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:6"
+    },
+    "109": {
+      "bytes": 1431,
+      "words": 111,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:10"
+    },
+    "110": {
+      "bytes": 1394,
+      "words": 112,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:14"
+    },
+    "111": {
+      "bytes": 1578,
+      "words": 138,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:18"
+    },
+    "112": {
+      "bytes": 1604,
+      "words": 138,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:24"
+    },
+    "113": {
+      "bytes": 1504,
+      "words": 129,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:32"
+    },
+    "114": {
+      "bytes": 1547,
+      "words": 130,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:37"
+    },
+    "115": {
+      "bytes": 1436,
+      "words": 117,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:42"
+    },
+    "116": {
+      "bytes": 1594,
+      "words": 141,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:46"
+    },
+    "117": {
+      "bytes": 1705,
+      "words": 156,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:51"
+    },
+    "118": {
+      "bytes": 1706,
+      "words": 155,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:58"
+    },
+    "119": {
+      "bytes": 1591,
+      "words": 135,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:65"
+    },
+    "120": {
+      "bytes": 1526,
+      "words": 132,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:71"
+    },
+    "121": {
+      "bytes": 1425,
+      "words": 116,
+      "lines": 15,
+      "juz": 6,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:77"
+    },
+    "122": {
+      "bytes": 1598,
+      "words": 139,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:83"
+    },
+    "123": {
+      "bytes": 1656,
+      "words": 151,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:90"
+    },
+    "124": {
+      "bytes": 1657,
+      "words": 145,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:96"
+    },
+    "125": {
+      "bytes": 1638,
+      "words": 147,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:104"
+    },
+    "126": {
+      "bytes": 1567,
+      "words": 132,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:109"
+    },
+    "127": {
+      "bytes": 1767,
+      "words": 165,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        5
+      ],
+      "firstVerse": "5:114"
+    },
+    "128": {
+      "bytes": 1506,
+      "words": 131,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:1"
+    },
+    "129": {
+      "bytes": 1669,
+      "words": 142,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:9"
+    },
+    "130": {
+      "bytes": 1794,
+      "words": 166,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:19"
+    },
+    "131": {
+      "bytes": 1717,
+      "words": 155,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:28"
+    },
+    "132": {
+      "bytes": 1666,
+      "words": 149,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:36"
+    },
+    "133": {
+      "bytes": 1643,
+      "words": 147,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:45"
+    },
+    "134": {
+      "bytes": 1604,
+      "words": 143,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:53"
+    },
+    "135": {
+      "bytes": 1675,
+      "words": 151,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:60"
+    },
+    "136": {
+      "bytes": 1546,
+      "words": 133,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:69"
+    },
+    "137": {
+      "bytes": 1618,
+      "words": 140,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:74"
+    },
+    "138": {
+      "bytes": 1536,
+      "words": 128,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:82"
+    },
+    "139": {
+      "bytes": 1614,
+      "words": 148,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:91"
+    },
+    "140": {
+      "bytes": 1664,
+      "words": 142,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:95"
+    },
+    "141": {
+      "bytes": 1653,
+      "words": 142,
+      "lines": 15,
+      "juz": 7,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:102"
+    },
+    "142": {
+      "bytes": 1620,
+      "words": 138,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:111"
+    },
+    "143": {
+      "bytes": 1566,
+      "words": 136,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:119"
+    },
+    "144": {
+      "bytes": 1606,
+      "words": 134,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:125"
+    },
+    "145": {
+      "bytes": 1431,
+      "words": 109,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:132"
+    },
+    "146": {
+      "bytes": 1489,
+      "words": 120,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:138"
+    },
+    "147": {
+      "bytes": 1548,
+      "words": 134,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:143"
+    },
+    "148": {
+      "bytes": 1598,
+      "words": 132,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:147"
+    },
+    "149": {
+      "bytes": 1557,
+      "words": 132,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:152"
+    },
+    "150": {
+      "bytes": 1779,
+      "words": 163,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        6
+      ],
+      "firstVerse": "6:158"
+    },
+    "151": {
+      "bytes": 1443,
+      "words": 120,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:1"
+    },
+    "152": {
+      "bytes": 1733,
+      "words": 158,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:12"
+    },
+    "153": {
+      "bytes": 1630,
+      "words": 142,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:23"
+    },
+    "154": {
+      "bytes": 1696,
+      "words": 154,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:31"
+    },
+    "155": {
+      "bytes": 1606,
+      "words": 144,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:38"
+    },
+    "156": {
+      "bytes": 1657,
+      "words": 145,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:44"
+    },
+    "157": {
+      "bytes": 1567,
+      "words": 138,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:52"
+    },
+    "158": {
+      "bytes": 1653,
+      "words": 143,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:58"
+    },
+    "159": {
+      "bytes": 1533,
+      "words": 129,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:68"
+    },
+    "160": {
+      "bytes": 1495,
+      "words": 123,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:74"
+    },
+    "161": {
+      "bytes": 1426,
+      "words": 114,
+      "lines": 15,
+      "juz": 8,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:82"
+    },
+    "162": {
+      "bytes": 1655,
+      "words": 148,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:88"
+    },
+    "163": {
+      "bytes": 1547,
+      "words": 130,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:96"
+    },
+    "164": {
+      "bytes": 1742,
+      "words": 145,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:105"
+    },
+    "165": {
+      "bytes": 1608,
+      "words": 134,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:121"
+    },
+    "166": {
+      "bytes": 1524,
+      "words": 127,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:131"
+    },
+    "167": {
+      "bytes": 1567,
+      "words": 130,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:138"
+    },
+    "168": {
+      "bytes": 1536,
+      "words": 129,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:144"
+    },
+    "169": {
+      "bytes": 1626,
+      "words": 141,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:150"
+    },
+    "170": {
+      "bytes": 1459,
+      "words": 116,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:156"
+    },
+    "171": {
+      "bytes": 1404,
+      "words": 111,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:160"
+    },
+    "172": {
+      "bytes": 1602,
+      "words": 138,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:164"
+    },
+    "173": {
+      "bytes": 1602,
+      "words": 135,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:171"
+    },
+    "174": {
+      "bytes": 1737,
+      "words": 153,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:179"
+    },
+    "175": {
+      "bytes": 1654,
+      "words": 143,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:188"
+    },
+    "176": {
+      "bytes": 1629,
+      "words": 136,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        7
+      ],
+      "firstVerse": "7:196"
+    },
+    "177": {
+      "bytes": 1392,
+      "words": 112,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        8
+      ],
+      "firstVerse": "8:1"
+    },
+    "178": {
+      "bytes": 1541,
+      "words": 132,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        8
+      ],
+      "firstVerse": "8:9"
+    },
+    "179": {
+      "bytes": 1612,
+      "words": 133,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        8
+      ],
+      "firstVerse": "8:17"
+    },
+    "180": {
+      "bytes": 1543,
+      "words": 130,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        8
+      ],
+      "firstVerse": "8:26"
+    },
+    "181": {
+      "bytes": 1490,
+      "words": 122,
+      "lines": 15,
+      "juz": 9,
+      "surahs": [
+        8
+      ],
+      "firstVerse": "8:34"
+    },
+    "182": {
+      "bytes": 1490,
+      "words": 124,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        8
+      ],
+      "firstVerse": "8:41"
+    },
+    "183": {
+      "bytes": 1526,
+      "words": 130,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        8
+      ],
+      "firstVerse": "8:46"
+    },
+    "184": {
+      "bytes": 1626,
+      "words": 143,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        8
+      ],
+      "firstVerse": "8:53"
+    },
+    "185": {
+      "bytes": 1631,
+      "words": 141,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        8
+      ],
+      "firstVerse": "8:62"
+    },
+    "186": {
+      "bytes": 1600,
+      "words": 141,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        8
+      ],
+      "firstVerse": "8:70"
+    },
+    "187": {
+      "bytes": 1480,
+      "words": 127,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:1"
+    },
+    "188": {
+      "bytes": 1464,
+      "words": 120,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:7"
+    },
+    "189": {
+      "bytes": 1587,
+      "words": 134,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:14"
+    },
+    "190": {
+      "bytes": 1447,
+      "words": 117,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:21"
+    },
+    "191": {
+      "bytes": 1457,
+      "words": 119,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:27"
+    },
+    "192": {
+      "bytes": 1445,
+      "words": 117,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:32"
+    },
+    "193": {
+      "bytes": 1453,
+      "words": 122,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:37"
+    },
+    "194": {
+      "bytes": 1453,
+      "words": 118,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:41"
+    },
+    "195": {
+      "bytes": 1492,
+      "words": 124,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:48"
+    },
+    "196": {
+      "bytes": 1526,
+      "words": 128,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:55"
+    },
+    "197": {
+      "bytes": 1464,
+      "words": 116,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:62"
+    },
+    "198": {
+      "bytes": 1381,
+      "words": 110,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:69"
+    },
+    "199": {
+      "bytes": 1565,
+      "words": 131,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:73"
+    },
+    "200": {
+      "bytes": 1623,
+      "words": 144,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:80"
+    },
+    "201": {
+      "bytes": 1538,
+      "words": 130,
+      "lines": 15,
+      "juz": 10,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:87"
+    },
+    "202": {
+      "bytes": 1525,
+      "words": 127,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:94"
+    },
+    "203": {
+      "bytes": 1564,
+      "words": 131,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:100"
+    },
+    "204": {
+      "bytes": 1563,
+      "words": 131,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:107"
+    },
+    "205": {
+      "bytes": 1522,
+      "words": 126,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:112"
+    },
+    "206": {
+      "bytes": 1569,
+      "words": 136,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:118"
+    },
+    "207": {
+      "bytes": 1469,
+      "words": 119,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        9
+      ],
+      "firstVerse": "9:123"
+    },
+    "208": {
+      "bytes": 1530,
+      "words": 131,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        10
+      ],
+      "firstVerse": "10:1"
+    },
+    "209": {
+      "bytes": 1594,
+      "words": 130,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        10
+      ],
+      "firstVerse": "10:7"
+    },
+    "210": {
+      "bytes": 1616,
+      "words": 139,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        10
+      ],
+      "firstVerse": "10:15"
+    },
+    "211": {
+      "bytes": 1631,
+      "words": 147,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        10
+      ],
+      "firstVerse": "10:21"
+    },
+    "212": {
+      "bytes": 1673,
+      "words": 143,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        10
+      ],
+      "firstVerse": "10:26"
+    },
+    "213": {
+      "bytes": 1790,
+      "words": 167,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        10
+      ],
+      "firstVerse": "10:34"
+    },
+    "214": {
+      "bytes": 1771,
+      "words": 155,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        10
+      ],
+      "firstVerse": "10:43"
+    },
+    "215": {
+      "bytes": 1724,
+      "words": 155,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        10
+      ],
+      "firstVerse": "10:54"
+    },
+    "216": {
+      "bytes": 1631,
+      "words": 135,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        10
+      ],
+      "firstVerse": "10:62"
+    },
+    "217": {
+      "bytes": 1650,
+      "words": 147,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        10
+      ],
+      "firstVerse": "10:71"
+    },
+    "218": {
+      "bytes": 1676,
+      "words": 144,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        10
+      ],
+      "firstVerse": "10:79"
+    },
+    "219": {
+      "bytes": 1656,
+      "words": 140,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        10
+      ],
+      "firstVerse": "10:89"
+    },
+    "220": {
+      "bytes": 1705,
+      "words": 149,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        10
+      ],
+      "firstVerse": "10:98"
+    },
+    "221": {
+      "bytes": 1577,
+      "words": 136,
+      "lines": 15,
+      "juz": 11,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "10:107"
+    },
+    "222": {
+      "bytes": 1573,
+      "words": 137,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "11:6"
+    },
+    "223": {
+      "bytes": 1640,
+      "words": 144,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "11:13"
+    },
+    "224": {
+      "bytes": 1659,
+      "words": 142,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "11:20"
+    },
+    "225": {
+      "bytes": 1712,
+      "words": 152,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "11:29"
+    },
+    "226": {
+      "bytes": 1671,
+      "words": 148,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "11:38"
+    },
+    "227": {
+      "bytes": 1679,
+      "words": 149,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "11:46"
+    },
+    "228": {
+      "bytes": 1828,
+      "words": 162,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "11:54"
+    },
+    "229": {
+      "bytes": 1643,
+      "words": 139,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "11:63"
+    },
+    "230": {
+      "bytes": 1769,
+      "words": 158,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "11:72"
+    },
+    "231": {
+      "bytes": 1589,
+      "words": 133,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "11:82"
+    },
+    "232": {
+      "bytes": 1616,
+      "words": 136,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "11:89"
+    },
+    "233": {
+      "bytes": 1746,
+      "words": 147,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "11:98"
+    },
+    "234": {
+      "bytes": 1669,
+      "words": 141,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        11
+      ],
+      "firstVerse": "11:109"
+    },
+    "235": {
+      "bytes": 1515,
+      "words": 122,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "11:118"
+    },
+    "236": {
+      "bytes": 1663,
+      "words": 143,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "12:5"
+    },
+    "237": {
+      "bytes": 1592,
+      "words": 131,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "12:15"
+    },
+    "238": {
+      "bytes": 1702,
+      "words": 143,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "12:23"
+    },
+    "239": {
+      "bytes": 1688,
+      "words": 149,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "12:31"
+    },
+    "240": {
+      "bytes": 1577,
+      "words": 134,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "12:38"
+    },
+    "241": {
+      "bytes": 1706,
+      "words": 153,
+      "lines": 15,
+      "juz": 12,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "12:44"
+    },
+    "242": {
+      "bytes": 1703,
+      "words": 144,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "12:53"
+    },
+    "243": {
+      "bytes": 1658,
+      "words": 145,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "12:64"
+    },
+    "244": {
+      "bytes": 1681,
+      "words": 142,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "12:70"
+    },
+    "245": {
+      "bytes": 1628,
+      "words": 141,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "12:79"
+    },
+    "246": {
+      "bytes": 1595,
+      "words": 133,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "12:87"
+    },
+    "247": {
+      "bytes": 1706,
+      "words": 146,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "12:96"
+    },
+    "248": {
+      "bytes": 1635,
+      "words": 138,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        12
+      ],
+      "firstVerse": "12:104"
+    },
+    "249": {
+      "bytes": 1489,
+      "words": 122,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        13
+      ],
+      "firstVerse": "13:1"
+    },
+    "250": {
+      "bytes": 1627,
+      "words": 140,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        13
+      ],
+      "firstVerse": "13:6"
+    },
+    "251": {
+      "bytes": 1713,
+      "words": 157,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        13
+      ],
+      "firstVerse": "13:14"
+    },
+    "252": {
+      "bytes": 1758,
+      "words": 155,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        13
+      ],
+      "firstVerse": "13:19"
+    },
+    "253": {
+      "bytes": 1728,
+      "words": 159,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        13
+      ],
+      "firstVerse": "13:29"
+    },
+    "254": {
+      "bytes": 1681,
+      "words": 147,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        13
+      ],
+      "firstVerse": "13:35"
+    },
+    "255": {
+      "bytes": 1363,
+      "words": 107,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        14
+      ],
+      "firstVerse": "13:43"
+    },
+    "256": {
+      "bytes": 1511,
+      "words": 125,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        14
+      ],
+      "firstVerse": "14:6"
+    },
+    "257": {
+      "bytes": 1584,
+      "words": 130,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        14
+      ],
+      "firstVerse": "14:11"
+    },
+    "258": {
+      "bytes": 1587,
+      "words": 135,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        14
+      ],
+      "firstVerse": "14:19"
+    },
+    "259": {
+      "bytes": 1651,
+      "words": 135,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        14
+      ],
+      "firstVerse": "14:25"
+    },
+    "260": {
+      "bytes": 1608,
+      "words": 139,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        14
+      ],
+      "firstVerse": "14:34"
+    },
+    "261": {
+      "bytes": 1575,
+      "words": 127,
+      "lines": 15,
+      "juz": 13,
+      "surahs": [
+        14
+      ],
+      "firstVerse": "14:43"
+    },
+    "262": {
+      "bytes": 1573,
+      "words": 126,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        15
+      ],
+      "firstVerse": "15:1"
+    },
+    "263": {
+      "bytes": 1701,
+      "words": 144,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        15
+      ],
+      "firstVerse": "15:16"
+    },
+    "264": {
+      "bytes": 1768,
+      "words": 147,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        15
+      ],
+      "firstVerse": "15:32"
+    },
+    "265": {
+      "bytes": 1767,
+      "words": 143,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        15
+      ],
+      "firstVerse": "15:52"
+    },
+    "266": {
+      "bytes": 1740,
+      "words": 140,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        15
+      ],
+      "firstVerse": "15:71"
+    },
+    "267": {
+      "bytes": 1534,
+      "words": 117,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "15:91"
+    },
+    "268": {
+      "bytes": 1481,
+      "words": 119,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:7"
+    },
+    "269": {
+      "bytes": 1653,
+      "words": 136,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:15"
+    },
+    "270": {
+      "bytes": 1654,
+      "words": 135,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:27"
+    },
+    "271": {
+      "bytes": 1641,
+      "words": 144,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:35"
+    },
+    "272": {
+      "bytes": 1771,
+      "words": 153,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:43"
+    },
+    "273": {
+      "bytes": 1710,
+      "words": 146,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:55"
+    },
+    "274": {
+      "bytes": 1728,
+      "words": 156,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:65"
+    },
+    "275": {
+      "bytes": 1648,
+      "words": 140,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:73"
+    },
+    "276": {
+      "bytes": 1536,
+      "words": 125,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:80"
+    },
+    "277": {
+      "bytes": 1543,
+      "words": 128,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:88"
+    },
+    "278": {
+      "bytes": 1613,
+      "words": 133,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:94"
+    },
+    "279": {
+      "bytes": 1513,
+      "words": 120,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:103"
+    },
+    "280": {
+      "bytes": 1622,
+      "words": 133,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:111"
+    },
+    "281": {
+      "bytes": 1670,
+      "words": 141,
+      "lines": 15,
+      "juz": 14,
+      "surahs": [
+        16
+      ],
+      "firstVerse": "16:119"
+    },
+    "282": {
+      "bytes": 1381,
+      "words": 113,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        17
+      ],
+      "firstVerse": "17:1"
+    },
+    "283": {
+      "bytes": 1657,
+      "words": 145,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        17
+      ],
+      "firstVerse": "17:8"
+    },
+    "284": {
+      "bytes": 1657,
+      "words": 140,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        17
+      ],
+      "firstVerse": "17:18"
+    },
+    "285": {
+      "bytes": 1761,
+      "words": 155,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        17
+      ],
+      "firstVerse": "17:28"
+    },
+    "286": {
+      "bytes": 1737,
+      "words": 158,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        17
+      ],
+      "firstVerse": "17:39"
+    },
+    "287": {
+      "bytes": 1678,
+      "words": 142,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        17
+      ],
+      "firstVerse": "17:50"
+    },
+    "288": {
+      "bytes": 1587,
+      "words": 134,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        17
+      ],
+      "firstVerse": "17:59"
+    },
+    "289": {
+      "bytes": 1678,
+      "words": 141,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        17
+      ],
+      "firstVerse": "17:67"
+    },
+    "290": {
+      "bytes": 1713,
+      "words": 147,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        17
+      ],
+      "firstVerse": "17:76"
+    },
+    "291": {
+      "bytes": 1701,
+      "words": 151,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        17
+      ],
+      "firstVerse": "17:87"
+    },
+    "292": {
+      "bytes": 1641,
+      "words": 142,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        17
+      ],
+      "firstVerse": "17:97"
+    },
+    "293": {
+      "bytes": 1593,
+      "words": 138,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        18
+      ],
+      "firstVerse": "17:105"
+    },
+    "294": {
+      "bytes": 1675,
+      "words": 145,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        18
+      ],
+      "firstVerse": "18:5"
+    },
+    "295": {
+      "bytes": 1567,
+      "words": 131,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        18
+      ],
+      "firstVerse": "18:16"
+    },
+    "296": {
+      "bytes": 1647,
+      "words": 142,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        18
+      ],
+      "firstVerse": "18:21"
+    },
+    "297": {
+      "bytes": 1661,
+      "words": 143,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        18
+      ],
+      "firstVerse": "18:28"
+    },
+    "298": {
+      "bytes": 1785,
+      "words": 163,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        18
+      ],
+      "firstVerse": "18:35"
+    },
+    "299": {
+      "bytes": 1646,
+      "words": 137,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        18
+      ],
+      "firstVerse": "18:46"
+    },
+    "300": {
+      "bytes": 1623,
+      "words": 140,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        18
+      ],
+      "firstVerse": "18:54"
+    },
+    "301": {
+      "bytes": 1815,
+      "words": 162,
+      "lines": 15,
+      "juz": 15,
+      "surahs": [
+        18
+      ],
+      "firstVerse": "18:62"
+    },
+    "302": {
+      "bytes": 1695,
+      "words": 147,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        18
+      ],
+      "firstVerse": "18:75"
+    },
+    "303": {
+      "bytes": 1902,
+      "words": 174,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        18
+      ],
+      "firstVerse": "18:84"
+    },
+    "304": {
+      "bytes": 1871,
+      "words": 166,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        18
+      ],
+      "firstVerse": "18:98"
+    },
+    "305": {
+      "bytes": 1485,
+      "words": 121,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        19
+      ],
+      "firstVerse": "19:1"
+    },
+    "306": {
+      "bytes": 1691,
+      "words": 142,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        19
+      ],
+      "firstVerse": "19:12"
+    },
+    "307": {
+      "bytes": 1755,
+      "words": 151,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        19
+      ],
+      "firstVerse": "19:26"
+    },
+    "308": {
+      "bytes": 1770,
+      "words": 158,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        19
+      ],
+      "firstVerse": "19:39"
+    },
+    "309": {
+      "bytes": 1846,
+      "words": 159,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        19
+      ],
+      "firstVerse": "19:52"
+    },
+    "310": {
+      "bytes": 1722,
+      "words": 148,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        19
+      ],
+      "firstVerse": "19:65"
+    },
+    "311": {
+      "bytes": 1767,
+      "words": 144,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        19
+      ],
+      "firstVerse": "19:77"
+    },
+    "312": {
+      "bytes": 1574,
+      "words": 130,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        20
+      ],
+      "firstVerse": "19:96"
+    },
+    "313": {
+      "bytes": 1935,
+      "words": 159,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        20
+      ],
+      "firstVerse": "20:13"
+    },
+    "314": {
+      "bytes": 1845,
+      "words": 165,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        20
+      ],
+      "firstVerse": "20:38"
+    },
+    "315": {
+      "bytes": 1714,
+      "words": 144,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        20
+      ],
+      "firstVerse": "20:52"
+    },
+    "316": {
+      "bytes": 1833,
+      "words": 164,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        20
+      ],
+      "firstVerse": "20:65"
+    },
+    "317": {
+      "bytes": 1711,
+      "words": 146,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        20
+      ],
+      "firstVerse": "20:77"
+    },
+    "318": {
+      "bytes": 1725,
+      "words": 149,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        20
+      ],
+      "firstVerse": "20:88"
+    },
+    "319": {
+      "bytes": 1843,
+      "words": 154,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        20
+      ],
+      "firstVerse": "20:99"
+    },
+    "320": {
+      "bytes": 1714,
+      "words": 146,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        20
+      ],
+      "firstVerse": "20:114"
+    },
+    "321": {
+      "bytes": 1747,
+      "words": 149,
+      "lines": 15,
+      "juz": 16,
+      "surahs": [
+        20
+      ],
+      "firstVerse": "20:126"
+    },
+    "322": {
+      "bytes": 1435,
+      "words": 114,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        21
+      ],
+      "firstVerse": "21:1"
+    },
+    "323": {
+      "bytes": 1761,
+      "words": 151,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        21
+      ],
+      "firstVerse": "21:11"
+    },
+    "324": {
+      "bytes": 1684,
+      "words": 138,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        21
+      ],
+      "firstVerse": "21:25"
+    },
+    "325": {
+      "bytes": 1551,
+      "words": 125,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        21
+      ],
+      "firstVerse": "21:36"
+    },
+    "326": {
+      "bytes": 1678,
+      "words": 138,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        21
+      ],
+      "firstVerse": "21:45"
+    },
+    "327": {
+      "bytes": 1632,
+      "words": 132,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        21
+      ],
+      "firstVerse": "21:58"
+    },
+    "328": {
+      "bytes": 1521,
+      "words": 122,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        21
+      ],
+      "firstVerse": "21:73"
+    },
+    "329": {
+      "bytes": 1540,
+      "words": 121,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        21
+      ],
+      "firstVerse": "21:82"
+    },
+    "330": {
+      "bytes": 1491,
+      "words": 120,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        21
+      ],
+      "firstVerse": "21:91"
+    },
+    "331": {
+      "bytes": 1555,
+      "words": 120,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        21
+      ],
+      "firstVerse": "21:102"
+    },
+    "332": {
+      "bytes": 1486,
+      "words": 128,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        22
+      ],
+      "firstVerse": "22:1"
+    },
+    "333": {
+      "bytes": 1761,
+      "words": 160,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        22
+      ],
+      "firstVerse": "22:6"
+    },
+    "334": {
+      "bytes": 1633,
+      "words": 137,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        22
+      ],
+      "firstVerse": "22:16"
+    },
+    "335": {
+      "bytes": 1500,
+      "words": 123,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        22
+      ],
+      "firstVerse": "22:24"
+    },
+    "336": {
+      "bytes": 1668,
+      "words": 144,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        22
+      ],
+      "firstVerse": "22:31"
+    },
+    "337": {
+      "bytes": 1572,
+      "words": 131,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        22
+      ],
+      "firstVerse": "22:39"
+    },
+    "338": {
+      "bytes": 1614,
+      "words": 138,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        22
+      ],
+      "firstVerse": "22:47"
+    },
+    "339": {
+      "bytes": 1585,
+      "words": 129,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        22
+      ],
+      "firstVerse": "22:56"
+    },
+    "340": {
+      "bytes": 1632,
+      "words": 143,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        22
+      ],
+      "firstVerse": "22:65"
+    },
+    "341": {
+      "bytes": 1468,
+      "words": 119,
+      "lines": 15,
+      "juz": 17,
+      "surahs": [
+        22
+      ],
+      "firstVerse": "22:73"
+    },
+    "342": {
+      "bytes": 1602,
+      "words": 128,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        23
+      ],
+      "firstVerse": "23:1"
+    },
+    "343": {
+      "bytes": 1734,
+      "words": 153,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        23
+      ],
+      "firstVerse": "23:18"
+    },
+    "344": {
+      "bytes": 1805,
+      "words": 156,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        23
+      ],
+      "firstVerse": "23:28"
+    },
+    "345": {
+      "bytes": 1800,
+      "words": 150,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        23
+      ],
+      "firstVerse": "23:43"
+    },
+    "346": {
+      "bytes": 1746,
+      "words": 151,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        23
+      ],
+      "firstVerse": "23:60"
+    },
+    "347": {
+      "bytes": 1753,
+      "words": 144,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        23
+      ],
+      "firstVerse": "23:75"
+    },
+    "348": {
+      "bytes": 1725,
+      "words": 146,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        23
+      ],
+      "firstVerse": "23:90"
+    },
+    "349": {
+      "bytes": 1702,
+      "words": 140,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        23
+      ],
+      "firstVerse": "23:105"
+    },
+    "350": {
+      "bytes": 1668,
+      "words": 148,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        24
+      ],
+      "firstVerse": "24:1"
+    },
+    "351": {
+      "bytes": 1719,
+      "words": 154,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        24
+      ],
+      "firstVerse": "24:11"
+    },
+    "352": {
+      "bytes": 1593,
+      "words": 134,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        24
+      ],
+      "firstVerse": "24:21"
+    },
+    "353": {
+      "bytes": 1560,
+      "words": 136,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        24
+      ],
+      "firstVerse": "24:28"
+    },
+    "354": {
+      "bytes": 1651,
+      "words": 145,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        24
+      ],
+      "firstVerse": "24:32"
+    },
+    "355": {
+      "bytes": 1731,
+      "words": 161,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        24
+      ],
+      "firstVerse": "24:37"
+    },
+    "356": {
+      "bytes": 1760,
+      "words": 156,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        24
+      ],
+      "firstVerse": "24:44"
+    },
+    "357": {
+      "bytes": 1569,
+      "words": 134,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        24
+      ],
+      "firstVerse": "24:54"
+    },
+    "358": {
+      "bytes": 1461,
+      "words": 121,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        24
+      ],
+      "firstVerse": "24:59"
+    },
+    "359": {
+      "bytes": 1471,
+      "words": 121,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        25
+      ],
+      "firstVerse": "24:62"
+    },
+    "360": {
+      "bytes": 1591,
+      "words": 135,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        25
+      ],
+      "firstVerse": "25:3"
+    },
+    "361": {
+      "bytes": 1557,
+      "words": 130,
+      "lines": 15,
+      "juz": 18,
+      "surahs": [
+        25
+      ],
+      "firstVerse": "25:12"
+    },
+    "362": {
+      "bytes": 1665,
+      "words": 136,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        25
+      ],
+      "firstVerse": "25:21"
+    },
+    "363": {
+      "bytes": 1587,
+      "words": 129,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        25
+      ],
+      "firstVerse": "25:33"
+    },
+    "364": {
+      "bytes": 1718,
+      "words": 146,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        25
+      ],
+      "firstVerse": "25:44"
+    },
+    "365": {
+      "bytes": 1680,
+      "words": 141,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        25
+      ],
+      "firstVerse": "25:56"
+    },
+    "366": {
+      "bytes": 1540,
+      "words": 123,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        25
+      ],
+      "firstVerse": "25:68"
+    },
+    "367": {
+      "bytes": 1796,
+      "words": 152,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        26
+      ],
+      "firstVerse": "26:1"
+    },
+    "368": {
+      "bytes": 1830,
+      "words": 153,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        26
+      ],
+      "firstVerse": "26:20"
+    },
+    "369": {
+      "bytes": 1877,
+      "words": 155,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        26
+      ],
+      "firstVerse": "26:40"
+    },
+    "370": {
+      "bytes": 1833,
+      "words": 149,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        26
+      ],
+      "firstVerse": "26:61"
+    },
+    "371": {
+      "bytes": 2036,
+      "words": 169,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        26
+      ],
+      "firstVerse": "26:84"
+    },
+    "372": {
+      "bytes": 1954,
+      "words": 161,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        26
+      ],
+      "firstVerse": "26:112"
+    },
+    "373": {
+      "bytes": 1892,
+      "words": 154,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        26
+      ],
+      "firstVerse": "26:137"
+    },
+    "374": {
+      "bytes": 1951,
+      "words": 161,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        26
+      ],
+      "firstVerse": "26:160"
+    },
+    "375": {
+      "bytes": 1878,
+      "words": 151,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        26
+      ],
+      "firstVerse": "26:184"
+    },
+    "376": {
+      "bytes": 1787,
+      "words": 140,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        26
+      ],
+      "firstVerse": "26:207"
+    },
+    "377": {
+      "bytes": 1731,
+      "words": 151,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        27
+      ],
+      "firstVerse": "27:1"
+    },
+    "378": {
+      "bytes": 1602,
+      "words": 140,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        27
+      ],
+      "firstVerse": "27:14"
+    },
+    "379": {
+      "bytes": 1729,
+      "words": 147,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        27
+      ],
+      "firstVerse": "27:23"
+    },
+    "380": {
+      "bytes": 1812,
+      "words": 168,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        27
+      ],
+      "firstVerse": "27:36"
+    },
+    "381": {
+      "bytes": 1569,
+      "words": 124,
+      "lines": 15,
+      "juz": 19,
+      "surahs": [
+        27
+      ],
+      "firstVerse": "27:45"
+    },
+    "382": {
+      "bytes": 1584,
+      "words": 132,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        27
+      ],
+      "firstVerse": "27:56"
+    },
+    "383": {
+      "bytes": 1743,
+      "words": 155,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        27
+      ],
+      "firstVerse": "27:64"
+    },
+    "384": {
+      "bytes": 1789,
+      "words": 155,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        27
+      ],
+      "firstVerse": "27:77"
+    },
+    "385": {
+      "bytes": 1485,
+      "words": 122,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        28
+      ],
+      "firstVerse": "27:89"
+    },
+    "386": {
+      "bytes": 1561,
+      "words": 133,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        28
+      ],
+      "firstVerse": "28:6"
+    },
+    "387": {
+      "bytes": 1698,
+      "words": 154,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        28
+      ],
+      "firstVerse": "28:14"
+    },
+    "388": {
+      "bytes": 1635,
+      "words": 140,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        28
+      ],
+      "firstVerse": "28:22"
+    },
+    "389": {
+      "bytes": 1612,
+      "words": 135,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        28
+      ],
+      "firstVerse": "28:29"
+    },
+    "390": {
+      "bytes": 1536,
+      "words": 127,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        28
+      ],
+      "firstVerse": "28:36"
+    },
+    "391": {
+      "bytes": 1593,
+      "words": 138,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        28
+      ],
+      "firstVerse": "28:44"
+    },
+    "392": {
+      "bytes": 1638,
+      "words": 140,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        28
+      ],
+      "firstVerse": "28:51"
+    },
+    "393": {
+      "bytes": 1689,
+      "words": 142,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        28
+      ],
+      "firstVerse": "28:60"
+    },
+    "394": {
+      "bytes": 1631,
+      "words": 140,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        28
+      ],
+      "firstVerse": "28:71"
+    },
+    "395": {
+      "bytes": 1659,
+      "words": 146,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        28
+      ],
+      "firstVerse": "28:78"
+    },
+    "396": {
+      "bytes": 1593,
+      "words": 133,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        29
+      ],
+      "firstVerse": "28:85"
+    },
+    "397": {
+      "bytes": 1549,
+      "words": 130,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        29
+      ],
+      "firstVerse": "29:7"
+    },
+    "398": {
+      "bytes": 1641,
+      "words": 138,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        29
+      ],
+      "firstVerse": "29:15"
+    },
+    "399": {
+      "bytes": 1561,
+      "words": 127,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        29
+      ],
+      "firstVerse": "29:24"
+    },
+    "400": {
+      "bytes": 1497,
+      "words": 120,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        29
+      ],
+      "firstVerse": "29:31"
+    },
+    "401": {
+      "bytes": 1503,
+      "words": 118,
+      "lines": 15,
+      "juz": 20,
+      "surahs": [
+        29
+      ],
+      "firstVerse": "29:39"
+    },
+    "402": {
+      "bytes": 1557,
+      "words": 128,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        29
+      ],
+      "firstVerse": "29:46"
+    },
+    "403": {
+      "bytes": 1674,
+      "words": 140,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        29
+      ],
+      "firstVerse": "29:53"
+    },
+    "404": {
+      "bytes": 1516,
+      "words": 120,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        30
+      ],
+      "firstVerse": "29:64"
+    },
+    "405": {
+      "bytes": 1604,
+      "words": 134,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        30
+      ],
+      "firstVerse": "30:6"
+    },
+    "406": {
+      "bytes": 1563,
+      "words": 127,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        30
+      ],
+      "firstVerse": "30:16"
+    },
+    "407": {
+      "bytes": 1625,
+      "words": 135,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        30
+      ],
+      "firstVerse": "30:25"
+    },
+    "408": {
+      "bytes": 1698,
+      "words": 148,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        30
+      ],
+      "firstVerse": "30:33"
+    },
+    "409": {
+      "bytes": 1704,
+      "words": 151,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        30
+      ],
+      "firstVerse": "30:42"
+    },
+    "410": {
+      "bytes": 1714,
+      "words": 146,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        30
+      ],
+      "firstVerse": "30:51"
+    },
+    "411": {
+      "bytes": 1530,
+      "words": 127,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        31
+      ],
+      "firstVerse": "31:1"
+    },
+    "412": {
+      "bytes": 1728,
+      "words": 154,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        31
+      ],
+      "firstVerse": "31:12"
+    },
+    "413": {
+      "bytes": 1737,
+      "words": 154,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        31
+      ],
+      "firstVerse": "31:20"
+    },
+    "414": {
+      "bytes": 1633,
+      "words": 145,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        31
+      ],
+      "firstVerse": "31:29"
+    },
+    "415": {
+      "bytes": 1661,
+      "words": 142,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        32
+      ],
+      "firstVerse": "32:1"
+    },
+    "416": {
+      "bytes": 1596,
+      "words": 135,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        32
+      ],
+      "firstVerse": "32:12"
+    },
+    "417": {
+      "bytes": 1534,
+      "words": 125,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        32
+      ],
+      "firstVerse": "32:21"
+    },
+    "418": {
+      "bytes": 1495,
+      "words": 122,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        33
+      ],
+      "firstVerse": "33:1"
+    },
+    "419": {
+      "bytes": 1636,
+      "words": 142,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        33
+      ],
+      "firstVerse": "33:7"
+    },
+    "420": {
+      "bytes": 1726,
+      "words": 153,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        33
+      ],
+      "firstVerse": "33:16"
+    },
+    "421": {
+      "bytes": 1575,
+      "words": 132,
+      "lines": 15,
+      "juz": 21,
+      "surahs": [
+        33
+      ],
+      "firstVerse": "33:23"
+    },
+    "422": {
+      "bytes": 1389,
+      "words": 107,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        33
+      ],
+      "firstVerse": "33:31"
+    },
+    "423": {
+      "bytes": 1716,
+      "words": 155,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        33
+      ],
+      "firstVerse": "33:36"
+    },
+    "424": {
+      "bytes": 1551,
+      "words": 131,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        33
+      ],
+      "firstVerse": "33:44"
+    },
+    "425": {
+      "bytes": 1639,
+      "words": 144,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        33
+      ],
+      "firstVerse": "33:51"
+    },
+    "426": {
+      "bytes": 1610,
+      "words": 135,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        33
+      ],
+      "firstVerse": "33:55"
+    },
+    "427": {
+      "bytes": 1653,
+      "words": 139,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        33
+      ],
+      "firstVerse": "33:63"
+    },
+    "428": {
+      "bytes": 1493,
+      "words": 127,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        34
+      ],
+      "firstVerse": "34:1"
+    },
+    "429": {
+      "bytes": 1707,
+      "words": 149,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        34
+      ],
+      "firstVerse": "34:8"
+    },
+    "430": {
+      "bytes": 1644,
+      "words": 145,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        34
+      ],
+      "firstVerse": "34:15"
+    },
+    "431": {
+      "bytes": 1641,
+      "words": 141,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        34
+      ],
+      "firstVerse": "34:23"
+    },
+    "432": {
+      "bytes": 1629,
+      "words": 144,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        34
+      ],
+      "firstVerse": "34:32"
+    },
+    "433": {
+      "bytes": 1763,
+      "words": 157,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        34
+      ],
+      "firstVerse": "34:40"
+    },
+    "434": {
+      "bytes": 1619,
+      "words": 141,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        35
+      ],
+      "firstVerse": "34:49"
+    },
+    "435": {
+      "bytes": 1757,
+      "words": 159,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        35
+      ],
+      "firstVerse": "35:4"
+    },
+    "436": {
+      "bytes": 1616,
+      "words": 136,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        35
+      ],
+      "firstVerse": "35:12"
+    },
+    "437": {
+      "bytes": 1668,
+      "words": 139,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        35
+      ],
+      "firstVerse": "35:19"
+    },
+    "438": {
+      "bytes": 1605,
+      "words": 136,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        35
+      ],
+      "firstVerse": "35:31"
+    },
+    "439": {
+      "bytes": 1762,
+      "words": 157,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        35
+      ],
+      "firstVerse": "35:39"
+    },
+    "440": {
+      "bytes": 1517,
+      "words": 121,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        36
+      ],
+      "firstVerse": "35:45"
+    },
+    "441": {
+      "bytes": 1710,
+      "words": 144,
+      "lines": 15,
+      "juz": 22,
+      "surahs": [
+        36
+      ],
+      "firstVerse": "36:13"
+    },
+    "442": {
+      "bytes": 1707,
+      "words": 142,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        36
+      ],
+      "firstVerse": "36:28"
+    },
+    "443": {
+      "bytes": 1758,
+      "words": 154,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        36
+      ],
+      "firstVerse": "36:41"
+    },
+    "444": {
+      "bytes": 1717,
+      "words": 138,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        36
+      ],
+      "firstVerse": "36:55"
+    },
+    "445": {
+      "bytes": 1603,
+      "words": 135,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        36
+      ],
+      "firstVerse": "36:71"
+    },
+    "446": {
+      "bytes": 1831,
+      "words": 149,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        37
+      ],
+      "firstVerse": "37:1"
+    },
+    "447": {
+      "bytes": 1947,
+      "words": 162,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        37
+      ],
+      "firstVerse": "37:25"
+    },
+    "448": {
+      "bytes": 1818,
+      "words": 148,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        37
+      ],
+      "firstVerse": "37:52"
+    },
+    "449": {
+      "bytes": 1975,
+      "words": 161,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        37
+      ],
+      "firstVerse": "37:77"
+    },
+    "450": {
+      "bytes": 1778,
+      "words": 130,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        37
+      ],
+      "firstVerse": "37:103"
+    },
+    "451": {
+      "bytes": 1874,
+      "words": 142,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        37
+      ],
+      "firstVerse": "37:127"
+    },
+    "452": {
+      "bytes": 1941,
+      "words": 150,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        37
+      ],
+      "firstVerse": "37:154"
+    },
+    "453": {
+      "bytes": 1738,
+      "words": 154,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        38
+      ],
+      "firstVerse": "38:1"
+    },
+    "454": {
+      "bytes": 1759,
+      "words": 155,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        38
+      ],
+      "firstVerse": "38:17"
+    },
+    "455": {
+      "bytes": 1791,
+      "words": 154,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        38
+      ],
+      "firstVerse": "38:27"
+    },
+    "456": {
+      "bytes": 1816,
+      "words": 152,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        38
+      ],
+      "firstVerse": "38:43"
+    },
+    "457": {
+      "bytes": 1965,
+      "words": 171,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        38
+      ],
+      "firstVerse": "38:62"
+    },
+    "458": {
+      "bytes": 1527,
+      "words": 128,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        39
+      ],
+      "firstVerse": "38:84"
+    },
+    "459": {
+      "bytes": 1695,
+      "words": 151,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        39
+      ],
+      "firstVerse": "39:6"
+    },
+    "460": {
+      "bytes": 1770,
+      "words": 161,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        39
+      ],
+      "firstVerse": "39:11"
+    },
+    "461": {
+      "bytes": 1695,
+      "words": 147,
+      "lines": 15,
+      "juz": 23,
+      "surahs": [
+        39
+      ],
+      "firstVerse": "39:22"
+    },
+    "462": {
+      "bytes": 1581,
+      "words": 132,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        39
+      ],
+      "firstVerse": "39:32"
+    },
+    "463": {
+      "bytes": 1596,
+      "words": 136,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        39
+      ],
+      "firstVerse": "39:41"
+    },
+    "464": {
+      "bytes": 1681,
+      "words": 146,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        39
+      ],
+      "firstVerse": "39:48"
+    },
+    "465": {
+      "bytes": 1596,
+      "words": 131,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        39
+      ],
+      "firstVerse": "39:57"
+    },
+    "466": {
+      "bytes": 1548,
+      "words": 132,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        39
+      ],
+      "firstVerse": "39:68"
+    },
+    "467": {
+      "bytes": 1451,
+      "words": 117,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        40
+      ],
+      "firstVerse": "39:75"
+    },
+    "468": {
+      "bytes": 1569,
+      "words": 133,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        40
+      ],
+      "firstVerse": "40:8"
+    },
+    "469": {
+      "bytes": 1627,
+      "words": 133,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        40
+      ],
+      "firstVerse": "40:17"
+    },
+    "470": {
+      "bytes": 1671,
+      "words": 150,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        40
+      ],
+      "firstVerse": "40:26"
+    },
+    "471": {
+      "bytes": 1575,
+      "words": 134,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        40
+      ],
+      "firstVerse": "40:34"
+    },
+    "472": {
+      "bytes": 1611,
+      "words": 134,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        40
+      ],
+      "firstVerse": "40:41"
+    },
+    "473": {
+      "bytes": 1506,
+      "words": 118,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        40
+      ],
+      "firstVerse": "40:50"
+    },
+    "474": {
+      "bytes": 1565,
+      "words": 126,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        40
+      ],
+      "firstVerse": "40:59"
+    },
+    "475": {
+      "bytes": 1656,
+      "words": 141,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        40
+      ],
+      "firstVerse": "40:67"
+    },
+    "476": {
+      "bytes": 1605,
+      "words": 136,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        40
+      ],
+      "firstVerse": "40:78"
+    },
+    "477": {
+      "bytes": 1526,
+      "words": 125,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        41
+      ],
+      "firstVerse": "41:1"
+    },
+    "478": {
+      "bytes": 1665,
+      "words": 143,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        41
+      ],
+      "firstVerse": "41:12"
+    },
+    "479": {
+      "bytes": 1678,
+      "words": 143,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        41
+      ],
+      "firstVerse": "41:21"
+    },
+    "480": {
+      "bytes": 1575,
+      "words": 131,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        41
+      ],
+      "firstVerse": "41:30"
+    },
+    "481": {
+      "bytes": 1734,
+      "words": 154,
+      "lines": 15,
+      "juz": 24,
+      "surahs": [
+        41
+      ],
+      "firstVerse": "41:39"
+    },
+    "482": {
+      "bytes": 1701,
+      "words": 152,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        41
+      ],
+      "firstVerse": "41:47"
+    },
+    "483": {
+      "bytes": 1571,
+      "words": 135,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        42
+      ],
+      "firstVerse": "42:1"
+    },
+    "484": {
+      "bytes": 1624,
+      "words": 139,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        42
+      ],
+      "firstVerse": "42:11"
+    },
+    "485": {
+      "bytes": 1590,
+      "words": 135,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        42
+      ],
+      "firstVerse": "42:16"
+    },
+    "486": {
+      "bytes": 1747,
+      "words": 154,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        42
+      ],
+      "firstVerse": "42:23"
+    },
+    "487": {
+      "bytes": 1812,
+      "words": 160,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        42
+      ],
+      "firstVerse": "42:32"
+    },
+    "488": {
+      "bytes": 1706,
+      "words": 146,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        42
+      ],
+      "firstVerse": "42:45"
+    },
+    "489": {
+      "bytes": 1497,
+      "words": 120,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        43
+      ],
+      "firstVerse": "42:52"
+    },
+    "490": {
+      "bytes": 1692,
+      "words": 142,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        43
+      ],
+      "firstVerse": "43:11"
+    },
+    "491": {
+      "bytes": 1674,
+      "words": 144,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        43
+      ],
+      "firstVerse": "43:23"
+    },
+    "492": {
+      "bytes": 1680,
+      "words": 139,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        43
+      ],
+      "firstVerse": "43:34"
+    },
+    "493": {
+      "bytes": 1700,
+      "words": 141,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        43
+      ],
+      "firstVerse": "43:48"
+    },
+    "494": {
+      "bytes": 1635,
+      "words": 130,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        43
+      ],
+      "firstVerse": "43:61"
+    },
+    "495": {
+      "bytes": 1755,
+      "words": 147,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        43
+      ],
+      "firstVerse": "43:74"
+    },
+    "496": {
+      "bytes": 1644,
+      "words": 129,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        44
+      ],
+      "firstVerse": "44:1"
+    },
+    "497": {
+      "bytes": 1836,
+      "words": 152,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        44
+      ],
+      "firstVerse": "44:19"
+    },
+    "498": {
+      "bytes": 1639,
+      "words": 124,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        44
+      ],
+      "firstVerse": "44:40"
+    },
+    "499": {
+      "bytes": 1775,
+      "words": 156,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        45
+      ],
+      "firstVerse": "45:1"
+    },
+    "500": {
+      "bytes": 1623,
+      "words": 136,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        45
+      ],
+      "firstVerse": "45:14"
+    },
+    "501": {
+      "bytes": 1845,
+      "words": 171,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        45
+      ],
+      "firstVerse": "45:23"
+    },
+    "502": {
+      "bytes": 1558,
+      "words": 136,
+      "lines": 15,
+      "juz": 25,
+      "surahs": [
+        46
+      ],
+      "firstVerse": "45:33"
+    },
+    "503": {
+      "bytes": 1759,
+      "words": 162,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        46
+      ],
+      "firstVerse": "46:6"
+    },
+    "504": {
+      "bytes": 1671,
+      "words": 150,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        46
+      ],
+      "firstVerse": "46:15"
+    },
+    "505": {
+      "bytes": 1687,
+      "words": 149,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        46
+      ],
+      "firstVerse": "46:21"
+    },
+    "506": {
+      "bytes": 1636,
+      "words": 143,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        46
+      ],
+      "firstVerse": "46:29"
+    },
+    "507": {
+      "bytes": 1694,
+      "words": 150,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        47
+      ],
+      "firstVerse": "47:1"
+    },
+    "508": {
+      "bytes": 1758,
+      "words": 160,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        47
+      ],
+      "firstVerse": "47:12"
+    },
+    "509": {
+      "bytes": 1608,
+      "words": 132,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        47
+      ],
+      "firstVerse": "47:20"
+    },
+    "510": {
+      "bytes": 1633,
+      "words": 135,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        47
+      ],
+      "firstVerse": "47:30"
+    },
+    "511": {
+      "bytes": 1426,
+      "words": 113,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        48
+      ],
+      "firstVerse": "48:1"
+    },
+    "512": {
+      "bytes": 1635,
+      "words": 142,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        48
+      ],
+      "firstVerse": "48:10"
+    },
+    "513": {
+      "bytes": 1674,
+      "words": 145,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        48
+      ],
+      "firstVerse": "48:16"
+    },
+    "514": {
+      "bytes": 1554,
+      "words": 134,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        48
+      ],
+      "firstVerse": "48:24"
+    },
+    "515": {
+      "bytes": 1461,
+      "words": 122,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        49
+      ],
+      "firstVerse": "48:29"
+    },
+    "516": {
+      "bytes": 1657,
+      "words": 150,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        49
+      ],
+      "firstVerse": "49:5"
+    },
+    "517": {
+      "bytes": 1696,
+      "words": 148,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        49
+      ],
+      "firstVerse": "49:12"
+    },
+    "518": {
+      "bytes": 1633,
+      "words": 135,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        50
+      ],
+      "firstVerse": "50:1"
+    },
+    "519": {
+      "bytes": 1987,
+      "words": 173,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        50
+      ],
+      "firstVerse": "50:16"
+    },
+    "520": {
+      "bytes": 1606,
+      "words": 130,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        51
+      ],
+      "firstVerse": "50:36"
+    },
+    "521": {
+      "bytes": 1915,
+      "words": 160,
+      "lines": 15,
+      "juz": 26,
+      "surahs": [
+        51
+      ],
+      "firstVerse": "51:7"
+    },
+    "522": {
+      "bytes": 1908,
+      "words": 164,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        51
+      ],
+      "firstVerse": "51:31"
+    },
+    "523": {
+      "bytes": 1729,
+      "words": 137,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        52
+      ],
+      "firstVerse": "51:52"
+    },
+    "524": {
+      "bytes": 1786,
+      "words": 148,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        52
+      ],
+      "firstVerse": "52:15"
+    },
+    "525": {
+      "bytes": 1795,
+      "words": 152,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        52
+      ],
+      "firstVerse": "52:32"
+    },
+    "526": {
+      "bytes": 1906,
+      "words": 164,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        53
+      ],
+      "firstVerse": "53:1"
+    },
+    "527": {
+      "bytes": 1917,
+      "words": 169,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        53
+      ],
+      "firstVerse": "53:27"
+    },
+    "528": {
+      "bytes": 1713,
+      "words": 132,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        54
+      ],
+      "firstVerse": "53:45"
+    },
+    "529": {
+      "bytes": 1889,
+      "words": 159,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        54
+      ],
+      "firstVerse": "54:7"
+    },
+    "530": {
+      "bytes": 1881,
+      "words": 157,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        54
+      ],
+      "firstVerse": "54:28"
+    },
+    "531": {
+      "bytes": 1545,
+      "words": 112,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        55
+      ],
+      "firstVerse": "54:50"
+    },
+    "532": {
+      "bytes": 1866,
+      "words": 151,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        55
+      ],
+      "firstVerse": "55:17"
+    },
+    "533": {
+      "bytes": 1869,
+      "words": 144,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        55
+      ],
+      "firstVerse": "55:41"
+    },
+    "534": {
+      "bytes": 1686,
+      "words": 126,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        56
+      ],
+      "firstVerse": "55:68"
+    },
+    "535": {
+      "bytes": 2022,
+      "words": 156,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        56
+      ],
+      "firstVerse": "56:17"
+    },
+    "536": {
+      "bytes": 1871,
+      "words": 148,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        56
+      ],
+      "firstVerse": "56:51"
+    },
+    "537": {
+      "bytes": 1734,
+      "words": 137,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        57
+      ],
+      "firstVerse": "56:77"
+    },
+    "538": {
+      "bytes": 1742,
+      "words": 160,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        57
+      ],
+      "firstVerse": "57:4"
+    },
+    "539": {
+      "bytes": 1667,
+      "words": 144,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        57
+      ],
+      "firstVerse": "57:12"
+    },
+    "540": {
+      "bytes": 1596,
+      "words": 138,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        57
+      ],
+      "firstVerse": "57:19"
+    },
+    "541": {
+      "bytes": 1539,
+      "words": 129,
+      "lines": 15,
+      "juz": 27,
+      "surahs": [
+        57
+      ],
+      "firstVerse": "57:25"
+    },
+    "542": {
+      "bytes": 1514,
+      "words": 127,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        58
+      ],
+      "firstVerse": "58:1"
+    },
+    "543": {
+      "bytes": 1688,
+      "words": 156,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        58
+      ],
+      "firstVerse": "58:7"
+    },
+    "544": {
+      "bytes": 1792,
+      "words": 159,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        58
+      ],
+      "firstVerse": "58:12"
+    },
+    "545": {
+      "bytes": 1446,
+      "words": 120,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        59
+      ],
+      "firstVerse": "58:22"
+    },
+    "546": {
+      "bytes": 1591,
+      "words": 142,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        59
+      ],
+      "firstVerse": "59:4"
+    },
+    "547": {
+      "bytes": 1591,
+      "words": 137,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        59
+      ],
+      "firstVerse": "59:10"
+    },
+    "548": {
+      "bytes": 1534,
+      "words": 122,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        59
+      ],
+      "firstVerse": "59:17"
+    },
+    "549": {
+      "bytes": 1586,
+      "words": 144,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        60
+      ],
+      "firstVerse": "60:1"
+    },
+    "550": {
+      "bytes": 1762,
+      "words": 158,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        60
+      ],
+      "firstVerse": "60:6"
+    },
+    "551": {
+      "bytes": 1473,
+      "words": 126,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        61
+      ],
+      "firstVerse": "60:12"
+    },
+    "552": {
+      "bytes": 1798,
+      "words": 168,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        61
+      ],
+      "firstVerse": "61:6"
+    },
+    "553": {
+      "bytes": 1495,
+      "words": 126,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        62
+      ],
+      "firstVerse": "62:1"
+    },
+    "554": {
+      "bytes": 1505,
+      "words": 126,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        63
+      ],
+      "firstVerse": "62:9"
+    },
+    "555": {
+      "bytes": 1503,
+      "words": 125,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        63
+      ],
+      "firstVerse": "63:5"
+    },
+    "556": {
+      "bytes": 1637,
+      "words": 144,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        64
+      ],
+      "firstVerse": "64:1"
+    },
+    "557": {
+      "bytes": 1495,
+      "words": 115,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        64
+      ],
+      "firstVerse": "64:10"
+    },
+    "558": {
+      "bytes": 1586,
+      "words": 139,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        65
+      ],
+      "firstVerse": "65:1"
+    },
+    "559": {
+      "bytes": 1731,
+      "words": 160,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        65
+      ],
+      "firstVerse": "65:6"
+    },
+    "560": {
+      "bytes": 1562,
+      "words": 132,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        66
+      ],
+      "firstVerse": "66:1"
+    },
+    "561": {
+      "bytes": 1495,
+      "words": 129,
+      "lines": 15,
+      "juz": 28,
+      "surahs": [
+        66
+      ],
+      "firstVerse": "66:8"
+    },
+    "562": {
+      "bytes": 1623,
+      "words": 143,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        67
+      ],
+      "firstVerse": "67:1"
+    },
+    "563": {
+      "bytes": 1860,
+      "words": 165,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        67
+      ],
+      "firstVerse": "67:13"
+    },
+    "564": {
+      "bytes": 1679,
+      "words": 138,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        68
+      ],
+      "firstVerse": "67:27"
+    },
+    "565": {
+      "bytes": 2055,
+      "words": 178,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        68
+      ],
+      "firstVerse": "68:16"
+    },
+    "566": {
+      "bytes": 1706,
+      "words": 140,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        69
+      ],
+      "firstVerse": "68:43"
+    },
+    "567": {
+      "bytes": 1954,
+      "words": 164,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        69
+      ],
+      "firstVerse": "69:9"
+    },
+    "568": {
+      "bytes": 1828,
+      "words": 149,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        70
+      ],
+      "firstVerse": "69:35"
+    },
+    "569": {
+      "bytes": 2032,
+      "words": 163,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        70
+      ],
+      "firstVerse": "70:11"
+    },
+    "570": {
+      "bytes": 1664,
+      "words": 142,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        71
+      ],
+      "firstVerse": "70:40"
+    },
+    "571": {
+      "bytes": 1809,
+      "words": 158,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        71
+      ],
+      "firstVerse": "71:11"
+    },
+    "572": {
+      "bytes": 1690,
+      "words": 149,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        72
+      ],
+      "firstVerse": "72:1"
+    },
+    "573": {
+      "bytes": 1839,
+      "words": 164,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        72
+      ],
+      "firstVerse": "72:14"
+    },
+    "574": {
+      "bytes": 1677,
+      "words": 140,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        73
+      ],
+      "firstVerse": "73:1"
+    },
+    "575": {
+      "bytes": 1757,
+      "words": 147,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        74
+      ],
+      "firstVerse": "73:20"
+    },
+    "576": {
+      "bytes": 2184,
+      "words": 188,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        74
+      ],
+      "firstVerse": "74:18"
+    },
+    "577": {
+      "bytes": 1894,
+      "words": 154,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        75
+      ],
+      "firstVerse": "74:48"
+    },
+    "578": {
+      "bytes": 1800,
+      "words": 152,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        76
+      ],
+      "firstVerse": "75:20"
+    },
+    "579": {
+      "bytes": 1926,
+      "words": 167,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        76
+      ],
+      "firstVerse": "76:6"
+    },
+    "580": {
+      "bytes": 1697,
+      "words": 132,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        77
+      ],
+      "firstVerse": "76:26"
+    },
+    "581": {
+      "bytes": 1971,
+      "words": 159,
+      "lines": 15,
+      "juz": 29,
+      "surahs": [
+        77
+      ],
+      "firstVerse": "77:20"
+    },
+    "582": {
+      "bytes": 1792,
+      "words": 135,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        78
+      ],
+      "firstVerse": "78:1"
+    },
+    "583": {
+      "bytes": 1765,
+      "words": 138,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        79
+      ],
+      "firstVerse": "78:31"
+    },
+    "584": {
+      "bytes": 1999,
+      "words": 165,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        79
+      ],
+      "firstVerse": "79:16"
+    },
+    "585": {
+      "bytes": 2179,
+      "words": 175,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        80
+      ],
+      "firstVerse": "80:1"
+    },
+    "586": {
+      "bytes": 1741,
+      "words": 133,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        81
+      ],
+      "firstVerse": "81:1"
+    },
+    "587": {
+      "bytes": 1676,
+      "words": 130,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        82,
+        83
+      ],
+      "firstVerse": "82:1"
+    },
+    "588": {
+      "bytes": 1960,
+      "words": 163,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        83
+      ],
+      "firstVerse": "83:7"
+    },
+    "589": {
+      "bytes": 1803,
+      "words": 143,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        84
+      ],
+      "firstVerse": "83:35"
+    },
+    "590": {
+      "bytes": 1674,
+      "words": 131,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        85
+      ],
+      "firstVerse": "85:1"
+    },
+    "591": {
+      "bytes": 1858,
+      "words": 150,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        86,
+        87
+      ],
+      "firstVerse": "86:1"
+    },
+    "592": {
+      "bytes": 1741,
+      "words": 137,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        88
+      ],
+      "firstVerse": "87:16"
+    },
+    "593": {
+      "bytes": 1678,
+      "words": 134,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        89
+      ],
+      "firstVerse": "89:1"
+    },
+    "594": {
+      "bytes": 1742,
+      "words": 135,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        90
+      ],
+      "firstVerse": "89:24"
+    },
+    "595": {
+      "bytes": 1683,
+      "words": 128,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        91,
+        92
+      ],
+      "firstVerse": "91:1"
+    },
+    "596": {
+      "bytes": 1610,
+      "words": 119,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        93,
+        94
+      ],
+      "firstVerse": "92:15"
+    },
+    "597": {
+      "bytes": 1696,
+      "words": 133,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        95,
+        96
+      ],
+      "firstVerse": "95:1"
+    },
+    "598": {
+      "bytes": 1413,
+      "words": 115,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        97,
+        98
+      ],
+      "firstVerse": "97:1"
+    },
+    "599": {
+      "bytes": 1471,
+      "words": 106,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        99,
+        100
+      ],
+      "firstVerse": "98:8"
+    },
+    "600": {
+      "bytes": 1418,
+      "words": 94,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        101,
+        102
+      ],
+      "firstVerse": "100:10"
+    },
+    "601": {
+      "bytes": 1293,
+      "words": 87,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        103,
+        104,
+        105
+      ],
+      "firstVerse": "103:1"
+    },
+    "602": {
+      "bytes": 1156,
+      "words": 66,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        106,
+        107,
+        108
+      ],
+      "firstVerse": "106:1"
+    },
+    "603": {
+      "bytes": 1255,
+      "words": 82,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        109,
+        110,
+        111
+      ],
+      "firstVerse": "109:1"
+    },
+    "604": {
+      "bytes": 1250,
+      "words": 73,
+      "lines": 15,
+      "juz": 30,
+      "surahs": [
+        112,
+        113,
+        114
+      ],
+      "firstVerse": "112:1"
+    }
+  },
+  "anomalies": [
+    {
+      "page": 76,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 4)"
+      ]
+    },
+    {
+      "page": 207,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 10)"
+      ]
+    },
+    {
+      "page": 331,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 22)"
+      ]
+    },
+    {
+      "page": 341,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 23)"
+      ]
+    },
+    {
+      "page": 349,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 24)"
+      ]
+    },
+    {
+      "page": 366,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 26)"
+      ]
+    },
+    {
+      "page": 376,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 27)"
+      ]
+    },
+    {
+      "page": 414,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 32)"
+      ]
+    },
+    {
+      "page": 417,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 33)"
+      ]
+    },
+    {
+      "page": 445,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 37)"
+      ]
+    },
+    {
+      "page": 452,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 38)"
+      ]
+    },
+    {
+      "page": 498,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 45)"
+      ]
+    },
+    {
+      "page": 506,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 47)"
+      ]
+    },
+    {
+      "page": 525,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 53)"
+      ]
+    },
+    {
+      "page": 548,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 60)"
+      ]
+    },
+    {
+      "page": 555,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 64)"
+      ]
+    },
+    {
+      "page": 557,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 65)"
+      ]
+    },
+    {
+      "page": 584,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 80)"
+      ]
+    },
+    {
+      "page": 586,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 82)"
+      ]
+    },
+    {
+      "page": 590,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 86)"
+      ]
+    },
+    {
+      "page": 594,
+      "messages": [
+        "line 15: surah header inferred at page end (chapter 91)"
+      ]
+    }
+  ]
+}

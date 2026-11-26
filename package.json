@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "data:fetch": "node scripts/fetch-pages.mjs",
+    "data:validate": "node scripts/validate-pages.mjs"
   },
   "dependencies": {
     "pinia": "^3.0.1",
