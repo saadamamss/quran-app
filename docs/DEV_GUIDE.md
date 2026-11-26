@@ -24,6 +24,8 @@ npm run dev          # start Vite dev server (http://localhost:5173)
 npm run build        # production build → dist/
 npm run preview      # preview the production build
 npm run format       # Prettier over src/
+npm run data:fetch   # (re)generate public/data/pages/*.json from quran.com
+npm run data:validate # validate the generated page dataset
 ```
 
 ### Important: cross-platform `node_modules`

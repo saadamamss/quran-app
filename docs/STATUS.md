@@ -52,7 +52,7 @@
 | Settings (font size / translation) | ⚠️ Partial | `quranStore.settings` | Stored but no UI controls consume `fontSize`/`translation` |
 | Settings gear button | ❌ No-op | `default.vue` header | Button rendered without handler |
 | PWA install | ⚠️ Partial | `vite.config.js` | Manifest icons missing |
-| Offline reading | ⚠️ Text is local; precache pending | SW config | Page JSON is served locally; add it to Workbox precache (M3) |
+| Offline reading | ✅ Working | SW precache | Page JSON + fonts + app shell are precached |
 | Routing to views | ❌ Dead | `default.vue` | No `<router-view>` for children |
 | Keyboard navigation | ⚠️ Swiper Keyboard module enabled | `MushafSlider` | Arrow keys may work; not documented/tested |
 | Accessibility | ❌ Weak | Many components | Icon-only buttons lack labels; clickable spans not focusable; no focus trap in modal |
@@ -73,7 +73,7 @@
 | External API hosts | 2 runtime (`alquran.cloud`, `islamic.network`) + `qurancdn` (build-time) + 1 texture host |
 | Public font files | 610 (~49 MB) |
 | Generated page files | 604 JSON (~965 KB raw / ~335 KB gzip) |
-| Precache entries (build) | 617 (~48,130 KiB) |
+| Precache entries (build) | 1222 (~49,193 KiB) |
 
 ### Source line breakdown (top files)
 

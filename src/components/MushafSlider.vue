@@ -31,6 +31,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Virtual, Mousewheel, Keyboard } from 'swiper/modules'
 import 'swiper/css'
 import MushafPage from '@/components/MushafPage.vue'
+import localPageService from '@/services/localPageService'
 import { useQuranStore } from '@/stores/quranStore'
 const modules = [Virtual, Mousewheel, Keyboard]
 const TOTAL_PAGES = 604
@@ -103,10 +104,17 @@ const isActive = (pageNumber) => {
   }
 }
 
+// Warm the local page cache around the visible page (best-effort).
+const preloadAround = (page) => {
+  const p = Number(page) || 1
+  localPageService.preload([p - 2, p - 1, p, p + 1, p + 2])
+}
+
 // Initialize swiper
 const onSwiperInit = (swiperInstance) => {
   swiper.value = swiperInstance
   store.setSwiper(swiperInstance)
+  preloadAround(store.currentPage)
 }
 
 // Handle page change
@@ -126,6 +134,8 @@ const onSlideChange = () => {
       // Single slide view - normal behavior
       store.setCurrentPage(swiper.value.activeIndex + 1)
     }
+
+    preloadAround(currentPage.value)
   }
 }
 

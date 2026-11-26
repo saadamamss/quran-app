@@ -218,11 +218,11 @@ Storage key: **`quran_audio_data_v2`**.
 
 `vite.config.js` → `VitePWA({ registerType: 'autoUpdate', ... })`.
 
-- **Precache** (`globPatterns`): `js, css, html, ico, png, svg, woff2, ttf`. Because `woff2` is included, **all 604 page fonts are precached** → build reported **617 entries / ~48 MB**.
+- **Precache** (`globPatterns`): `js, css, html, ico, png, svg, woff2, ttf, json`. Because `woff2` is included, **all 604 page fonts are precached**, and `json` adds **all 604 page files + manifest** → build reported **1222 entries / ~49 MB**.
 - **Runtime caching:**
   - `api.alquran.cloud/v1/*` → `CacheFirst`, 500 entries, 30 days.
   - `cdn.islamic.network/quran/audio/*` → `CacheFirst`, 100 entries, 7 days.
-- **Gap:** local page JSON (`/data/pages/*.json`) is **not** in `globPatterns` yet, so offline reading still needs an online first fetch until M3 adds `json`.
+- **Offline:** page text (local JSON) + fonts + app shell are precached, so reading works offline. Audio/tafsir remain cache-on-first-use.
 - **Missing icons:** manifest references `pwa-192x192.png`, `pwa-512x512.png`; `includeAssets` references `apple-touch-icon.png`, `masked-icon.svg`. None exist in `public/`.
 
 ---

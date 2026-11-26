@@ -229,12 +229,11 @@ Total `public/fonts` size ≈ **49 MB**, **610 files** (604 page fonts + 6 extra
 |----------|-----------|----------------|----------|
 | App JS/CSS/HTML | ✅ | — | ✅ |
 | All 604 page fonts | ✅ (~48 MB) | — | ✅ (heavy) |
-| Local page JSON (`/data/pages/*.json`) | ❌ (planned, M3) | ❌ | ⚠️ online only until precached |
+| Local page JSON (`/data/pages/*.json`) | ✅ (~1 MB) | — | ✅ |
 | alquran.cloud API | ❌ | ✅ CacheFirst 30d | ✅ after first use |
 | islamic.network audio | ❌ | ✅ CacheFirst 7d | ✅ after first play |
 | qurancdn page API | ❌ | ❌ | — no longer used at runtime |
 | transparenttextures PNG | ❌ | ❌ | ❌ |
 
-**Impact:** page text now comes from the app's own origin, so it is fast and has no CORS
-dependency. Offline reading becomes complete once the local page JSON is added to the Workbox
-precache list (M3). See [ISSUES.md](./ISSUES.md).
+**Impact:** page text now comes from the app's own origin and is precached, so reading works
+fully offline with no CORS dependency. See [ISSUES.md](./ISSUES.md).

@@ -22,7 +22,7 @@
 
 ## 60-second summary
 
-A **Vue 3 + Vite** web app that renders the **Madinah Mushaf** (Hafs narration) page-by-page. Each of the **604 pages** is drawn with its own embedded Uthmanic `.woff2` font, so the Arabic glyph layout matches the printed Mushaf. Words come from the **quran.com CDN API**; audio, translation, and tafsir come from **alquran.cloud**. State is persisted manually in `localStorage` via Pinia stores. It is a **PWA** with offline caching (partially configured).
+A **Vue 3 + Vite** web app that renders the **Madinah Mushaf** (Hafs narration) page-by-page. Each of the **604 pages** is drawn with its own embedded Uthmanic `.woff2` font, so the Arabic glyph layout matches the printed Mushaf. Page text comes from a **committed local dataset** (`public/data/pages/*.json`, generated from the quran.com CDN API); audio, translation, and tafsir come from **alquran.cloud**. State is persisted manually in `localStorage` via Pinia stores. It is a **PWA** with offline text/fonts (install icons still missing).
 
 **One-line mental model:**
 
@@ -42,7 +42,7 @@ A **Vue 3 + Vite** web app that renders the **Madinah Mushaf** (Hafs narration) 
 | Bookmarks | ⚠️ Works, but cannot jump to the ayah's page |
 | Search | ⚠️ Works, depends on API `page` field |
 | Dark mode | ✅ Working |
-| PWA / offline | ⚠️ Builds, but icons are missing and page API is not cached |
+| PWA / offline | ⚠️ Text + fonts precached; install icons missing |
 | Routing (Home/Surah/Bookmarks views) | ❌ Dead — layout has no `<router-view>` |
 | Tests / lint / type-check | ❌ None configured |
 

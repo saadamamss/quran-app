@@ -11,12 +11,12 @@
 | ID | Severity | Issue | Area |
 |----|----------|-------|------|
 | 1 | 🟠 | Missing PWA icons | PWA |
-| 2 | 🔴 | Offline reading broken for uncached pages | PWA / data |
+| 2 | ✅ | Offline reading (fixed in M3) | PWA / data |
 | 3 | 🔴 | ~48 MB PWA precache | PWA / perf |
 | 4 | 🟠 | Desktop page navigation off-by-one | Navigation |
 | 5 | 🟠 | Routing is dead (no `<router-view>`) | Routing |
 | 6 | 🟠 | Bookmarks cannot jump to the ayah page | Bookmarks |
-| 7 | 🟠 | Side effect inside a computed | State |
+| 7 | ✅ | Side effect inside a computed (fixed in M2) | State |
 | 8 | 🟡 | Dead files with latent errors | Cleanup |
 | 9 | 🟡 | Duplicate bookmark stores / unused deps | Cleanup |
 | 10 | 🟠 | Settings UI missing; stored settings unused | Feature |
@@ -35,12 +35,10 @@
 
 ## 🔴 High severity
 
-### 2. Offline reading: local page JSON not precached yet
-- **Evidence:** page text now loads from `public/data/pages/{n}.json` via `localPageService`, so there is no `qurancdn` runtime dependency. However, `vite.config.js` `globPatterns` does not include `json`, so the page files are not in the Workbox precache yet.
-- **Symptom:** After going offline, swiping to a page not already fetched shows a spinner/error.
-- **Cause:** Workbox precache does not include `public/data/**`.
-- **Fix (M3):** add `json` (or `data/**/*.json`) to `globPatterns`; total cost is only ~1 MB raw / ~335 KB gzip for all 604 pages.
-- **Effort:** S
+### 2. Offline reading — ✅ Fixed (M3)
+- **Was:** page text came from `api.qurancdn.com`, which Workbox did not cache; offline pages failed.
+- **Now:** page text loads from `public/data/pages/{n}.json` via `localPageService`, and `vite.config.js` includes `json` in `globPatterns`. Build precaches all 604 page files + manifest (~1 MB) plus the fonts, so reading works offline.
+- **Remaining:** audio/tafsir are still cache-on-first-use.
 
 ### 3. ~48 MB PWA precache
 - **Evidence:** Build log: `precache 617 entries (48129.55 KiB)`. `globPatterns` includes `woff2`.
@@ -173,14 +171,14 @@
 - [ ] Remove starter CSS leftovers (#19)
 
 ### Phase 1 — Offline & performance (~2–4 days)
-- [ ] Runtime-cache `qurancdn` page API (#2)
+- [x] Precache local page JSON for offline reading (#2)
 - [ ] Shrink precache / lazy-load fonts (#3)
 - [ ] Implement true Swiper virtualization or drop the config (#12)
 - [ ] Cache ayah details in the modal (#20)
 
 ### Phase 2 — UX & correctness (~1 week)
 - [ ] Persist bookmark page and jump to it (#6)
-- [ ] Move computed side effects into watchers (#7)
+- [x] Move computed side effects into watchers (#7)
 - [ ] Settings panel: translation, font size, theme, reciter (#10)
 - [ ] Audio progress bar + seek (#13)
 - [ ] Accessibility pass (#18)
@@ -189,7 +187,7 @@
 - [ ] Add Vitest + ESLint (#11)
 - [ ] Decide routing: delete or restructure (#5)
 - [ ] Generate `chapters`/`FPCH`/`JUZ` from `quran-json` to prevent drift
-- [ ] Document data update procedure
+- [x] Document data update procedure ([PAGE_DATA_PIPELINE.md](./PAGE_DATA_PIPELINE.md))
 
 ---
 

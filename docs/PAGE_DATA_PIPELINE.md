@@ -1,7 +1,8 @@
 # Page Data Pipeline
 
-> **Status:** M1 + M2 complete — 604 page JSON files, generator, validator, local loader,
-> and `MushafPage` now renders precomputed lines. M3 (preload + Workbox precache) pending.
+> **Status:** M1–M3 complete — 604 page JSON files, generator, validator, local loader,
+> `MushafPage` renders precomputed lines, neighbours are preloaded, and the dataset is
+> precached for offline use.
 > **Branch:** `page-data` (local page dataset).
 > **Source of truth:** `scripts/fetch-pages.mjs` (generator) and `scripts/validate-pages.mjs` (validator).
 
@@ -181,12 +182,18 @@ Exit code is non-zero on any error.
    marker uses `pageData.hizbLine` / `pageData.hizbLabel` / `pageData.hizb`.
 3. `currentSurah` is synced in a `watch` (not a computed) and only written when it changes.
 
-### M3 — pending
+### M3 — done
 
-4. `MushafSlider.vue` — call `preload()` on slide change.
-5. `vite.config.js` — add `json` (or `data/**/*.json`) to Workbox `globPatterns` so the whole
-   text is precached for offline reading.
-6. Decide whether to keep `quranServices.getPage` as an explicit fallback or remove it.
+4. `MushafSlider.vue` — `preloadAround()` warms `currentPage ± 2` on init and on every slide change.
+5. `vite.config.js` — `json` added to Workbox `globPatterns`; the build precaches all 604 page
+   files + manifest (1222 entries total including fonts).
+6. `quranServices.getPage` is kept as a legacy wrapper but is no longer on the reading path.
+
+### Possible follow-ups
+
+- Add an explicit API fallback if a local file is ever missing (currently it surfaces an error).
+- Remove the legacy `quranServices.getPage` wrapper if no fallback is desired.
+- Consider lazy-loading fonts to shrink the ~49 MB precache (see ISSUES #3).
 
 ---
 
