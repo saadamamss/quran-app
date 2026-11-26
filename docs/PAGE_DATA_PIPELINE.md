@@ -1,6 +1,7 @@
 # Page Data Pipeline
 
-> **Status:** M1 complete — generator + validator + 604 page JSON files.
+> **Status:** M1 + M2 complete — 604 page JSON files, generator, validator, local loader,
+> and `MushafPage` now renders precomputed lines. M3 (preload + Workbox precache) pending.
 > **Branch:** `page-data` (local page dataset).
 > **Source of truth:** `scripts/fetch-pages.mjs` (generator) and `scripts/validate-pages.mjs` (validator).
 
@@ -75,7 +76,7 @@ deterministic and need no network.
 | Field | Meaning |
 |-------|---------|
 | `type` | `words` \| `basmalah` \| `surah` |
-| `center` | Optional `true` when the line must be centered (pages 1–2 and `CLines` pages). |
+| `center` | Optional `true` when the line must be centered (pages 1–2 and `CLines` pages). May appear on any line type. |
 | `runs` | Array of `[verseKey, [wordText, …]]`, preserving reading order. A line can mix the end of one ayah and the start of the next, hence multiple runs. |
 | `chapter` | Chapter id, only on `surah` lines. |
 
@@ -168,18 +169,24 @@ Exit code is non-zero on any error.
 
 ---
 
-## 6. Runtime integration (M2+, planned)
+## 6. Runtime integration
+
+### M2 — done
 
 1. `src/services/localPageService.js` — `loadPage(n)` fetches `/data/pages/{n}.json`, memoized
-   in a `Map`, in-flight requests deduped; `preload([n-1, n+1])` warms neighbours.
-2. `MushafPage.vue` — replace `verses` + `pageLines` + `pageSurah` + `pageJuz` + `hizb*`
-   computeds with a single `pageData`; render `pageData.lines` directly. Keep `loadFont()`
-   unchanged. Header uses `pageData.juz` / `pageData.surahs`; marker uses
-   `pageData.hizbLine` / `pageData.hizbLabel`.
-3. `MushafSlider.vue` — call `preload()` on slide change.
-4. `vite.config.js` — add `json` (or `data/**/*.json`) to Workbox `globPatterns` so the whole
+   in a `Map`, in-flight requests deduped; `preload([n-1, n+1])` warms neighbours (best-effort).
+2. `MushafPage.vue` — renders `pageData.lines` directly. The old `verses`, `pageLines`,
+   `pageSurah`, `pageJuz`, `hizbNumber`, `rub_el_hizb`, `rubHizbText`, and `hizbLocation`
+   logic is gone. `loadFont()` is unchanged. Header uses `pageData.juz` / `pageData.surahs`;
+   marker uses `pageData.hizbLine` / `pageData.hizbLabel` / `pageData.hizb`.
+3. `currentSurah` is synced in a `watch` (not a computed) and only written when it changes.
+
+### M3 — pending
+
+4. `MushafSlider.vue` — call `preload()` on slide change.
+5. `vite.config.js` — add `json` (or `data/**/*.json`) to Workbox `globPatterns` so the whole
    text is precached for offline reading.
-5. Keep the quran.com API path as an optional fallback for missing files, then retire it.
+6. Decide whether to keep `quranServices.getPage` as an explicit fallback or remove it.
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-26T05:02:55.914Z",
+  "generatedAt": "2026-11-26T05:09:54.085Z",
   "source": {
     "api": "https://api.qurancdn.com/api/qdc/verses/by_page",
     "mushaf": 2,
@@ -8,10 +8,10 @@
   },
   "pages": 604,
   "totalWords": 83665,
-  "totalBytes": 988108,
+  "totalBytes": 988234,
   "files": {
     "1": {
-      "bytes": 756,
+      "bytes": 784,
       "words": 36,
       "lines": 9,
       "juz": 1,
@@ -21,7 +21,7 @@
       "firstVerse": "1:1"
     },
     "2": {
-      "bytes": 745,
+      "bytes": 773,
       "words": 41,
       "lines": 8,
       "juz": 1,
@@ -5281,7 +5281,7 @@
       "firstVerse": "53:27"
     },
     "528": {
-      "bytes": 1713,
+      "bytes": 1727,
       "words": 132,
       "lines": 15,
       "juz": 27,
@@ -5861,7 +5861,7 @@
       "firstVerse": "80:1"
     },
     "586": {
-      "bytes": 1741,
+      "bytes": 1755,
       "words": 133,
       "lines": 15,
       "juz": 30,
@@ -5933,7 +5933,7 @@
       "firstVerse": "87:16"
     },
     "593": {
-      "bytes": 1678,
+      "bytes": 1692,
       "words": 134,
       "lines": 15,
       "juz": 30,
@@ -5943,7 +5943,7 @@
       "firstVerse": "89:1"
     },
     "594": {
-      "bytes": 1742,
+      "bytes": 1756,
       "words": 135,
       "lines": 15,
       "juz": 30,
@@ -6008,7 +6008,7 @@
       "firstVerse": "98:8"
     },
     "600": {
-      "bytes": 1418,
+      "bytes": 1432,
       "words": 94,
       "lines": 15,
       "juz": 30,

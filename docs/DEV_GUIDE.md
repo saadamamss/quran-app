@@ -103,9 +103,9 @@ npm install --no-save @rollup/rollup-linux-x64-gnu@4.44.0
 
 | Symptom | Likely cause | What to check |
 |---------|--------------|---------------|
-| Page stuck on "رسم الآيات" spinner | `getPage` failed / CORS / offline | Network tab; `MushafPage.error`; SW cache |
+| Page stuck on "رسم الآيات" spinner | Local page JSON failed to load | Network tab (`/data/pages/{N}.json`); `MushafPage.error`; SW cache |
 | Wrong Arabic glyph widths | Page font not loaded | `<style id="font-p{N}">` in `<head>`; `/fonts/p{N}.woff2` 200 |
-| Blank line in a page | Gap-fill heuristic guessed wrong | `pageLines` computed; missing `line_number` values |
+| Blank/misplaced line | Bad generated data | `public/data/pages/{N}.json`; re-run `npm run data:validate` |
 | Word click doesn't open modal | `selectedAyahKey` not set / modal hidden | `quranStore.selectedAyahKey`; `AyahModal` `v-if` |
 | Audio won't start | Autoplay policy / API failure | Console; `audioStore.loading`; `data.data.audio` |
 | Audio plays wrong reciter | Reciter id invalid | `audioStore.reciter`; API response |

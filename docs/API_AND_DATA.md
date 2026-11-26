@@ -6,9 +6,12 @@
 
 ## 1. External APIs
 
-### 1.1 Page data — quran.com CDN (`qurancdn.com`)
+### 1.1 Page data — quran.com CDN (`qurancdn.com`) — source only
 
-Used by `MushafPage.vue` via `quranServices.getPage(page)`.
+This endpoint is **no longer called at runtime** for reading. It is the source used by
+`scripts/fetch-pages.mjs` to generate the committed local dataset
+(`public/data/pages/*.json`). `quranServices.getPage` is kept as a legacy/reference wrapper;
+`MushafPage.vue` now uses `localPageService` instead (see §2).
 
 ```
 GET https://api.qurancdn.com/api/qdc/verses/by_page/{page}
@@ -74,7 +77,7 @@ GET https://api.qurancdn.com/api/qdc/verses/by_page/{page}
 | `verses[].hizb_number`, `rub_el_hizb_number` | Hizb marker |
 | `verses[].words[0].line_number` | Rub marker vertical position |
 
-**CORS note:** `quranServices.getPage` sends a `referrer: 'https://quran.com/'` and browser-like headers. This is a workaround for the CDN's CORS policy and is fragile across environments.
+**CORS note:** `quranServices.getPage` sends a `referrer: 'https://quran.com/'` and browser-like headers. This is a workaround for the CDN's CORS policy and is fragile across environments. It only matters if the legacy wrapper is used; runtime reading no longer depends on it.
 
 ---
 
@@ -186,10 +189,10 @@ Used by: `default.vue` (header name), `AudioPlayer` (names + next/prev), `AyahMo
 ### `src/utils/Hizb.js`
 - `hizpdata`: page → `{ hizbNumber, rub_el_hizb_number, hizbstartpos, chapter_number }`.
 - `pageshashizbnumber`: array of pages that display a rub marker.
-Used by `MushafPage` for the hizb/rub marker.
+Consumed by the page generator (`scripts/fetch-pages.mjs`) to precompute `hizbLine`/`hizbLabel`; `MushafPage` reads those fields from the page JSON.
 
 ### `src/utils/CLines.js`
-`clines = { page: [lineNumbers...] }` for lines that must be centered (e.g. `604: [4, 9, 14, 15]`). Used by `MushafPage` line alignment.
+`clines = { page: [lineNumbers...] }` for lines that must be centered (e.g. `604: [4, 9, 14, 15]`). Consumed by the generator to set the per-line `center` flag; `MushafPage` just reads `line.center`.
 
 ---
 
@@ -226,9 +229,12 @@ Total `public/fonts` size ≈ **49 MB**, **610 files** (604 page fonts + 6 extra
 |----------|-----------|----------------|----------|
 | App JS/CSS/HTML | ✅ | — | ✅ |
 | All 604 page fonts | ✅ (~48 MB) | — | ✅ (heavy) |
+| Local page JSON (`/data/pages/*.json`) | ❌ (planned, M3) | ❌ | ⚠️ online only until precached |
 | alquran.cloud API | ❌ | ✅ CacheFirst 30d | ✅ after first use |
 | islamic.network audio | ❌ | ✅ CacheFirst 7d | ✅ after first play |
-| **qurancdn page API** | ❌ | ❌ | **❌ never** |
+| qurancdn page API | ❌ | ❌ | — no longer used at runtime |
 | transparenttextures PNG | ❌ | ❌ | ❌ |
 
-**Impact:** offline reading of a page fails unless that page's API response is already in memory. This is the single biggest offline gap. See [ISSUES.md](./ISSUES.md).
+**Impact:** page text now comes from the app's own origin, so it is fast and has no CORS
+dependency. Offline reading becomes complete once the local page JSON is added to the Workbox
+precache list (M3). See [ISSUES.md](./ISSUES.md).

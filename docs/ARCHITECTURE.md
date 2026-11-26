@@ -15,8 +15,8 @@ flowchart TD
     E --> F[header + sidebar]
     E --> G[MushafSlider.vue]
     G --> H["MushafPage.vue × 604 (virtual)"]
-    H --> I[quranServices.getPage]
-    I --> J[(qurancdn.com API)]
+    H --> I[localPageService]
+    I --> J[(public/data/pages/N.json)]
     C --> K[AyahModal.vue]
     C --> L[AudioPlayer.vue]
     K --> M[(alquran.cloud API)]
@@ -62,7 +62,7 @@ This is the most important part to understand.
   - desktop: `currentPage - 3 … currentPage + 3`
 - The `Virtual` module is *imported and passed to Swiper*, but slides are still produced by `v-for`, so virtualization is **not actually active**. Rendering is limited only by `MushafPage`'s `v-if="isActive || isPreloaded"`.
 
-### 3.2 Page → words → lines
+### 3.2 Page → precomputed lines
 
 `MushafPage.vue` (props: `pageNumber`, `active`)
 
@@ -70,57 +70,59 @@ This is the most important part to understand.
 sequenceDiagram
     participant S as MushafSlider
     participant P as MushafPage
-    participant Q as quranServices
-    participant A as qurancdn.com
+    participant L as localPageService
+    participant D as /data/pages/N.json
     participant St as quranStore
 
     S->>P: :page-number, :active=true
     P->>P: loadFont() inject @font-face p{N}
-    P->>Q: getPage(N)
-    Q->>A: GET /api/qdc/verses/by_page/N?words=true&mushaf=2...
-    A-->>Q: { verses: [ { words: [...] } ] }
-    Q-->>P: verses
-    P->>St: setPageFirstVerseKey(N, verses[0].verse_key)
-    P->>P: pageLines = group words by line_number (1..15)
-    P->>P: fill missing lines (basmalah or surah-name header)
-    P-->>S: render 15 lines with p{N} font
+    P->>L: loadPage(N)
+    L->>D: GET (memoized + in-flight dedupe)
+    D-->>L: { page, juz, surahs, lines: [...] }
+    L-->>P: pageData
+    P->>St: setPageFirstVerseKey(N, pageData.firstVerse)
+    P-->>S: render pageData.lines with p{N} font
 ```
 
 **Step-by-step:**
 
 1. **Font injection** — `loadFont()` appends a `<style id="font-p{N}">` with
    `@font-face { font-family: 'p{N}-v1'; src: url('/fonts/p{N}.woff2') }` and the rule `.p{N}-v1 { font-family: 'p{N}-v1' }`. The page container gets classes `page_{N} p{N}-v1`.
-2. **Fetch** — `quranServices.getPage(N)` (quran.com CDN, `mushaf=2`).
-3. **Store first verse** — `quranStore.setPageFirstVerseKey(N, verses[0].verse_key)` powers the "listen to page" button.
-4. **Group into lines** — `pageLines` flattens all `words`, groups by `word.line_number`, then fills missing line numbers:
-   - if the **next** line exists → treat the gap as a **basmalah** line (`{ basmalah: true }`);
-   - otherwise → treat it as a **surah-name header** (`{ name: true, chapter_id }`), inferring the chapter from the next/previous verse key.
-5. **Render** — each line is a flex row. Line alignment is `justify-center` for pages 1–2 and for specific "centered" lines from `utils/CLines.js`; otherwise `justify-between`.
-6. **Words** — each `word` is a `<span>` with classes `word verse_{key}`; clicking sets `quranStore.selectedAyahKey`, which opens `AyahModal`. Highlighting is driven by `audioStore.currentAyahKey` (green glow) and `quranStore.selectedAyahKey` (amber underline).
-7. **Hizb marker** — on pages listed in `utils/Hizb.js#pageshashizbnumber`, a marker appears on the line where the max `rub_el_hizb_number` starts, labeled via `rubHizbText`.
+2. **Load** — `localPageService.loadPage(N)` fetches the small local JSON
+   (`public/data/pages/N.json`), caches it in memory, and dedupes concurrent requests.
+   No network API call is needed for text.
+3. **Store first verse** — `quranStore.setPageFirstVerseKey(N, pageData.firstVerse)` powers the "listen to page" button.
+4. **Render** — `pageData.lines` is already ordered and typed (`words` / `basmalah` / `surah`),
+   with per-line `center` flags. No runtime grouping or gap-filling.
+5. **Words** — each word is a `<span>` with classes `word verse_{key}`; clicking sets
+   `quranStore.selectedAyahKey`, which opens `AyahModal`. Highlighting is driven by
+   `audioStore.currentAyahKey` (green glow) and `quranStore.selectedAyahKey` (amber underline).
+6. **Hizb marker** — `pageData.hizbLine` / `pageData.hizbLabel` / `pageData.hizb` drive the marker.
 
-### 3.3 Data shape (page response)
+Generation rules and schema: [PAGE_DATA_PIPELINE.md](./PAGE_DATA_PIPELINE.md).
 
-```
-verse: {
-  verse_key: "2:255",
-  verse_number: 255,
-  chapter_id: 2,
-  juz_number: 3,
-  hizb_number: 6,
-  rub_el_hizb_number: 22,
-  words: [{
-    location: "2:255:1",
-    verse_key: "2:255",
-    text: "اللَّهُ",
-    line_number: 5,
-    position: 1,
-    ...
-  }]
+### 3.3 Data shape (lean page)
+
+```jsonc
+{
+  "page": 42,
+  "juz": 3,
+  "hizb": 5,
+  "rub": 17,
+  "surahs": [2],
+  "firstVerse": "2:253",
+  "hizbLine": 1,
+  "hizbLabel": "الحزب",
+  "lines": [
+    { "type": "words", "runs": [["2:253", ["ﭑ ﭒ", "ﭓ", "ﭔ"]]] },
+    { "type": "basmalah" },
+    { "type": "surah", "chapter": 3 }
+  ]
 }
 ```
 
-Full schema notes: [API_AND_DATA.md](./API_AND_DATA.md).
+`runs` are `[verseKey, [glyphText, …]]`; `glyphText` is the page-font text from the source
+API's `word.text`. Full schema notes: [PAGE_DATA_PIPELINE.md](./PAGE_DATA_PIPELINE.md).
 
 ---
 
@@ -220,7 +222,7 @@ Storage key: **`quran_audio_data_v2`**.
 - **Runtime caching:**
   - `api.alquran.cloud/v1/*` → `CacheFirst`, 500 entries, 30 days.
   - `cdn.islamic.network/quran/audio/*` → `CacheFirst`, 100 entries, 7 days.
-- **Gap:** the **page API (`qurancdn.com`) is not cached**, so pages never fetched online are unavailable offline.
+- **Gap:** local page JSON (`/data/pages/*.json`) is **not** in `globPatterns` yet, so offline reading still needs an online first fetch until M3 adds `json`.
 - **Missing icons:** manifest references `pwa-192x192.png`, `pwa-512x512.png`; `includeAssets` references `apple-touch-icon.png`, `masked-icon.svg`. None exist in `public/`.
 
 ---
@@ -230,7 +232,7 @@ Storage key: **`quran_audio_data_v2`**.
 | Decision | Benefit | Cost |
 |----------|---------|------|
 | One font per page | Pixel-faithful Madinah layout | 604 font files, ~49 MB, heavy PWA precache |
-| Per-page API fetch | No giant bundled dataset | Network dependency; not offline-cached |
+| Precomputed per-page JSON | No runtime grouping, instant render, offline-ready | ~1 MB generated data committed; regenerate on rule changes |
 | Manual localStorage | Simple, explicit | Boilerplate; easy to forget a setter |
 | Swiper over CSS scroll | Smooth RTL page flipping | 604 slide nodes; virtual module unused |
 | Hand-maintained datasets | Full control, no runtime parse | Drift risk vs. `quran-json` package |

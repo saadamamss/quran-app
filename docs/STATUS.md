@@ -27,16 +27,16 @@
 
 | Feature | Status | Where | Notes |
 |---------|--------|-------|-------|
-| Render 604-page Mushaf | ✅ Working | `MushafSlider`, `MushafPage` | Per-page fonts; words positioned by `line_number` |
+| Render 604-page Mushaf | ✅ Working | `MushafSlider`, `MushafPage` | Precomputed lines from local JSON; per-page fonts |
 | RTL page swiping | ✅ Working | `MushafSlider` | Swiper `rtl: true` |
 | Desktop 2-page spread | ✅ Working | `MushafSlider` breakpoint `1200` | Navigation from other components can land off-by-one (see ISSUES) |
 | Page persistence | ✅ Working | `quranStore.currentPage` | Restored on reload; initial slide = page − 1 |
 | Surah navigation | ✅ Working | `SurahList` + `FPCH` | Jumps to surah start page |
 | Juz navigation | ✅ Working | `JuzList` + `JUZ` | Jumps to juz start page |
-| Page header (juz + surah) | ✅ Working | `MushafPage` | Uses page's first verse |
-| Basmalah rendering | ✅ Working | `MushafPage` gap-fill + `basmalah.vue` | Heuristic based on missing line numbers |
-| Surah-name header lines | ✅ Working | `MushafPage` gap-fill | Heuristic chapter inference |
-| Hizb / rub' markers | ✅ Working | `MushafPage` + `Hizb.js` | Only on listed pages |
+| Page header (juz + surah) | ✅ Working | `MushafPage` | From `pageData.juz` / `pageData.surahs` |
+| Basmalah rendering | ✅ Working | Precomputed page data + `basmalah.vue` | Surah 9 correctly has no basmalah |
+| Surah-name header lines | ✅ Working | Precomputed page data | Chapters resolved at generation time |
+| Hizb / rub' markers | ✅ Working | `MushafPage` + `pageData.hizbLine` | Precomputed label + line |
 | Word click → modal | ✅ Working | `MushafPage` → `AyahModal` | Opens on `selectedAyahKey` |
 | Translation (EN) | ✅ Working | `AyahModal` | `en.sahih` |
 | Tafsir (Muyassar) | ✅ Working | `AyahModal` | `ar.muyassar` |
@@ -52,7 +52,7 @@
 | Settings (font size / translation) | ⚠️ Partial | `quranStore.settings` | Stored but no UI controls consume `fontSize`/`translation` |
 | Settings gear button | ❌ No-op | `default.vue` header | Button rendered without handler |
 | PWA install | ⚠️ Partial | `vite.config.js` | Manifest icons missing |
-| Offline reading | ❌ Broken for uncached pages | SW config | `qurancdn` not runtime-cached |
+| Offline reading | ⚠️ Text is local; precache pending | SW config | Page JSON is served locally; add it to Workbox precache (M3) |
 | Routing to views | ❌ Dead | `default.vue` | No `<router-view>` for children |
 | Keyboard navigation | ⚠️ Swiper Keyboard module enabled | `MushafSlider` | Arrow keys may work; not documented/tested |
 | Accessibility | ❌ Weak | Many components | Icon-only buttons lack labels; clickable spans not focusable; no focus trap in modal |
@@ -63,15 +63,16 @@
 
 | Metric | Value |
 |--------|-------|
-| Source files (`.vue/.js/.css`) | **33** |
-| Total source lines | **5,455** |
-| Largest logic file | `src/components/MushafPage.vue` (444) |
+| Source files (`.vue/.js/.css`) | **34** |
+| Total source lines | **5,446** |
+| Largest logic file | `src/components/AyahModal.vue` (348) |
 | Largest data file | `src/utils/Hizb.js` (1,455) |
 | Components | 15 (≈10 active, 4 legacy) |
 | Stores | 4 (2 active, 2 legacy) |
 | Views | 3 (all stubs) |
-| External API hosts | 3 (`qurancdn.com`, `alquran.cloud`, `islamic.network`) + 1 texture host |
+| External API hosts | 2 runtime (`alquran.cloud`, `islamic.network`) + `qurancdn` (build-time) + 1 texture host |
 | Public font files | 610 (~49 MB) |
+| Generated page files | 604 JSON (~965 KB raw / ~335 KB gzip) |
 | Precache entries (build) | 617 (~48,130 KiB) |
 
 ### Source line breakdown (top files)
@@ -80,8 +81,8 @@
 |------|------:|
 | `src/utils/Hizb.js` | 1,455 |
 | `src/chapters.js` | 1,031 |
-| `src/components/MushafPage.vue` | 444 |
 | `src/components/AyahModal.vue` | 348 |
+| `src/components/MushafPage.vue` | 344 |
 | `src/components/AudioPlayer.vue` | 292 |
 | `src/layouts/default.vue` | 263 |
 | `src/components/MushafSlider.vue` | 178 |

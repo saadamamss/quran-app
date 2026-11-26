@@ -77,12 +77,15 @@ function validatePage(data, filePage) {
     if (!line || typeof line !== 'object') return err(`${at}: not an object`)
 
     if (line.type === 'basmalah') {
-      if (Object.keys(line).length !== 1) warn(`${at}: unexpected fields on basmalah line`)
+      const extra = Object.keys(line).filter((k) => k !== 'type' && k !== 'center')
+      if (extra.length) warn(`${at}: unexpected fields on basmalah line: ${extra.join(', ')}`)
+      if (line.center !== undefined && typeof line.center !== 'boolean') err(`${at}: center must be boolean`)
       return
     }
 
     if (line.type === 'surah') {
       if (!isInt(line.chapter, 1, 114)) err(`${at}: invalid chapter ${line.chapter}`)
+      if (line.center !== undefined && typeof line.center !== 'boolean') err(`${at}: center must be boolean`)
       if (line.chapter === 9) {
         const next = data.lines[i + 1]
         if (next?.type === 'basmalah') err(`${at}: Surah 9 must not be followed by a basmalah`)

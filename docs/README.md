@@ -26,7 +26,7 @@ A **Vue 3 + Vite** web app that renders the **Madinah Mushaf** (Hafs narration) 
 
 **One-line mental model:**
 
-> `Swiper (604 slides)` → `MushafPage` (fetch words → group by `line_number` → render with `p{N}` font) → click word → `AyahModal` / `AudioPlayer`.
+> `Swiper (604 slides)` → `MushafPage` (load local page JSON → render precomputed lines with `p{N}` font) → click word → `AyahModal` / `AudioPlayer`.
 
 ---
 

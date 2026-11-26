@@ -220,7 +220,9 @@ function buildLean(raw, page) {
     if (L == null) continue
 
     if (L.basmalah) {
-      lines.push({ type: 'basmalah' })
+      const line = { type: 'basmalah' }
+      if (isCentered(page, n)) line.center = true
+      lines.push(line)
       continue
     }
 
@@ -230,7 +232,9 @@ function buildLean(raw, page) {
         anomalies.push(`line ${n}: invalid surah chapter ${L.chapter_id}`)
         continue
       }
-      lines.push({ type: 'surah', chapter })
+      const line = { type: 'surah', chapter }
+      if (isCentered(page, n)) line.center = true
+      lines.push(line)
       continue
     }
 

@@ -35,23 +35,11 @@
 
 ## 🔴 High severity
 
-### 2. Offline reading broken for uncached pages
-- **Evidence:** `vite.config.js` runtime-caches only `api.alquran.cloud/*` and `cdn.islamic.network/quran/audio/*`. Page data comes from `api.qurancdn.com`, which is **not** cached.
-- **Symptom:** After going offline, swiping to a page never visited shows a spinner/error.
-- **Cause:** Missing Workbox `runtimeCaching` entry for `qurancdn`.
-- **Fix:** Add:
-  ```js
-  {
-    urlPattern: /^https:\/\/api\.qurancdn\.com\/api\/qdc\/verses\/by_page\/.*/i,
-    handler: 'CacheFirst',
-    options: {
-      cacheName: 'quran-pages',
-      expiration: { maxEntries: 604, maxAgeSeconds: 60 * 60 * 24 * 90 },
-      cacheableResponse: { statuses: [0, 200] },
-    },
-  }
-  ```
-  Better: pre-cache page JSON at build time (see #3) or cache-on-demand with a "download for offline" action.
+### 2. Offline reading: local page JSON not precached yet
+- **Evidence:** page text now loads from `public/data/pages/{n}.json` via `localPageService`, so there is no `qurancdn` runtime dependency. However, `vite.config.js` `globPatterns` does not include `json`, so the page files are not in the Workbox precache yet.
+- **Symptom:** After going offline, swiping to a page not already fetched shows a spinner/error.
+- **Cause:** Workbox precache does not include `public/data/**`.
+- **Fix (M3):** add `json` (or `data/**/*.json`) to `globPatterns`; total cost is only ~1 MB raw / ~335 KB gzip for all 604 pages.
 - **Effort:** S
 
 ### 3. ~48 MB PWA precache
@@ -93,11 +81,9 @@
 - **Fix:** Persist `page` on the bookmark (available from the ayah API/`data.data.page`) and call `goToPage(page)`; optionally scroll/flash the word.
 - **Effort:** S–M
 
-### 7. Side effect inside a computed
-- **Evidence:** `MushafPage.pageSurah` calls `quranStore.setCurrentSurah(...)`, which calls `saveToStorage()` (localStorage write) whenever the computed re-evaluates.
-- **Symptom:** Unnecessary storage writes during renders; violates Vue's "computeds are pure" rule; can cause subtle re-render loops.
-- **Fix:** Move the update into a `watch` on `verses`/`currentPage` (with `flush: 'post'`), or call it once in `loadPageData`.
-- **Effort:** S
+### 7. Side effect inside a computed — ✅ Fixed (M2)
+- **Was:** `MushafPage.pageSurah` called `quranStore.setCurrentSurah(...)` from a computed, causing redundant `localStorage` writes.
+- **Now:** the update happens in a `watch` and skips the write when the surah list is unchanged.
 
 ### 10. Settings UI missing; stored settings unused
 - **Evidence:** `settings` stores `translation` and `fontSize`, but nothing reads them. Header gear button has no handler.
@@ -124,7 +110,7 @@
 - **Effort:** S
 
 ### 9. Duplicate bookmark stores and unused deps
-- **Evidence:** `quranStore.bookmarks` is used; `stores/bookmarks.js` is not. `pinia-plugin-persistedstate` is installed but unused. `quran-json` is a dependency and imported in `MushafPage` but never used. Swiper `Mousewheel` imported while `:mousewheel="false"`.
+- **Evidence:** `quranStore.bookmarks` is used; `stores/bookmarks.js` is not. `pinia-plugin-persistedstate` is installed but unused. `quran-json` is a dependency and is no longer imported anywhere (removed from `MushafPage` in M2). Swiper `Mousewheel` imported while `:mousewheel="false"`.
 - **Fix:** Remove the dead store, unused deps/imports, and the unused Swiper module.
 - **Effort:** S
 
@@ -149,16 +135,16 @@
 - **Fix:** Use a reactive `hoveredVerseKey` in the store/component and bind a class, or use `data-*` attributes.
 - **Effort:** S
 
-### 16. API query typo `chizb_number`
-- **Evidence:** `quranServices.getPage` includes `fields=...,chizb_number,...`.
-- **Fix:** Correct to `hizb_number` (verify the API's accepted fields).
+### 16. API query typo `chizb_number` (legacy only)
+- **Evidence:** `quranServices.getPage` includes `fields=...,chizb_number,...`. Runtime reading no longer uses this wrapper.
+- **Fix:** Correct to `hizb_number` if the legacy wrapper is kept; otherwise remove it.
 - **Effort:** S
 
-### 17. CORS workaround headers in page service
+### 17. CORS workaround headers in page service (legacy only)
 - **Evidence:** `getPage` sends browser-like headers + `referrer: 'https://quran.com/'`.
-- **Risk:** Fragile; may break if the CDN changes CORS policy.
-- **Fix:** Prefer a documented API/endpoint; or proxy at build/deploy time.
-- **Effort:** S–M
+- **Risk:** Fragile; may break if the CDN changes CORS policy. No longer on the reading path (local JSON is used).
+- **Fix:** Remove the legacy wrapper or keep it behind an explicit fallback.
+- **Effort:** S
 
 ### 18. Accessibility gaps
 - **Evidence:** Icon-only buttons (header gear, stop, prev/next) lack `aria-label`; clickable `<span>` words aren't keyboard-focusable; modal has no focus trap/Escape handler.

@@ -28,7 +28,7 @@
 | File | Purpose | Key functions / notes |
 |------|---------|----------------------|
 | `src/components/MushafSlider.vue` | Swiper of 604 pages. | `onSwiperInit` (registers swiper in store), `onSlideChange` (writes `currentPage`), `isActive(page)` (render window), `goToPage` (local, desktop-aware), breakpoint `1200` → 2 pages |
-| `src/components/MushafPage.vue` | **Core renderer.** Fetches a page, groups words into 15 lines, injects the page font. | `loadFont`, `loadPageData`, `pageLines` (line grouping + gap fill), `pageSurah`, `pageJuz`, `hizbNumber`, `rubHizbText`, `hizbLocation`, `wordhovered/wordunhovered` (className-based highlight) |
+| `src/components/MushafPage.vue` | **Core renderer.** Loads the precomputed page JSON, injects the page font, renders `pageData.lines`. | `loadFont`, `loadPageData`, `lines`/`surahs`/`juzName`/`hizbLine`/`hizbLabel`/`hizbNumber` computeds, `wordhovered/wordunhovered` (className-based highlight) |
 | `src/components/AudioPlayer.vue` | Bottom playback bar + reciter picker + continuous toggle. Also a floating "listen to page" button. | `startPlayback` (selected ayah → else first verse of page), `currentSurahName`, `currentReciterName` |
 | `src/components/AyahModal.vue` | Ayah detail sheet: Arabic, English translation, Muyassar tafsir, listen, bookmark. | `fetchAyahDetails` (3 API calls), `toggleAudio`, `toggleBookmark`, `isBookmarked`, `activeTab` |
 | `src/components/SearchBar.vue` | Debounced ayah search with dropdown. | `handleInput` (500 ms, min 3 chars), `performSearch`, `goToResult`, local `vClickOutside` directive |
@@ -64,7 +64,8 @@
 
 | File | Status | Purpose |
 |------|--------|---------|
-| `src/services/quranServices.js` | ✅ | `getSurahs()`, `getSurah(n, translation)`, `getPage(n)` (quran.com CDN), `search(q)` (alquran.cloud). Contains unused `ref` import and hard-coded browser-ish headers/referrer for the page call. |
+| `src/services/localPageService.js` | ✅ | Loads `public/data/pages/{n}.json`; in-memory cache + in-flight dedupe; `preload()` for neighbouring pages. |
+| `src/services/quranServices.js` | ⚠️ | `getSurahs()`, `getSurah(n, translation)`, `search(q)` (alquran.cloud). `getPage(n)` (quran.com CDN) is legacy and no longer called at runtime. |
 
 ---
 
