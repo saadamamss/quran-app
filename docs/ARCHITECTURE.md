@@ -75,10 +75,11 @@ sequenceDiagram
     participant St as quranStore
 
     S->>P: :page-number, :active=true
-    P->>P: loadFont() inject @font-face p{N}
+    P->>F: ensureFont(N)  (inject @font-face, await document.fonts)
     P->>L: loadPage(N)
     L->>D: GET (memoized + in-flight dedupe)
     D-->>L: { page, juz, surahs, lines: [...] }
+    F-->>P: font ready
     L-->>P: pageData
     P->>St: setPageFirstVerseKey(N, pageData.firstVerse)
     P-->>S: render pageData.lines with p{N} font
@@ -86,8 +87,13 @@ sequenceDiagram
 
 **Step-by-step:**
 
-1. **Font injection** — `loadFont()` appends a `<style id="font-p{N}">` with
-   `@font-face { font-family: 'p{N}-v1'; src: url('/fonts/p{N}.woff2') }` and the rule `.p{N}-v1 { font-family: 'p{N}-v1' }`. The page container gets classes `page_{N} p{N}-v1`.
+1. **Font loading** — `fontService.ensureFont(N)` appends a `<style id="font-p{N}">` with
+   `@font-face { font-family: 'p{N}-v1'; src: url('/fonts/p{N}.woff2'); font-display: block }`
+   and the rule `.p{N}-v1 { font-family: 'p{N}-v1' }`, then waits for
+   `document.fonts.load()` + `document.fonts.check()` to confirm the font can render.
+   **The page is not painted until this resolves**: the glyphs are private-use codepoints,
+   so rendering with a fallback font would show garbage symbols instead of Arabic.
+   The page container gets classes `page_{N} p{N}-v1`.
 2. **Load** — `localPageService.loadPage(N)` fetches the small local JSON
    (`public/data/pages/N.json`), caches it in memory, and dedupes concurrent requests.
    No network API call is needed for text.
@@ -98,6 +104,12 @@ sequenceDiagram
    `quranStore.selectedAyahKey`, which opens `AyahModal`. Highlighting is driven by
    `audioStore.currentAyahKey` (green glow) and `quranStore.selectedAyahKey` (amber underline).
 6. **Hizb marker** — `pageData.hizbLine` / `pageData.hizbLabel` / `pageData.hizb` drive the marker.
+
+**Font economics:** 604 page fonts × ~78 KB ≈ **46 MB**. They are *not* precached. The
+service worker runtime-caches `/fonts/p*.woff2` with `CacheFirst` (1 year), so each font is
+downloaded once on first view of its page and then works offline. `MushafSlider` warms the
+next/previous page fonts after the swipe settles (±1), and only the visible pages (±1) load
+fonts eagerly — a wide-screen view costs ~3 fonts (~230 KB), not 7.
 
 Generation rules and schema: [PAGE_DATA_PIPELINE.md](./PAGE_DATA_PIPELINE.md).
 
@@ -216,13 +228,22 @@ Storage key: **`quran_audio_data_v2`**.
 
 ## 8. PWA / offline
 
-`vite.config.js` → `VitePWA({ registerType: 'autoUpdate', ... })`.
+`vite.config.js` → `VitePWA({ registerType: 'autoUpdate', injectRegister: null, ... })`, registered
+from `src/main.js` via `registerSW({ immediate: true })` so a slow third-party asset cannot delay
+the service worker.
 
-- **Precache** (`globPatterns`): `js, css, html, ico, png, svg, woff2, ttf, json`. Because `woff2` is included, **all 604 page fonts are precached**, and `json` adds **all 604 page files + manifest** → build reported **1222 entries / ~49 MB**.
+- **Precache** (`globPatterns`): `js, css, html, ico, png, svg, ttf, json` plus the two small
+  header fonts (`sura_names.woff2`, `UthmanicHafs1Ver18.woff2`). This includes **all 604 page
+  JSON files + manifest** → build reports **615 entries / ~1.77 MB**. The 604 page fonts are
+  deliberately excluded (`globIgnores` also drops two unused KFGQPC `.ttf` files).
 - **Runtime caching:**
+  - `/fonts/p*.woff2` → `CacheFirst`, 604 entries, 1 year → each page font is fetched **once**,
+    on first view of that page, and then works offline.
   - `api.alquran.cloud/v1/*` → `CacheFirst`, 500 entries, 30 days.
   - `cdn.islamic.network/quran/audio/*` → `CacheFirst`, 100 entries, 7 days.
-- **Offline:** page text (local JSON) + fonts + app shell are precached, so reading works offline. Audio/tafsir remain cache-on-first-use.
+- **Offline:** page text + app shell are precached; fonts are cached per page as they are read.
+  A page you have opened before works fully offline. A page you have **never** opened needs one
+  78 KB font download, so offline it shows a retry message. Audio/tafsir remain cache-on-first-use.
 - **Missing icons:** manifest references `pwa-192x192.png`, `pwa-512x512.png`; `includeAssets` references `apple-touch-icon.png`, `masked-icon.svg`. None exist in `public/`.
 
 ---
@@ -231,7 +252,7 @@ Storage key: **`quran_audio_data_v2`**.
 
 | Decision | Benefit | Cost |
 |----------|---------|------|
-| One font per page | Pixel-faithful Madinah layout | 604 font files, ~49 MB, heavy PWA precache |
+| One font per page | Pixel-faithful Madinah layout | 604 font files (~46 MB), loaded on demand and runtime-cached |
 | Precomputed per-page JSON | No runtime grouping, instant render, offline-ready | ~1 MB generated data committed; regenerate on rule changes |
 | Manual localStorage | Simple, explicit | Boilerplate; easy to forget a setter |
 | Swiper over CSS scroll | Smooth RTL page flipping | 604 slide nodes; virtual module unused |

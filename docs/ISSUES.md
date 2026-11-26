@@ -40,15 +40,17 @@
 - **Now:** page text loads from `public/data/pages/{n}.json` via `localPageService`, and `vite.config.js` includes `json` in `globPatterns`. Build precaches all 604 page files + manifest (~1 MB) plus the fonts, so reading works offline.
 - **Remaining:** audio/tafsir are still cache-on-first-use.
 
-### 3. ~48 MB PWA precache
-- **Evidence:** Build log: `precache 617 entries (48129.55 KiB)`. `globPatterns` includes `woff2`.
-- **Symptom:** Slow first install/update, high bandwidth/storage, especially on mobile.
-- **Cause:** All 604 page fonts are precached eagerly.
-- **Fix options:**
-  1. Remove `woff2`/`ttf` from `globPatterns`; instead runtime-cache `/fonts/*` with `CacheFirst` as pages load.
-  2. Group fonts into chunks and lazy-load only nearby pages (e.g. ±10).
-  3. Offer an explicit "download all for offline" flow.
-- **Effort:** M
+### 3. Precache size — ✅ Fixed (fonts on demand)
+- **Was:** `globPatterns` included `woff2`, so all 604 page fonts (~46 MB) were precached at
+  install: `precache 1222 entries (49192 KiB)`.
+- **Now:** only the app shell, the 604 page JSON files and the two small header fonts are
+  precached → `615 entries / ~1.77 MB`. Page fonts are fetched on demand
+  (`fontService.ensureFont`) and runtime-cached with `CacheFirst` (1 year), so each font
+  downloads once, on first view, then works offline. `MushafSlider` warms ±1 fonts after the
+  swipe settles; only visible pages (±1) load fonts eagerly.
+- **Remaining:** a page never opened still needs its 78 KB font before it can render offline.
+  Optional follow-up: a "download all pages for offline" action for users who want the whole
+  Mushaf available without ever going online.
 
 ---
 
@@ -174,7 +176,7 @@
 
 ### Phase 1 — Offline & performance (~2–4 days)
 - [x] Precache local page JSON for offline reading (#2)
-- [ ] Shrink precache / lazy-load fonts (#3)
+- [x] Shrink precache / lazy-load fonts (#3)
 - [ ] Implement true Swiper virtualization or drop the config (#12)
 - [ ] Cache ayah details in the modal (#20)
 
