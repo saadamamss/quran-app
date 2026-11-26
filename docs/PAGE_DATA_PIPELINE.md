@@ -198,8 +198,11 @@ Exit code is non-zero on any error.
 Per-page fonts are the one heavy asset: 604 files × ~78 KB ≈ 46 MB. Precaching them all made
 the service-worker install slow, so they are now **loaded on demand**:
 
-- `src/services/fontService.js` injects `@font-face` with `font-display: block`, waits for
-  `document.fonts.check()` to confirm the glyphs can render, and dedupes/preloads.
+- `src/services/fontService.js` fetches each page font through the app's own `fetch()` (so the
+  service worker's `CacheFirst` runtime cache is used) and registers a `FontFace` from the
+  bytes, waiting for `FontFace.load()` before the page renders. It dedupes and preloads.
+  This avoids Chromium's CSS font loader, which does not reliably go through the service
+  worker and therefore failed offline even when the font was cached.
 - `MushafPage` loads JSON **and** the font in parallel and only paints once the font is ready —
   without this, the private-use glyph codepoints show as garbage symbols.
 - `vite.config.js` runtime-caches `/fonts/p*.woff2` with `CacheFirst` (1 year): each font is

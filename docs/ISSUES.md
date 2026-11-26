@@ -12,7 +12,7 @@
 |----|----------|-------|------|
 | 1 | 🟠 | Missing PWA icons | PWA |
 | 2 | ✅ | Offline reading (fixed in M3) | PWA / data |
-| 3 | 🔴 | ~48 MB PWA precache | PWA / perf |
+| 3 | ✅ | ~48 MB PWA precache (fixed: fonts on demand) | PWA / perf |
 | 4 | 🟠 | Desktop page navigation off-by-one | Navigation |
 | 5 | 🟠 | Routing is dead (no `<router-view>`) | Routing |
 | 6 | 🟠 | Bookmarks cannot jump to the ayah page | Bookmarks |
@@ -46,8 +46,10 @@
 - **Now:** only the app shell, the 604 page JSON files and the two small header fonts are
   precached → `615 entries / ~1.77 MB`. Page fonts are fetched on demand
   (`fontService.ensureFont`) and runtime-cached with `CacheFirst` (1 year), so each font
-  downloads once, on first view, then works offline. `MushafSlider` warms ±1 fonts after the
-  swipe settles; only visible pages (±1) load fonts eagerly.
+  downloads once, on first view, then works offline. The bytes are fetched with `fetch()`
+  and registered as a `FontFace`, because Chromium's CSS font loader bypasses the service
+  worker and failed offline even when the font was cached. `MushafSlider` warms ±1 fonts
+  after the swipe settles; only visible pages (±1) load fonts eagerly.
 - **Remaining:** a page never opened still needs its 78 KB font before it can render offline.
   Optional follow-up: a "download all pages for offline" action for users who want the whole
   Mushaf available without ever going online.

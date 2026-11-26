@@ -5,11 +5,17 @@
  * glyphs are private-use codepoints, so rendering before the font is ready
  * shows garbage symbols. This service:
  *
- * - injects the `@font-face` for a page once (`font-display: block`, so a
- *   slow font never shows fallback glyphs),
- * - resolves only after the font is actually usable (`document.fonts.check`),
+ * - fetches the font bytes itself and registers them with the `FontFace` API,
+ * - resolves only after the font is decoded and usable,
  * - dedupes concurrent loads and caches results in memory,
  * - preloads neighbours without blocking.
+ *
+ * Why fetch + `FontFace` instead of `@font-face` + `document.fonts.load()`?
+ * Chromium's CSS font loader does not reliably route font requests through the
+ * service worker: the request bypasses the SW cache and, offline, fails with
+ * `net::ERR_FAILED` even when the font is cached. Fetching the bytes through
+ * the page's own `fetch()` goes through the SW (and its `CacheFirst` rule), so
+ * once a font has been seen it renders offline too.
  *
  * Fonts are *not* precached by the service worker (604 × 78 KB ≈ 46 MB).
  * `vite.config.js` runtime-caches `/fonts/p*.woff2` with `CacheFirst`, so each
@@ -20,6 +26,7 @@ const FONT_ROOT = `${BASE_URL.replace(/\/+$/, '')}/fonts`
 const TOTAL_PAGES = 604
 
 const injected = new Set()
+const faces = new Map()
 const inFlight = new Map()
 const failed = new Set()
 
@@ -77,11 +84,12 @@ function inject(page) {
   if (injected.has(page)) return
   injected.add(page)
 
+  // Only the class rule: the actual face comes from ensureFont() as a FontFace
+  // built from fetched bytes, so the browser never fetches the font file on its
+  // own (which would bypass the service worker cache).
   const style = document.createElement('style')
   style.id = `font-p${page}`
-  // `block` keeps text invisible until the glyph font is ready instead of
-  // flashing unrelated glyphs. Rendering is gated on ensureFont() anyway.
-  style.textContent = `@font-face{font-family:'${family(page)}';src:url('${FONT_ROOT}/p${page}.woff2') format('woff2');font-display:block}.p${page}-v1{font-family:'${family(page)}'}`
+  style.textContent = `.p${page}-v1{font-family:'${family(page)}'}`
   document.head.appendChild(style)
 }
 
@@ -100,16 +108,25 @@ async function ensureFont(page) {
 
   const task = (async () => {
     try {
-      await document.fonts.load(`16px "${family(n)}"`)
-      // `load()` resolves even when the file fails; `check()` tells the truth.
-      const ok = document.fonts.check(`16px "${family(n)}"`)
-      if (ok) {
-        failed.delete(n)
-        primeWhenControlled(n)
-      } else {
-        failed.add(n)
-      }
-      return ok
+      const response = await fetch(fontUrl(n))
+      if (!response.ok) throw new Error(`Font ${n} unavailable (HTTP ${response.status})`)
+      const buffer = await response.arrayBuffer()
+
+      const face = new FontFace(family(n), buffer, { display: 'block' })
+      await face.load()
+
+      // A previous attempt may have added a face for this page (retry).
+      const previous = faces.get(n)
+      if (previous) document.fonts.delete(previous)
+      document.fonts.add(face)
+      faces.set(n, face)
+
+      failed.delete(n)
+      // If the SW did not control the page when this fetch ran, the bytes are
+      // only in the HTTP cache. Re-fetch once the SW takes over so the runtime
+      // cache (and therefore offline) has them.
+      if (!navigator.serviceWorker?.controller) primeWhenControlled(n)
+      return true
     } catch {
       failed.add(n)
       return false
@@ -142,7 +159,7 @@ async function preload(pages) {
 /** True when the font is already usable (no network). */
 function isReady(page) {
   const n = normalize(page)
-  return n ? document.fonts.check(`16px "${family(n)}"`) : false
+  return n ? faces.has(n) : false
 }
 
 /** Forget a failed load so it can be retried. */
