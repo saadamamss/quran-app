@@ -190,12 +190,11 @@ Exit code is non-zero on any error.
 4. `MushafSlider.vue` — `preloadAround()` warms `currentPage ± 2` on init and on every slide change.
 5. `vite.config.js` — `json` added to Workbox `globPatterns`; the build precaches all 604 page
    files + manifest (1222 entries total including fonts).
-6. `quranServices.getPage` is kept as a legacy wrapper but is no longer on the reading path.
+6. `quranServices.getPage` was removed; the app no longer calls the CDN from the browser.
 
 ### Possible follow-ups
 
 - Add an explicit API fallback if a local file is ever missing (currently it surfaces an error).
-- Remove the legacy `quranServices.getPage` wrapper if no fallback is desired.
 - Consider lazy-loading fonts to shrink the ~49 MB precache (see ISSUES #3).
 
 ---

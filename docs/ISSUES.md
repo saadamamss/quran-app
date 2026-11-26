@@ -26,7 +26,7 @@
 | 14 | 🟡 | Hard-coded audio reciter in modal | Audio |
 | 15 | 🟡 | Fragile word-hover highlight | UI |
 | 16 | 🟡 | API query typo `chizb_number` | Data |
-| 17 | 🟡 | CORS workaround headers in page service | Data |
+| 17 | ✅ | CORS workaround headers in page service (fixed) | Data |
 | 18 | 🟡 | Accessibility gaps | A11y |
 | 19 | 🟡 | Starter CSS leftovers may affect layout | Styling |
 | 20 | 🟡 | Modal refetches on every open | Perf |
@@ -133,16 +133,18 @@
 - **Fix:** Use a reactive `hoveredVerseKey` in the store/component and bind a class, or use `data-*` attributes.
 - **Effort:** S
 
-### 16. API query typo `chizb_number` (legacy only)
-- **Evidence:** `quranServices.getPage` includes `fields=...,chizb_number,...`. Runtime reading no longer uses this wrapper.
-- **Fix:** Correct to `hizb_number` if the legacy wrapper is kept; otherwise remove it.
+### 16. API query typo `chizb_number` (generator only)
+- **Evidence:** `scripts/fetch-pages.mjs` includes `fields=...,chizb_number,...`.
+- **Impact:** None today — `fields` only hints extra fields, and the generator reads hizb/rub
+  from the standard response fields. The old `quranServices.getPage` copy was removed with the
+  dead wrapper.
+- **Fix:** Correct to `hizb_number` when the generator query is next touched.
 - **Effort:** S
 
-### 17. CORS workaround headers in page service (legacy only)
-- **Evidence:** `getPage` sends browser-like headers + `referrer: 'https://quran.com/'`.
-- **Risk:** Fragile; may break if the CDN changes CORS policy. No longer on the reading path (local JSON is used).
-- **Fix:** Remove the legacy wrapper or keep it behind an explicit fallback.
-- **Effort:** S
+### 17. CORS workaround headers in page service — ✅ Fixed (wrapper removed)
+- **Was:** the browser-side `getPage` sent browser-like headers + `referrer: 'https://quran.com/'`.
+- **Now:** page data is generated offline by `scripts/fetch-pages.mjs` and committed; the dead
+  wrapper was deleted, so the app never calls the CDN from the browser.
 
 ### 18. Accessibility gaps
 - **Evidence:** Icon-only buttons (header gear, stop, prev/next) lack `aria-label`; clickable `<span>` words aren't keyboard-focusable; modal has no focus trap/Escape handler.

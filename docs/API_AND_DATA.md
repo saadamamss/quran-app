@@ -10,8 +10,8 @@
 
 This endpoint is **no longer called at runtime** for reading. It is the source used by
 `scripts/fetch-pages.mjs` to generate the committed local dataset
-(`public/data/pages/*.json`). `quranServices.getPage` is kept as a legacy/reference wrapper;
-`MushafPage.vue` now uses `localPageService` instead (see §2).
+(`public/data/pages/*.json`). `MushafPage.vue` renders that dataset through
+`localPageService` (see §2); the old `quranServices.getPage` wrapper has been removed.
 
 ```
 GET https://api.qurancdn.com/api/qdc/verses/by_page/{page}
@@ -77,7 +77,10 @@ GET https://api.qurancdn.com/api/qdc/verses/by_page/{page}
 | `verses[].hizb_number`, `rub_el_hizb_number` | Hizb marker |
 | `verses[].words[0].line_number` | Rub marker vertical position |
 
-**CORS note:** `quranServices.getPage` sends a `referrer: 'https://quran.com/'` and browser-like headers. This is a workaround for the CDN's CORS policy and is fragile across environments. It only matters if the legacy wrapper is used; runtime reading no longer depends on it.
+**CORS note:** the CDN requires browser-like headers (`accept`, a quran.com `referrer`) and is
+fragile across environments. That is why the dataset is generated **offline by a Node script**
+and committed, instead of being fetched from the browser. Runtime reading never touches this
+endpoint.
 
 ---
 

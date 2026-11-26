@@ -65,7 +65,7 @@
 | File | Status | Purpose |
 |------|--------|---------|
 | `src/services/localPageService.js` | ✅ | Loads `public/data/pages/{n}.json`; in-memory cache + in-flight dedupe; `preload()` for neighbouring pages. |
-| `src/services/quranServices.js` | ⚠️ | `getSurahs()`, `getSurah(n, translation)`, `search(q)` (alquran.cloud). `getPage(n)` (quran.com CDN) is legacy and no longer called at runtime. |
+| `src/services/quranServices.js` | ✅ | `getSurahs()`, `getSurah(n, translation)`, `search(q)` (alquran.cloud). The old quran.com `getPage(n)` wrapper was removed with the local-dataset migration. |
 
 ---
 
