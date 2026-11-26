@@ -134,6 +134,9 @@ function validatePage(data, filePage) {
   })
 
   if (words === 0) err('page has no words')
+  if (data.firstVerse === '1:1' && data.lines.some((l) => l.type === 'basmalah')) {
+    err('page containing 1:1 must not have a separate basmalah line')
+  }
   if (firstRunKey !== null && data.firstVerse !== firstRunKey) {
     err(`firstVerse ${data.firstVerse} does not match first word run ${firstRunKey}`)
   }

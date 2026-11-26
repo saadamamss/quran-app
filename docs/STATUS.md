@@ -34,7 +34,7 @@
 | Surah navigation | ✅ Working | `SurahList` + `FPCH` | Jumps to surah start page |
 | Juz navigation | ✅ Working | `JuzList` + `JUZ` | Jumps to juz start page |
 | Page header (juz + surah) | ✅ Working | `MushafPage` | From `pageData.juz` / `pageData.surahs` |
-| Basmalah rendering | ✅ Working | Precomputed page data + `basmalah.vue` | Surah 9 correctly has no basmalah |
+| Basmalah rendering | ✅ Working | Precomputed page data + `basmalah.vue` | Surah 9 has none; page 1 has no duplicate |
 | Surah-name header lines | ✅ Working | Precomputed page data | Chapters resolved at generation time |
 | Hizb / rub' markers | ✅ Working | `MushafPage` + `pageData.hizbLine` | Precomputed label + line |
 | Word click → modal | ✅ Working | `MushafPage` → `AyahModal` | Opens on `selectedAyahKey` |

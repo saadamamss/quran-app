@@ -129,10 +129,13 @@ Mushaf prints a basmalah or a surah header. The generator fills those gaps deter
 
 1. **Group** all words by `line_number`, preserving reading order.
 2. **Fill gaps**:
-   - If the next non-empty line starts a surah (ayah `1`) and it is **not** Surah 9 →
-     `basmalah`.
-   - If it starts **Surah 9 (At-Tawba)** → `surah` header only. *At-Tawba has no basmalah.*
-     (This fixes a real bug in the old runtime heuristic.)
+   - If the next non-empty line starts a surah (ayah `1`):
+     - **Surah 9 (At-Tawba)** → `surah` header only. *At-Tawba has no basmalah.*
+       (Fixes a real bug in the old runtime heuristic.)
+     - **Surah 1 (Al-Fatiha)** → the reserved line is dropped, because `1:1` **is** the
+       basmalah and is already rendered as words. (Prevents the duplicate basmalah the old
+       heuristic displayed on page 1.)
+     - otherwise → `basmalah`.
    - Gap at the end of a page → `surah` header, chapter inferred from the next chapter.
    - Pages 1–2 keep their decorative header area behavior (no chapter → line dropped).
 3. **Center flags**: page 1, page 2, and every page/line listed in
@@ -163,8 +166,8 @@ node scripts/validate-pages.mjs --compare 1,2,50,187,604
 
 Checks include: all 604 files present; JSON parses; page/juz/hizb/rub/surah ranges; non-empty
 `lines` ≤ 15; known line types; non-empty runs and words; verse order never regresses;
-`firstVerse` matches the first word run; **Surah 9 never followed by a basmalah**; manifest
-schema and per-file stats.
+`firstVerse` matches the first word run; **Surah 9 never followed by a basmalah**; **page 1 has
+no duplicate basmalah line**; manifest schema and per-file stats.
 
 Exit code is non-zero on any error.
 

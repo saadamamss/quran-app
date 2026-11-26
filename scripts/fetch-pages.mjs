@@ -152,8 +152,10 @@ async function fetchRaw(page, attempt = 1, retries = 5) {
 // ---------------------------------------------------------------------------
 /**
  * Rebuilds the 15-line page layout using the same rules the app currently
- * applies at runtime, with one correction: Surah 9 (At-Tawba) has no
- * basmalah, so a single reserved line before 9:1 is a surah header.
+ * applies at runtime, with two corrections:
+ * - Surah 9 (At-Tawba) has no basmalah, so a single reserved line before 9:1
+ *   is a surah header.
+ * - Surah 1's basmalah is verse 1:1, so no separate basmalah line is added.
  */
 function buildLean(raw, page) {
   const verses = raw.verses
@@ -186,6 +188,13 @@ function buildLean(raw, page) {
       // Surah 9 has no basmalah: the reserved line is its header.
       if (nextAyah === 1 && nextChapter === 9) {
         byLine[m] = { name: true, chapter_id: 9 }
+        continue
+      }
+
+      // Surah 1's basmalah *is* verse 1:1, so it is already rendered as words.
+      // Drop the reserved line instead of adding a duplicate basmalah.
+      if (nextAyah === 1 && nextChapter === 1) {
+        byLine[m] = null
         continue
       }
 

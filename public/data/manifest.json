@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-26T05:09:54.085Z",
+  "generatedAt": "2026-11-26T18:02:28.033Z",
   "source": {
     "api": "https://api.qurancdn.com/api/qdc/verses/by_page",
     "mushaf": 2,
@@ -8,12 +8,12 @@
   },
   "pages": 604,
   "totalWords": 83665,
-  "totalBytes": 988234,
+  "totalBytes": 988200,
   "files": {
     "1": {
-      "bytes": 784,
+      "bytes": 750,
       "words": 36,
-      "lines": 9,
+      "lines": 8,
       "juz": 1,
       "surahs": [
         1
