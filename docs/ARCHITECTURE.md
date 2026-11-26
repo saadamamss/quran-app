@@ -58,8 +58,9 @@ This is the most important part to understand.
 - Registers the Swiper instance in `quranStore` via `store.setSwiper()`.
 - On `slide-change`, writes `store.setCurrentPage(activeIndex + 1)`.
 - `isActive(page)` decides which pages are allowed to render content:
-  - mobile: `currentPage - 1 … currentPage + 1`
-  - desktop: `currentPage - 3 … currentPage + 3`
+  `currentPage - 1 … currentPage + 1` on every viewport (±1 covers the two-page
+  desktop spread plus one neighbour). Every active page loads a ~78 KB glyph
+  font, so a wider window would download fonts the reader never sees.
 - The `Virtual` module is *imported and passed to Swiper*, but slides are still produced by `v-for`, so virtualization is **not actually active**. Rendering is limited only by `MushafPage`'s `v-if="isActive || isPreloaded"`.
 
 ### 3.2 Page → precomputed lines
@@ -87,12 +88,16 @@ sequenceDiagram
 
 **Step-by-step:**
 
-1. **Font loading** — `fontService.ensureFont(N)` appends a `<style id="font-p{N}">` with
-   `@font-face { font-family: 'p{N}-v1'; src: url('/fonts/p{N}.woff2'); font-display: block }`
-   and the rule `.p{N}-v1 { font-family: 'p{N}-v1' }`, then waits for
-   `document.fonts.load()` + `document.fonts.check()` to confirm the font can render.
-   **The page is not painted until this resolves**: the glyphs are private-use codepoints,
-   so rendering with a fallback font would show garbage symbols instead of Arabic.
+1. **Font loading** — `fontService.ensureFont(N)` fetches `/fonts/p{N}.woff2` with the page's
+   `fetch()` (so the request goes through the service worker's `CacheFirst` rule), builds a
+   `FontFace` from those bytes, awaits `face.load()`, and adds it to `document.fonts`. It also
+   injects a single rule, `.p{N}-v1 { font-family: 'p{N}-v1' }`, for the page container.
+   This is deliberate: Chromium's CSS font loader does **not** reliably route font requests
+   through the service worker — the request bypasses the SW cache and fails offline with
+   `net::ERR_FAILED` even when the font is cached. Fetching the bytes through `fetch()` makes
+   the SW cache authoritative, so a font renders offline once it has been seen.
+   **The page is not painted until `ensureFont` resolves**: the glyphs are private-use
+   codepoints, so rendering with a fallback font would show garbage symbols instead of Arabic.
    The page container gets classes `page_{N} p{N}-v1`.
 2. **Load** — `localPageService.loadPage(N)` fetches the small local JSON
    (`public/data/pages/N.json`), caches it in memory, and dedupes concurrent requests.
