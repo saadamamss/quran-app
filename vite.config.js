@@ -32,7 +32,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2,ttf}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2,ttf,json}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/api\.alquran\.cloud\/v1\/.*/i,

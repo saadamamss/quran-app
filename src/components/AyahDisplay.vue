@@ -68,7 +68,6 @@
 <script setup>
 import { ref, defineProps, watch } from 'vue'
 import { useQuranStore } from '@/stores/quranStore'
-import quranServices from '@/services/quranServices'
 const props = defineProps(['currentSurah'])
 
 const store = useQuranStore()

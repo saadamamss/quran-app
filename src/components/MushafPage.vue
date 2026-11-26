@@ -32,14 +32,14 @@
       <!-- Page Header -->
       <div
         class="w-full flex justify-between items-center mb-2 md:mb-4 px-4 text-gray-500 dark:text-gray-400"
-        v-if="verses.length > 0"
+        v-if="pageData"
       >
         <div class="flex flex-col items-start">
-          <span class="text-xs font-bold thuluth">{{ pageJuz }}</span>
+          <span class="text-xs font-bold thuluth">{{ juzName }}</span>
         </div>
 
         <div class="flex gap-4 items-center">
-          <div v-for="surah in pageSurah" :key="surah" class="flex flex-col items-center">
+          <div v-for="surah in surahs" :key="surah" class="flex flex-col items-center">
             <span class="surah-header-font text-xl leading-none">
               {{ String(surah).padStart(3, '0') }}
             </span>
@@ -62,19 +62,17 @@
           ]"
         >
           <div
-            v-for="(line, index) in pageLines"
+            v-for="(line, index) in lines"
             :key="index"
             class="flex line relative group/line"
             :class="[
               `Page${pageNumber}-line${index + 1}`,
-              [1, 2].includes(pageNumber) || clines[pageNumber]?.includes(index + 1)
-                ? 'justify-center'
-                : 'justify-between',
+              line.center ? 'justify-center' : 'justify-between',
               { 'items-center': true },
             ]"
           >
             <!-- Surah Header in the middle of page -->
-            <div class="w-full py-2 my-1 relative" v-if="line.name">
+            <div class="w-full py-2 my-1 relative" v-if="line.type === 'surah'">
               <div class="absolute inset-0 flex items-center" aria-hidden="true">
                 <div class="w-full border-t border-emerald-900/10 dark:border-emerald-100/10"></div>
               </div>
@@ -82,56 +80,58 @@
                 <span
                   class="bg-[#f9f7f0] dark:bg-[#1a1a1a] px-3 text-3xl surah-header-font text-emerald-900/80 dark:text-emerald-100/80"
                 >
-                  {{ String(line.chapter_id).padStart(3, '0') }}
+                  {{ String(line.chapter).padStart(3, '0') }}
                 </span>
               </div>
             </div>
 
             <!-- Basmalah -->
-            <div v-if="line.basmalah" class="w-full py-1 flex justify-center">
+            <div v-else-if="line.type === 'basmalah'" class="w-full py-1 flex justify-center">
               <Basmalah class="h-8 md:h-10 text-emerald-900/90 dark:text-emerald-100/90" />
             </div>
 
             <!-- Ayah Words -->
             <template v-else>
-              <span
-                :class="[
-                  `word verse_${word.verse_key} transition-all duration-200 cursor-pointer text-emerald-900/90 dark:text-emerald-100/90`,
-                  {
-                    'bg-emerald-600/20 dark:bg-emerald-400/30 rounded shadow-[0_0_12px_rgba(16,185,129,0.4)] scale-105 z-10':
-                      audioStore.currentAyahKey === word.verse_key,
-                  },
-                  {
-                    'bg-amber-500/10 dark:bg-amber-400/20 rounded border-b-2 border-amber-500/50':
-                      quranStore.selectedAyahKey === word.verse_key &&
-                      audioStore.currentAyahKey !== word.verse_key,
-                  },
-                  {
-                    'hover:bg-black/5 dark:hover:bg-white/5':
-                      quranStore.selectedAyahKey !== word.verse_key &&
-                      audioStore.currentAyahKey !== word.verse_key,
-                  },
-                ]"
-                v-for="word in line"
-                :key="word.location"
-                @mouseover="wordhovered"
-                @mouseleave="wordunhovered"
-                @click="quranStore.setSelectedAyahKey(word.verse_key)"
-              >
-                {{ word.text }}
-              </span>
+              <template v-for="(run, runIndex) in line.runs" :key="runIndex">
+                <span
+                  v-for="(text, wordIndex) in run[1]"
+                  :key="`${run[0]}-${wordIndex}`"
+                  :class="[
+                    `word verse_${run[0]} transition-all duration-200 cursor-pointer text-emerald-900/90 dark:text-emerald-100/90`,
+                    {
+                      'bg-emerald-600/20 dark:bg-emerald-400/30 rounded shadow-[0_0_12px_rgba(16,185,129,0.4)] scale-105 z-10':
+                        audioStore.currentAyahKey === run[0],
+                    },
+                    {
+                      'bg-amber-500/10 dark:bg-amber-400/20 rounded border-b-2 border-amber-500/50':
+                        quranStore.selectedAyahKey === run[0] &&
+                        audioStore.currentAyahKey !== run[0],
+                    },
+                    {
+                      'hover:bg-black/5 dark:hover:bg-white/5':
+                        quranStore.selectedAyahKey !== run[0] &&
+                        audioStore.currentAyahKey !== run[0],
+                    },
+                  ]"
+                  @mouseover="wordhovered"
+                  @mouseleave="wordunhovered"
+                  @click="quranStore.setSelectedAyahKey(run[0])"
+                >
+                  {{ text }}
+                </span>
+              </template>
             </template>
 
             <!-- Hizb/Rub Marker -->
             <div
               class="absolute hidden lg:flex flex-col items-center justify-center w-10 h-10 -right-14 top-1/2 -translate-y-1/2 opacity-0 group-hover/line:opacity-100 transition-opacity"
               :class="{ '-left-14 right-auto': pageNumber % 2 == 0 }"
-              v-if="hizbLocation === index + 1"
+              v-if="hizbLine === index + 1"
             >
               <div
                 class="text-[7px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-tighter whitespace-nowrap"
               >
-                {{ rubHizbText }}
+                {{ hizbLabel }}
               </div>
               <div class="text-base font-bold thuluth text-emerald-800 dark:text-emerald-200">
                 {{ hizbNumber }}
@@ -154,15 +154,13 @@
 </template>
 
 <script setup>
-import { ref, watch, computed, onMounted } from 'vue'
-import quranServices from '@/services/quranServices'
+import { ref, watch, computed } from 'vue'
+import localPageService from '@/services/localPageService'
 import { useQuranStore } from '@/stores/quranStore'
 import { useAudioStore } from '@/stores/audioStore'
 import Basmalah from './basmalah.vue'
-import quran from 'quran-json'
 import { JUZ } from '@/utils/JUZ'
-import { pageshashizbnumber } from '@/utils/Hizb'
-import { clines } from '@/utils/CLines'
+
 const quranStore = useQuranStore()
 const audioStore = useAudioStore()
 const props = defineProps({
@@ -179,7 +177,7 @@ const props = defineProps({
 
 const emit = defineEmits(['loaded'])
 
-const verses = ref([])
+const pageData = ref(null)
 const loading = ref(false)
 const error = ref(null)
 
@@ -189,6 +187,14 @@ const isPreloaded = computed(() => {
   // Preload if the page is within 5 pages of the current page
   return Math.abs(props.pageNumber - quranStore.currentPage) <= 5
 })
+
+// Precomputed page layout (see docs/PAGE_DATA_PIPELINE.md).
+const lines = computed(() => pageData.value?.lines ?? [])
+const surahs = computed(() => pageData.value?.surahs ?? [])
+const juzName = computed(() => (pageData.value ? (JUZ[pageData.value.juz]?.name ?? '') : ''))
+const hizbLine = computed(() => pageData.value?.hizbLine ?? null)
+const hizbLabel = computed(() => pageData.value?.hizbLabel ?? '')
+const hizbNumber = computed(() => pageData.value?.hizb ?? '')
 
 const head = computed(() => document.querySelector('head'))
 // Load font only
@@ -202,21 +208,19 @@ const loadFont = () => {
   head.value.append(style)
 }
 
-// Load page data
+// Load page data from the local dataset
 const loadPageData = async () => {
-  if (verses.value.length > 0) return // Already loaded
+  if (pageData.value) return // Already loaded
   loadFont()
   try {
     loading.value = true
     error.value = null
 
-    const response = await quranServices.getPage(props.pageNumber)
-    verses.value = response.verses
+    const data = await localPageService.loadPage(props.pageNumber)
+    pageData.value = data
 
     // Set first verse key for this page in store
-    if (verses.value.length > 0) {
-      quranStore.setPageFirstVerseKey(props.pageNumber, verses.value[0].verse_key)
-    }
+    quranStore.setPageFirstVerseKey(props.pageNumber, data.firstVerse)
 
     emit('loaded', props.pageNumber)
   } catch (err) {
@@ -253,104 +257,23 @@ watch(
   { immediate: true },
 )
 
-const pageSurah = computed(() => {
-  const surahs = verses.value.filter((verse) => verse.verse_number === 1).map((i) => i.chapter_id)
-  const currentSurahs = surahs.length ? surahs : [verses.value[0].chapter_id]
-  if (isActive.value && quranStore.currentPage == props.pageNumber) {
-    quranStore.setCurrentSurah(currentSurahs)
-  }
+// Keep the app header's current surah in sync with the visible page.
+watch(
+  [() => props.active, () => quranStore.currentPage, surahs],
+  () => {
+    if (!props.active || !pageData.value) return
+    if (quranStore.currentPage !== props.pageNumber) return
 
-  return currentSurahs
-})
-
-const pageJuz = computed(() => {
-  const lastVerse = verses.value[0]
-
-  return JUZ[lastVerse.juz_number].name
-})
-
-const hizbNumber = computed(() => {
-  const hizb = verses.value.map((i) => i.hizb_number)
-  const nonRepeatedHizb = Math.max(...[...new Set(hizb)])
-  return nonRepeatedHizb
-})
-const rub_el_hizb = computed(() => {
-  const rub_el_hizb = verses.value.map((i) => i.rub_el_hizb_number)
-  const nonRepeatedRubHizb = Math.max(...[...new Set(rub_el_hizb)])
-  return nonRepeatedRubHizb
-})
-const rubHizbText = computed(() => {
-  // if([...new Set(rub_el_hizb)].length == 1) return ""
-  switch (((rub_el_hizb.value - 1) % 4) / 4) {
-    case 0.25:
-      return 'ربع الحزب'
-    case 0.5:
-      return 'نصف الحزب'
-    case 0.75:
-      return 'ثلاثة أرباع الحزب'
-    case 0:
-      return 'الحزب'
-  }
-})
-
-const hizbLocation = computed(() => {
-  const position = verses.value.find((i) => i.rub_el_hizb_number === rub_el_hizb.value).words[0]
-    .line_number
-
-  if (!pageshashizbnumber.includes(props.pageNumber)) return null
-
-  return position
-})
-
-const completeLines = computed(() => Array.from({ length: 15 }, (_, i) => i + 1))
-
-const pageLines = computed(() => {
-  // Process verses into lines
-  const lines = verses.value
-    .flatMap((ayah) => ayah.words)
-    .reduce((acc, word) => {
-      const lineNumber = word.line_number
-      acc[lineNumber] = acc[lineNumber] || []
-      acc[lineNumber].push(word)
-      return acc
-    }, {})
-
-  // Find missing lines
-  const existingLineNumbers = new Set(Object.keys(lines).map(Number))
-  const missingLines = completeLines.value.filter((line) => !existingLineNumbers.has(line))
-
-  // Handle missing lines
-  missingLines.forEach((missingLine) => {
-    const nextLine = lines[missingLine + 1]
-
-    if (nextLine) {
-      // If next line exists, this is a basmalah line
-      lines[missingLine] = { basmalah: true }
-    } else {
-      // Try to find chapter info for surah name display
-      const nextChapter = lines[missingLine + 2]?.[0]?.verse_key?.split(':')[0]
-      const prevChapter = lines[missingLine - 1]?.[0]?.verse_key?.split(':')[0]
-
-      let chapterId = null
-      if (nextChapter) {
-        chapterId = nextChapter
-      } else if (prevChapter) {
-        // If we only have previous chapter, this is likely the last line of a surah
-        chapterId = String(Number(prevChapter) + 1)
-      }
-
-      // Special handling for first two pages
-      if ([1, 2].includes(props.pageNumber)) {
-        lines[missingLine] = chapterId ? { name: true, chapter_id: chapterId } : null
-      } else {
-        lines[missingLine] = { name: true, chapter_id: chapterId }
-      }
-    }
-  })
-
-  // Convert to array maintaining line order
-  return completeLines.value.map((lineNumber) => lines[lineNumber] || null).filter((i) => i != null)
-})
+    const next = surahs.value
+    const current = quranStore.currentSurah
+    const same =
+      Array.isArray(current) &&
+      current.length === next.length &&
+      current.every((value, i) => value === next[i])
+    if (!same) quranStore.setCurrentSurah(next)
+  },
+  { immediate: true },
+)
 
 const wordhovered = (e) => {
   Array.from(document.getElementsByClassName(e.target.className)).forEach((element) => {
@@ -362,7 +285,6 @@ const wordunhovered = (e) => {
     element.classList.remove('hoverd')
   })
 }
-onMounted(() => {})
 </script>
 
 <style scoped>
@@ -419,26 +341,4 @@ onMounted(() => {})
   border-radius: 10px;
 }
 </style>
-<!-- 
-page = {
-    id:1,
-    juz_number:1,
-    hizp_number:1,
-    rub_hizp:1,
-    surahs:[1],
-    hizp_position:5,
-    lines:[
-        {
-            id:"",
-            words:[
-                verse_number:1,
-                page_number:1,
-                text:"",
-                line_number:1,
-                position:1,
-                location:"1:1:1"
-            ]
-        }
-    ]
-}
--->
+<!-- Page data is precomputed: see docs/PAGE_DATA_PIPELINE.md -->

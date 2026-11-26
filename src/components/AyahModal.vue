@@ -183,10 +183,14 @@
             </div>
 
             <!-- Continuous Play Toggle -->
-            <button 
+            <button
               @click="audioStore.setContinuous(!audioStore.isContinuous)"
               class="flex items-center justify-between px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest transition-colors"
-              :class="audioStore.isContinuous ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400' : 'bg-gray-100 text-gray-500 dark:bg-gray-900/50'"
+              :class="
+                audioStore.isContinuous
+                  ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400'
+                  : 'bg-gray-100 text-gray-500 dark:bg-gray-900/50'
+              "
             >
               <div class="flex items-center gap-2">
                 <svg
@@ -226,7 +230,6 @@
 import { ref, computed, watch } from 'vue'
 import { useQuranStore } from '@/stores/quranStore'
 import { useAudioStore } from '@/stores/audioStore'
-import quranServices from '@/services/quranServices'
 import { chapters } from '@/chapters'
 
 const store = useQuranStore()
