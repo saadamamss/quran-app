@@ -23,9 +23,16 @@
 
     <div
       v-else-if="error"
-      class="h-full flex items-center justify-center text-red-500 p-10 text-center"
+      class="h-full flex flex-col gap-3 items-center justify-center text-red-500 p-10 text-center"
     >
       <p class="font-bold">{{ error }}</p>
+      <button
+        type="button"
+        class="text-sm font-bold text-emerald-600 hover:underline dark:text-emerald-400"
+        @click="retryLoad"
+      >
+        إعادة المحاولة
+      </button>
     </div>
 
     <div v-else class="h-full flex flex-col p-2 md:p-4 relative z-10 overflow-hidden">
@@ -156,6 +163,7 @@
 <script setup>
 import { ref, watch, computed } from 'vue'
 import localPageService from '@/services/localPageService'
+import fontService from '@/services/fontService'
 import { useQuranStore } from '@/stores/quranStore'
 import { useAudioStore } from '@/stores/audioStore'
 import Basmalah from './basmalah.vue'
@@ -196,27 +204,24 @@ const hizbLine = computed(() => pageData.value?.hizbLine ?? null)
 const hizbLabel = computed(() => pageData.value?.hizbLabel ?? '')
 const hizbNumber = computed(() => pageData.value?.hizb ?? '')
 
-const head = computed(() => document.querySelector('head'))
-// Load font only
-const loadFont = () => {
-  const fontId = `font-p${props.pageNumber}`
-  if (document.getElementById(fontId)) return
-
-  const style = document.createElement('style')
-  style.id = fontId
-  style.innerHTML = `@font-face { font-family: 'p${props.pageNumber}-v1'; src: url('/fonts/p${props.pageNumber}.woff2'); font-display: swap; } .p${props.pageNumber}-v1{font-family: 'p${props.pageNumber}-v1'}`
-  head.value.append(style)
-}
-
-// Load page data from the local dataset
+// Load page data from the local dataset, and wait for the page font.
+// Rendering before the glyph font is ready shows garbage, so both must be
+// available before `pageData` is set.
 const loadPageData = async () => {
   if (pageData.value) return // Already loaded
-  loadFont()
   try {
     loading.value = true
     error.value = null
 
-    const data = await localPageService.loadPage(props.pageNumber)
+    const [data, fontReady] = await Promise.all([
+      localPageService.loadPage(props.pageNumber),
+      fontService.ensureFont(props.pageNumber),
+    ])
+
+    if (!fontReady) {
+      throw new Error('تعذر تحميل خط الصفحة — تحقق من الاتصال')
+    }
+
     pageData.value = data
 
     // Set first verse key for this page in store
@@ -224,11 +229,17 @@ const loadPageData = async () => {
 
     emit('loaded', props.pageNumber)
   } catch (err) {
-    error.value = err.message
+    error.value = err?.message || 'تعذر تحميل الصفحة'
     console.log(err)
   } finally {
     loading.value = false
   }
+}
+
+const retryLoad = () => {
+  error.value = null
+  fontService.clear(props.pageNumber)
+  loadPageData()
 }
 
 // Watch active status and load when needed
@@ -246,12 +257,11 @@ watch(
 watch(
   isPreloaded,
   (preloaded) => {
-    if (preloaded) {
-      // For preloading, we load the font immediately but data only if active or near
-      loadFont()
-      if (Math.abs(props.pageNumber - quranStore.currentPage) <= 2) {
-        loadPageData()
-      }
+    if (!preloaded) return
+    // Warm the JSON for pages just off-screen; fonts are handled by
+    // MushafSlider (current ±1) so we never download a page we don't show.
+    if (Math.abs(props.pageNumber - quranStore.currentPage) <= 2) {
+      localPageService.preload(props.pageNumber)
     }
   },
   { immediate: true },

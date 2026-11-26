@@ -52,7 +52,7 @@
 | Settings (font size / translation) | ⚠️ Partial | `quranStore.settings` | Stored but no UI controls consume `fontSize`/`translation` |
 | Settings gear button | ❌ No-op | `default.vue` header | Button rendered without handler |
 | PWA install | ⚠️ Partial | `vite.config.js` | Manifest icons missing |
-| Offline reading | ✅ Working | SW precache | Page JSON + fonts + app shell are precached |
+| Offline reading | ✅ Working | SW precache + runtime font cache | Page text/app shell precached; each page font is cached on first view |
 | Routing to views | ❌ Dead | `default.vue` | No `<router-view>` for children |
 | Keyboard navigation | ⚠️ Swiper Keyboard module enabled | `MushafSlider` | Arrow keys may work; not documented/tested |
 | Accessibility | ❌ Weak | Many components | Icon-only buttons lack labels; clickable spans not focusable; no focus trap in modal |
@@ -71,9 +71,9 @@
 | Stores | 4 (2 active, 2 legacy) |
 | Views | 3 (all stubs) |
 | External API hosts | 2 runtime (`alquran.cloud`, `islamic.network`) + `qurancdn` (build-time) + 1 texture host |
-| Public font files | 610 (~49 MB) |
+| Public font files | 610 (~49 MB, but only ~0.4 MB precached) |
 | Generated page files | 604 JSON (~965 KB raw / ~335 KB gzip) |
-| Precache entries (build) | 1222 (~49,193 KiB) |
+| Precache entries (build) | 615 (~1.77 MB) |
 
 ### Source line breakdown (top files)
 
@@ -110,13 +110,11 @@
 
 | Risk | Severity | Link |
 |------|----------|------|
-| Offline reading fails for uncached pages | High | [ISSUES #2](./ISSUES.md#2-offline-reading-broken-for-uncached-pages) |
-| ~48 MB PWA precache | High | [ISSUES #3](./ISSUES.md#3-48-mb-pwa-precache) |
+| Unread pages need one font fetch (78 KB) before offline use | Low | [ISSUES #3](./ISSUES.md#3-precache-size) |
 | Desktop page-jump off-by-one | Medium | [ISSUES #4](./ISSUES.md#4-desktop-page-navigation-off-by-one) |
 | Missing PWA icons | Medium | [ISSUES #1](./ISSUES.md#1-missing-pwa-icons) |
 | Dead routes / views | Medium | [ISSUES #5](./ISSUES.md#5-routing-is-dead) |
 | Bookmark cannot jump to page | Medium | [ISSUES #6](./ISSUES.md#6-bookmarks-cannot-jump-to-the-ayah-page) |
-| Computed side effect writes storage | Low–Medium | [ISSUES #7](./ISSUES.md#7-side-effect-inside-a-computed) |
 | No tests / lint / types | Medium (long-term) | [ISSUES #11](./ISSUES.md#11-no-tests-lint-or-type-checking) |
 | Dead files with latent errors | Low | [ISSUES #8](./ISSUES.md#8-dead-files-with-latent-errors) |
 
@@ -125,9 +123,8 @@
 ## 6. Bottom line
 
 The **core reading experience is solid and the build is healthy**. The main work ahead is:
-1. Make offline actually work (cache page API) and shrink the precache.
-2. Fix navigation consistency (desktop page jumps, bookmark jumps).
-3. Remove dead code and consolidate stores.
-4. Add tests/lint and a settings UI.
+1. Fix navigation consistency (desktop page jumps, bookmark jumps).
+2. Remove dead code and consolidate stores.
+3. Add tests/lint and a settings UI.
 
 See the prioritized plan in [ISSUES.md](./ISSUES.md#roadmap).

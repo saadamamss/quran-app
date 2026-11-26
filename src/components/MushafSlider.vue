@@ -32,6 +32,7 @@ import { Virtual, Mousewheel, Keyboard } from 'swiper/modules'
 import 'swiper/css'
 import MushafPage from '@/components/MushafPage.vue'
 import localPageService from '@/services/localPageService'
+import fontService from '@/services/fontService'
 import { useQuranStore } from '@/stores/quranStore'
 const modules = [Virtual, Mousewheel, Keyboard]
 const TOTAL_PAGES = 604
@@ -74,6 +75,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
+  clearTimeout(fontPreloadTimer)
 })
 
 // Virtual slides configuration
@@ -86,28 +88,29 @@ const virtualOptions = ref({
 // All slides (virtual)
 const virtualSlides = computed(() => Array.from({ length: TOTAL_PAGES }, (_, i) => i))
 
-// Check if a slide should be considered active
+// Check if a slide should be considered active (rendered + font loaded).
+// Keep this to the visible pages (+/-1 covers the 2-page desktop spread):
+// every active page loads its own ~78 KB glyph font, so a wider window would
+// download several fonts before the reader sees them. Neighbouring JSON is
+// preloaded separately by preloadAround().
 const isActive = (pageNumber) => {
-  if (windowWidth.value < 1200) {
-    return [currentPage.value - 1, currentPage.value, currentPage.value + 1].includes(pageNumber)
-  } else {
-    // For 2-slide view, consider both slides as "active"
-    return [
-      currentPage.value - 3,
-      currentPage.value - 2,
-      currentPage.value - 1,
-      currentPage.value,
-      currentPage.value + 1,
-      currentPage.value + 2,
-      currentPage.value + 3,
-    ].includes(pageNumber)
-  }
+  return [currentPage.value - 1, currentPage.value, currentPage.value + 1].includes(pageNumber)
 }
 
 // Warm the local page cache around the visible page (best-effort).
+// JSON is tiny (~1.6 KB), so we warm ±2 immediately. Fonts are ~78 KB each, so
+// we only warm the pages the reader is most likely to turn to (±1), and only
+// once the swiper has settled (init/slide events can fire several times).
+let fontPreloadTimer = null
 const preloadAround = (page) => {
   const p = Number(page) || 1
   localPageService.preload([p - 2, p - 1, p, p + 1, p + 2])
+
+  clearTimeout(fontPreloadTimer)
+  fontPreloadTimer = setTimeout(() => {
+    const settled = Number(store.currentPage) || p
+    fontService.preload([settled - 1, settled + 1])
+  }, 600)
 }
 
 // Initialize swiper

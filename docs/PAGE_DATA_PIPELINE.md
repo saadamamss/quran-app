@@ -187,15 +187,35 @@ Exit code is non-zero on any error.
 
 ### M3 — done
 
-4. `MushafSlider.vue` — `preloadAround()` warms `currentPage ± 2` on init and on every slide change.
-5. `vite.config.js` — `json` added to Workbox `globPatterns`; the build precaches all 604 page
-   files + manifest (1222 entries total including fonts).
+4. `MushafSlider.vue` — `preloadAround()` warms `currentPage ± 2` JSON on init and on every
+   slide change, and warms `currentPage ± 1` **fonts** once the swipe settles.
+5. `vite.config.js` — `json` added to Workbox `globPatterns`; the build precaches the 604 page
+   files + manifest + app shell (**615 entries / ~1.77 MB**).
 6. `quranServices.getPage` was removed; the app no longer calls the CDN from the browser.
+
+### Fonts (M4)
+
+Per-page fonts are the one heavy asset: 604 files × ~78 KB ≈ 46 MB. Precaching them all made
+the service-worker install slow, so they are now **loaded on demand**:
+
+- `src/services/fontService.js` injects `@font-face` with `font-display: block`, waits for
+  `document.fonts.check()` to confirm the glyphs can render, and dedupes/preloads.
+- `MushafPage` loads JSON **and** the font in parallel and only paints once the font is ready —
+  without this, the private-use glyph codepoints show as garbage symbols.
+- `vite.config.js` runtime-caches `/fonts/p*.woff2` with `CacheFirst` (1 year): each font is
+  downloaded once, then served from cache offline.
+- Only the visible pages (±1) load fonts eagerly; on a wide screen that is ~3 fonts, not 7.
+- The service worker now registers immediately from `src/main.js`
+  (`registerSW({ immediate: true })`) instead of waiting for `load`, so a slow third-party
+  asset can't delay offline setup.
+
+Trade-off: a page you have never opened needs one 78 KB font before it can render offline.
 
 ### Possible follow-ups
 
 - Add an explicit API fallback if a local file is ever missing (currently it surfaces an error).
-- Consider lazy-loading fonts to shrink the ~49 MB precache (see ISSUES #3).
+- Optional "download all pages for offline" action for users who want the full Mushaf cached.
+- Remove the unused KFGQPC `.ttf` files (~0.6 MB) and the dead `Untitled1.woff2`.
 
 ---
 
